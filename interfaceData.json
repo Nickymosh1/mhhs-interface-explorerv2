@@ -7010,14 +7010,120 @@
     ]
 },
     {
-        "id": "IF-039/PUB-039",
-        "name": "Customer Direct Contract Advisory Response",
-        "description": "Registration Service Response to Service Provider request to either to record, delete or amend a Customer Direct Contract with that Service Provider, for a given MPAN",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Metering Service (MSA, MSS, UMSO)/Data Service (ADS, SDS, UMSDS) / Supplier (SUP)/ EES",
-        "context": "Registration Service Response to Service Provider request to either to record, delete or amend a Customer Direct Contract with that Service Provider, for a given MPAN",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-039",
+    "name": "Customer Direct Contract Response",
+    "description": "The response from Registration Service, confirming the acceptance or rejection of the Customer Direct Contract Request",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Metering Service (MSA, MSS, UMSO)/Data Service (ADS, SDS, UMSDS)",
+    "context": "The response from Registration Service, confirming the acceptance or rejection of the Customer Direct Contract Request",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-039"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [DirectContractMSAdd], [DirectContractDSAdd], [DirectContractMSRemove], [DirectContractDSRemove]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "R0 - Response (Mandatory)"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Code used to identify the outcome of the Event Request | Notes: A= Accept, R=Reject"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "M",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Required if [DI-979] = \"R\", Ref IF-038 Validation Rules & Outcomes"
+        },
+        {
+            "isHeader": true,
+            "title": "B020 - Customer Direct Contract MS Info ~ Mandatory for event [DirectContractMSAdd]"
+        },
+        {
+            "id": "DI-140",
+            "name": "Customer Direct Contract Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the Metering Service that has recorded the existence of a Customer Direct Contract for that MPAN."
+        },
+        {
+            "id": "DI-145",
+            "name": "Customer Direct Contract Metering Service EffectiveTo Date",
+            "cmo": "M",
+            "rule": "Date on which Customer Direct Contract Metering Service Ends | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B021 - Customer Direct Contract DS Info ~ Mandatory for event [DirectContractDSAdd]"
+        },
+        {
+            "id": "DI-138",
+            "name": "Customer Direct Contract Data Service DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the Data Service that has recorded the existence of a Customer Direct Contract for that MPAN."
+        },
+        {
+            "id": "DI-146",
+            "name": "Customer Direct Contract Data Service EffectiveTo Date",
+            "cmo": "M",
+            "rule": "Date on which Customer Direct Contract Data Service Ends | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        }
+    ]
+},
     {
         "id": "IF-040/PUB-040",
         "name": "Notification of Annual Consumption",
