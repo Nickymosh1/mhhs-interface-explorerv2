@@ -7125,14 +7125,94 @@
     ]
 },
     {
-        "id": "IF-040/PUB-040",
-        "name": "Notification of Annual Consumption",
-        "description": "On a monthly basis the Market-wide Data Service will calculate an Annual Consumption for each MPAN. This interface is to notify participants of the value, quality and calculation date of that consumption.",
-        "sender": "Market-wide Data Service (MDS)",
-        "receiver": "Suppliers (SUP), Data Service (SDS, ADS, UMSDS), LDSO, Registration Service (REGS) & EES",
-        "context": "On a monthly basis the Market-wide Data Service will calculate an Annual Consumption for each MPAN. This interface is to notify participants of the value, quality and calculation date of that consumption.",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-040/PUB-040",
+    "name": "Annual Consumption (AC)",
+    "description": "Used to send an ECS (Elexon Calculation Service) Calculated Annual Consumption (AC) to a Registration Service. IF-040 is only used for Profile Class 03, 04, 05, 06, 07 and 08 MPANs.",
+    "sender": "Elexon Central Services (ECS)",
+    "receiver": "Registration Service (REGS)",
+    "context": "Used to send an ECS (Elexon Calculation Service) Calculated Annual Consumption (AC) to a Registration Service. IF-040 is only used for Profile Class 03, 04, 05, 06, 07 and 08 MPANs.",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-040"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [AnnualConsumption]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B059 - Assumed Annual Consumption (Mandatory)"
+        },
+        {
+            "id": "DI-148",
+            "name": "Annual Consumption",
+            "cmo": "M",
+            "rule": "ECS Calculated Annual Consumption (kWh) | Notes: eg. 123456789.123"
+        },
+        {
+            "id": "DI-149",
+            "name": "Annual Consumption EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date on which ECS Calculated Annual Consumption was Calculated/is Effective From"
+        },
+        {
+            "id": "DI-150",
+            "name": "Annual Consumption Quality Indicator",
+            "cmo": "M",
+            "rule": "ECS Calculated Annual Consumption Quality Indicator | Notes: A= 100% Actual data, 1 = > 75% Actual data, 2 = <75% Actual data, 3 = 100% Estimated data, 4 = > 50% no data, 5 = < 50% no data, D= Default"
+        }
+    ]
+},
     {
     "id": "IF-041/PUB-041",
     "name": "Smart / Advanced Readings",
