@@ -2042,59 +2042,1047 @@
     ]
 },
     {
-        "id": "IF-009/PUB-009",
-        "name": "Notification of MPAN Disconnection/Termination",
-        "description": "This interface is used by Registration Service to notify participants that an MPAN has been Disconnected by LDSO and/or terminated by CSS. It is no longer possible to register an MPAN following this point.",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Supplier (SUP), LDSO, Market-wide Data Service (MDS), EES",
-        "context": "This interface is used by Registration Service to notify participants that an MPAN has been Disconnected by LDSO and/or terminated by CSS. It is no longer possible to register an MPAN following this point.",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-009/PUB-009",
+    "name": "Notification of MPAN Disconnection/Termination",
+    "description": "This interface is used by Registration Service to notify participants that an MPAN has been Disconnected by LDSO and/or terminated by CSS. It is no longer possible to register an MPAN following this point.",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Supplier (SUP), LDSO, Market-wide Data Service (MDS), EES",
+    "context": "This interface is used by Registration Service to notify participants that an MPAN has been Disconnected by LDSO and/or terminated by CSS. It is no longer possible to register an MPAN following this point.",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-009"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MPANDisconnection], [MPANReconnection], [CSSDeRegistration]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1- Sender Info - (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B041 - MPAN Disconnection Information (Mandatory for [MPANDisconnection])"
+        },
+        {
+            "id": "DI-027",
+            "name": "Disconnection Effective From Date",
+            "cmo": "M",
+            "rule": "The date on which the connection point is physically removed from the metering system. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-120",
+            "name": "Additional Information",
+            "cmo": "O",
+            "rule": "A free format character string for providing additional details."
+        },
+        {
+            "isHeader": true,
+            "title": "B098 - MPAN Reconnection Information (Mandatory for [MPANReconnection])"
+        },
+        {
+            "id": "DI-028",
+            "name": "Reconnection Effective From Date",
+            "cmo": "M",
+            "rule": "The date on which the connection point is physically reconnected to the metering system. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B042 - MPAN CSS De-Registration Information (Mandatory for [CSSDeRegistration])"
+        },
+        {
+            "id": "DI-077",
+            "name": "CSS RMP Deactivation Date",
+            "cmo": "M",
+            "rule": "The Date on which the CSS considers the MPAN to have been deactivated / terminated. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        }
+    ]
+},
     {
-        "id": "IF-013/PUB-013",
-        "name": "Notification of Defaulted Consumption",
-        "description": "This interface will be issued by ECS/MDS to advise Supplier, Data Service and if required the LDSO of the volume(s) for each Settlement Period which have been Defaulted",
-        "sender": "Market-wide Data Service (MDS)",
-        "receiver": "Data Services - Smart Data Service (SDS) / Advanced Data Service (ADS) / UMSDS / Supplier (SUP) / LDSO",
-        "context": "This interface will be issued by ECS/MDS to advise Supplier, Data Service and if required the LDSO of the volume(s) for each Settlement Period which have been Defaulted",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-013/PUB-013",
+    "name": "Notification of Defaulted Consumption",
+    "description": "This interface will be issued by ECS/MDS to advise Supplier, Data Service and if required the LDSO of the volume(s) for each Settlement Period which have been Defaulted",
+    "sender": "Market-wide Data Service (MDS)",
+    "receiver": "Data Services - Smart Data Service (SDS) / Advanced Data Service (ADS) / UMSDS / Supplier (SUP) / LDSO",
+    "context": "This interface will be issued by ECS/MDS to advise Supplier, Data Service and if required the LDSO of the volume(s) for each Settlement Period which have been Defaulted",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-013"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ActivePowerDefaulted]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B043 - Impacted Participants (Mandatory)"
+        },
+        {
+            "id": "DI-155",
+            "name": "Settlement Impacted Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the Data Service appointed for Defaulted SP"
+        },
+        {
+            "id": "DI-157",
+            "name": "Settlement Impacted Supplier DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the Supplier Responsible for Defaulted SP"
+        },
+        {
+            "isHeader": true,
+            "title": "B049 - Settlement Run Info (Mandatory)"
+        },
+        {
+            "id": "DI-159",
+            "name": "Settlement Run Execution Date",
+            "cmo": "M",
+            "rule": "Date/Time at which Settlement Run was Executed"
+        },
+        {
+            "id": "DI-160",
+            "name": "Settlement Code",
+            "cmo": "M",
+            "rule": "A code which, together with the Settlement Date, identifies a Settlement published in the Settlement Timetable. It identifies the type of Settlement. | Notes: SF Final Initial Settlement R1 First Reconciliation R2 Second Reconciliation (Transition) R3 Third Reconciliation (Transition) RF Final Reconciliation DR Dispute DF Final Dispute"
+        },
+        {
+            "id": "DI-161",
+            "name": "Run Number",
+            "cmo": "M",
+            "rule": "The identifier, unique within an Agent system, which identifies a run of that system."
+        },
+        {
+            "isHeader": true,
+            "title": "B067 - Connection Type (Mandatory)"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current L - LV with CT H - HV with CT E - EHV with CT U - Unmetered"
+        },
+        {
+            "id": "DI-016",
+            "name": "Connection Type Effective FromDate",
+            "cmo": "M",
+            "rule": "The date and time from which the metering point Connection Type is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "> B050 - ECS CCC Determination Data (Mandatory) - Block Repeated for each variation in CCC Determination Data"
+        },
+        {
+            "id": "DI-052",
+            "name": "Measurement Quantity ID",
+            "cmo": "M",
+            "rule": "Identifies the type of the quantity that is measured by the UTC Period Consumption Value. | Notes: AI – Active import AE – Active export RI – Reactive import RE – Reactive export"
+        },
+        {
+            "id": "DI-050",
+            "name": "Market Segment Indicator",
+            "cmo": "M",
+            "rule": "An enumeration of Smart/Advanced/Unmetered. | Notes: S = Smart/Traditional A = Advanced U = Unmetered"
+        },
+        {
+            "id": "DI-030",
+            "name": "Domestic Premise Indicator",
+            "cmo": "M",
+            "rule": "A flag that indicates if the MPAN of the registration appointment is used to identify a domestic premise. | Notes: T= True (Domestic) F= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-300",
+            "name": "Consumption Component Class ID",
+            "cmo": "M",
+            "rule": "Valid values are in the range 100 --> 999"
+        },
+        {
+            "id": "DI-080",
+            "name": "Consumption Component Indicator",
+            "cmo": "M",
+            "rule": "C = Consumption L = Losses"
+        },
+        {
+            "isHeader": true,
+            "title": ">> B046 - UTC Settlement Date (Mandatory) - Block Repeated for each UTC Settlement Day as required"
+        },
+        {
+            "id": "DI-101",
+            "name": "UTC Settlement Date",
+            "cmo": "M",
+            "rule": "UTC Date for which data applies | Notes: Should be populated with a time of Midnight for the UTC Day to which consumption applies"
+        },
+        {
+            "id": "DI-081",
+            "name": "Settlement Period Duration",
+            "cmo": "M",
+            "rule": "The settlement period duration in minutes. | Notes: nn"
+        },
+        {
+            "isHeader": true,
+            "title": ">>> B048 - UTC Settlement Period Consumption Defaulted Data (Mandatory for EventCode =[ActivePowerDefaulted]) - Block Repeated as Required"
+        },
+        {
+            "id": "DI-082",
+            "name": "Settlement Period Effective To Date/Time",
+            "cmo": "M",
+            "rule": "The UTC end date and time of the settlement period for a consumption value. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-153",
+            "name": "UTC Period Consumption Value (Defaulted)",
+            "cmo": "M",
+            "rule": "Consumption Value (kWh/kVARh) for the UTC Period Duration. | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-154",
+            "name": "Default Load Shape Flag",
+            "cmo": "M",
+            "rule": "A flag to identify the period value is based on a default calculation. | Notes: ‘A’ - Actual ‘D’ – Default ‘E’ – Back Stop ‘B’ – No data available"
+        }
+    ]
+},
     {
-        "id": "IF-014/PUB-014",
-        "name": "Rejection of Consumption Data/Warning",
-        "description": "Rejection of Data Service provided Actual or Estimated UTC Settlement Period Consumption data/ Warning of Consumption on a De-energised MPAN",
-        "sender": "Marketwide Data Service (MDS)",
-        "receiver": "Data Services (SDS, ADS, UMSDS), Supplier (SUP)",
-        "context": "Rejection of Data Service provided Actual or Estimated UTC Settlement Period Consumption data/ Warning of Consumption on a De-energised MPAN",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-014/PUB-014",
+    "name": "Rejection of Consumption Data/Warning",
+    "description": "Rejection of Data Service provided Actual or Estimated UTC Settlement Period Consumption data/ Warning of Consumption on a De-energised MPAN",
+    "sender": "Marketwide Data Service (MDS)",
+    "receiver": "Data Services (SDS, ADS, UMSDS), Supplier (SUP)",
+    "context": "Rejection of Data Service provided Actual or Estimated UTC Settlement Period Consumption data/ Warning of Consumption on a De-energised MPAN",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-014"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ActivePowerRejected], [ConsumptionOnDeEnergisedMPAN]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "R0 - Response (Mandatory)"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Code used to identify the outcome of the Event Request | Notes: R = Reject W = Warning"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "C",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Required if [DI-979] = \"R\" Ref IF-021 Validation Rules & Outcomes"
+        },
+        {
+            "isHeader": true,
+            "title": "B044 - Data Service Information (Mandatory)"
+        },
+        {
+            "id": "DI-845",
+            "name": "Issuing Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the Data Service submitting the data"
+        },
+        {
+            "isHeader": true,
+            "title": "B067 - Connection Type (Mandatory)"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current L - LV with CT H - HV with CT E - EHV with CT U - Unmetered"
+        },
+        {
+            "id": "DI-016",
+            "name": "Connection Type Effective FromDate",
+            "cmo": "M",
+            "rule": "The date and time from which the metering point Connection Type is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B045 - MQID"
+        },
+        {
+            "id": "DI-052",
+            "name": "Measurement Quantity ID",
+            "cmo": "M",
+            "rule": "Identifies the type of the quantity that is measured by the UTC Period ConsumptionValue. | Notes: AI – Active import AE – Active export RI – Reactive import RE – Reactive export"
+        },
+        {
+            "isHeader": true,
+            "title": "> B046 - UTC Settlement Day (Block below Repeated for each UTC Settlement Date)"
+        },
+        {
+            "id": "DI-101",
+            "name": "UTC Settlement Date",
+            "cmo": "M",
+            "rule": "UTC Date for which the Load Shape data applies | Notes: Should be populated with a time of Midnight for the UTC Day the data Applies"
+        },
+        {
+            "id": "DI-081",
+            "name": "Settlement Period Duration",
+            "cmo": "M",
+            "rule": "The settlement period duration in minutes. | Notes: nn"
+        },
+        {
+            "isHeader": true,
+            "title": ">> B047 - UTC Settlement Period Consumption Data (Mandatory) - Block below Repeated for each UTC Settlement Consumption Period as Required"
+        },
+        {
+            "id": "DI-082",
+            "name": "Settlement Period Effective To Date/Time {sp}",
+            "cmo": "M",
+            "rule": "The UTC end date and time of the settlement period for a consumption value. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-147",
+            "name": "UTC Period Consumption Value {v}",
+            "cmo": "M",
+            "rule": "Consumption Value (kWh/kVARh) for the UTC Period Duration. | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-083",
+            "name": "Settlement Period Quality Indicator {q}",
+            "cmo": "M",
+            "rule": "Describes if the UTC Period Consumption Value is an actual or what estimation method was used to estimate it. | Notes: A = Actual, E= Estimate (UMS Only) A1,A2,A3, AAE1,AAE2,AAE3,EAE1,EAE2,EAE3 (ADV Only) E0 --> E9 = Estimation Method 1 - 9 EA1-->EA13 = ADS Estimation Methods ZE = De-Energised (for use with Unmetered Supplies only) ZE1--> ZE3 = Zero Estimation Method 1 -3\n\nRef Data Service Estimation Method Statement for additional guidance"
+        },
+        {
+            "id": "DI-076",
+            "name": "Estimation Reason Code {e}",
+            "cmo": "C",
+            "rule": "Reason why Data Service had to provide Estimated/Zero Data | Notes: Madatory if SPQI (DI-083) is not 'A' 1=Opt Out 2=Missing 3=Invalid 4=Comms Fault 5=LTV 6=Disabled 7=De-Energised 8=Disconnected 9=Consumption Amendment 10=Non-Smart\n\nRef Data Service Estimation Method Statement for additional guidance"
+        },
+        {
+            "id": "DI-166",
+            "name": "Supplier Consumption Amendment Reason Code {arc}",
+            "cmo": "C",
+            "rule": "Supplier Consumption Amendment Reason Code | Notes: Required if DI-076 is Cons Amendment A= Agreed Read E = Estimation Issue M = Metering Issue (Crossed/Missed Exchange/Found) R = Reading Issue (Transposed / Misread) S = Stolen/Lost Meter T = Tampering/Theft X = Other"
+        }
+    ]
+},
     {
-        "id": "IF-015/PUB-015",
-        "name": "Request for Consumption Replay",
-        "description": "This interface is used by Advanced Data Services to request a Replay of historic Consumption submissions for a newly acquired MPAN, from the DIP.",
-        "sender": "Advanced Data Service (ADS)",
-        "receiver": "DIP Replay Service",
-        "context": "This interface is used by Advanced Data Services to request a Replay of historic Consumption submissions for a newly acquired MPAN, from the DIP.",
-        "supplier_type": "none"
-    },
+    "id": "IF-015/PUB-015",
+    "name": "Request for Consumption Replay",
+    "description": "This interface is used by Advanced Data Services to request a Replay of historic Consumption submissions for a newly acquired MPAN, from the DIP.",
+    "sender": "Advanced Data Service (ADS)",
+    "receiver": "DIP Replay Service",
+    "context": "This interface is used by Advanced Data Services to request a Replay of historic Consumption submissions for a newly acquired MPAN, from the DIP.",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-015"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ConsumptionReplay]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1- Sender Info - (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        }
+    ]
+},
     {
-        "id": "IF-016/PUB-016",
-        "name": "Consumption Replay",
-        "description": "This interface is used by the DIP in order to Replay historic Consumption submissions for a newly acquired MPAN, back to the Advanced Data Service.",
-        "sender": "DIP",
-        "receiver": "Advanced Data Service (ADS)",
-        "context": "This interface is used by the DIP in order to Replay historic Consumption submissions for a newly acquired MPAN, back to the Advanced Data Service.",
-        "supplier_type": "none"
-    },
+    "id": "IF-016/PUB-016",
+    "name": "Consumption Replay",
+    "description": "This interface is used by the DIP in order to Replay historic Consumption submissions for a newly acquired MPAN, back to the Advanced Data Service.",
+    "sender": "DIP",
+    "receiver": "Advanced Data Service (ADS)",
+    "context": "This interface is used by the DIP in order to Replay historic Consumption submissions for a newly acquired MPAN, back to the Advanced Data Service.",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-016"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ActivePower], [ReactivePower], [ActivePowerRejected], [ActivePowerDefaulted], [ConsumptionRequestRejected]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "S2 - Original Message (S1) Info (Mandatory for [ActivePower], [ReactivePower], [ActivePowerRejected],[ActivePowerDefaulted])"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "R1 - Consumption Request Response (Mandatory)"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Code used to identify the outcome of the Event Request | Notes: A= Accept R=Reject"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "M",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Ref IF-015 Validation Rules & Outcomes"
+        },
+        {
+            "isHeader": true,
+            "title": "R0 - Response (Mandatory for [ActivePowerRejected] )"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Code used to identify the outcome of the Event Request | Notes: R = Reject"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "C",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Required if [DI-979] = \"R\" Ref IF-021 Validation Rules & Outcomes"
+        },
+        {
+            "isHeader": true,
+            "title": "B044 - Submitting Data Service (Mandatory for [ActivePower], [ReactivePower] and [ActivePowerRejected])"
+        },
+        {
+            "id": "DI-845",
+            "name": "Issuing Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the Data Service submitting the data"
+        },
+        {
+            "isHeader": true,
+            "title": "B043 - Impacted Participants (Mandatory for [ActivePowerDefaulted])"
+        },
+        {
+            "id": "DI-155",
+            "name": "Settlement Impacted Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the Data Service appointed for Defaulted SP"
+        },
+        {
+            "id": "DI-157",
+            "name": "Settlement Impacted Supplier DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the Supplier Responsible for Defaulted SP"
+        },
+        {
+            "isHeader": true,
+            "title": "B049 - Settlement Run Info (Mandatory for [ActivePowerDefaulted])"
+        },
+        {
+            "id": "DI-159",
+            "name": "Settlement Run Execution Date",
+            "cmo": "M",
+            "rule": "Date/Time at which Settlement Run was Executed"
+        },
+        {
+            "id": "DI-160",
+            "name": "Settlement Code",
+            "cmo": "M",
+            "rule": "A code which, together with the Settlement Date, identifies a Settlement published in the Settlement Timetable. It identifies the type of Settlement. | Notes: SF Final Initial Settlement R1 First Reconciliation R2 Second Reconciliation (Transition) R3 Third Reconciliation (Transition) RF Final Reconciliation DR Dispute DF Final Dispute"
+        },
+        {
+            "id": "DI-161",
+            "name": "Run Number",
+            "cmo": "M",
+            "rule": "The identifier, unique within an Agent system, which identifies a run of that system."
+        },
+        {
+            "isHeader": true,
+            "title": "B067 - Connection Type (Mandatory except for [ReplayRequestRejected])"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current L - LV with CT H - HV with CT E - EHV with CT U - Unmetered"
+        },
+        {
+            "id": "DI-016",
+            "name": "Connection Type Effective FromDate",
+            "cmo": "M",
+            "rule": "The date and time from which the metering point Connection Type is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B045- MQID ( Mandatory for [ActivePower], [ReactivePower] and [ActivePowerRejected] )"
+        },
+        {
+            "id": "DI-052",
+            "name": "Measurement Quantity ID",
+            "cmo": "M",
+            "rule": "Identifies the type of the quantity that is measured by the UTC Period Consumption Value. | Notes: AI – Active import AE – Active export RI – Reactive import RE – Reactive export"
+        },
+        {
+            "isHeader": true,
+            "title": "> B050 - ECS CCC Determination Data (Mandatory for [ActivePowerDefaulted]) - Block Repeated for each variation"
+        },
+        {
+            "id": "DI-052",
+            "name": "Measurement Quantity ID",
+            "cmo": "M",
+            "rule": "Identifies the type of the quantity that is measured by the UTC Period Consumption Value. | Notes: AI – Active import AE – Active export RI – Reactive import RE – Reactive export"
+        },
+        {
+            "id": "DI-050",
+            "name": "Market Segment Indicator",
+            "cmo": "M",
+            "rule": "An enumeration of Smart/Advanced/Unmetered. | Notes: S = Smart/Traditional A = Advanced U = Unmetered"
+        },
+        {
+            "id": "DI-030",
+            "name": "Domestic Premise Indicator",
+            "cmo": "M",
+            "rule": "A flag that indicates if the MPAN of the registration appointment is used to identify a domestic premise. | Notes: T= True (Domestic) F= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-300",
+            "name": "Consumption Component Class ID",
+            "cmo": "M",
+            "rule": "Valid values are in the range 100 --> 999"
+        },
+        {
+            "id": "DI-080",
+            "name": "Consumption Component Indicator",
+            "cmo": "M",
+            "rule": "C = Consumption L = Losses"
+        },
+        {
+            "isHeader": true,
+            "title": ">> B046 - UTC Settlement Day Mandatory except [ReplayRequestRejected] - Block(s) below Repeated for each UTC Settlement Date as Required"
+        },
+        {
+            "id": "DI-101",
+            "name": "UTC Settlement Date",
+            "cmo": "M",
+            "rule": "UTC Date for which the data applies | Notes: Should be populated with a time of Midnight for the UTC Day to which consumption applies"
+        },
+        {
+            "id": "DI-081",
+            "name": "Settlement Period Duration",
+            "cmo": "M",
+            "rule": "The settlement period duration in minutes. | Notes: nn"
+        },
+        {
+            "isHeader": true,
+            "title": ">>> B047 - UTC Settlement Period Consumption Data ( Mandatory for [ActivePower], [ReactivePower] and [ActivePowerRejected] )"
+        },
+        {
+            "id": "DI-082",
+            "name": "Settlement Period Effective To Date/Time {sp}",
+            "cmo": "M",
+            "rule": "The UTC end date and time of the settlement period for a consumption value. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-147",
+            "name": "UTC Period Consumption Value {v}",
+            "cmo": "M",
+            "rule": "Consumption Value (kWh/kVAR) for the UTC Period Duration. | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-083",
+            "name": "Settlement Period Quality Indicator {q}",
+            "cmo": "M",
+            "rule": "Describes if the UTC Period Consumption Value is an actual or what estimation method was used to estimate it. | Notes: A = Actual, E= Estimate (UMS Only) A1,A2,A3, AAE1,AAE2,AAE3,EAE1,EAE2,EAE3 (ADV Only) E0 --> E9 = Estimation Method 1 - 9 EA1-->EA13 = ADS Estimation Methods ZE = De-Energised (for use with Unmetered Supplies only) ZE1--> ZE3 = Zero Estimation Method 1 -3\n\nRef Data Service Estimation Method Statement for additional guidance"
+        },
+        {
+            "id": "DI-076",
+            "name": "Estimation Reason Code {e}",
+            "cmo": "C",
+            "rule": "Reason why Data Service had to provide Estimated/Zero Data | Notes: Mandatory if SPQI (DI-083) is not 'A' 1=Opt Out 2=Missing 3=Invalid 4=Comms Fault 5=LTV 6=Disabled 7=De-Energised 8=Disconnected 9=Consumption Amendment 10=Non-Smart\n\nRef Data Service Estimation Method Statement for additional guidance"
+        },
+        {
+            "id": "DI-166",
+            "name": "Supplier Consumption Amendment Reason Code {arc}",
+            "cmo": "C",
+            "rule": "Supplier Consumption Amendment Reason Code | Notes: Required if DI-076 is Cons Amendment A= Agreed Read E = Estimation Issue M = Metering Issue (Crossed/Missed Exchange/Found) R = Reading Issue (Transposed / Misread) S = Stolen/Lost Meter T = Tampering/Theft X = Other"
+        },
+        {
+            "isHeader": true,
+            "title": ">>> B048 - UTC Settlement Period Consumption Defaulted Data (Mandatory for [ActivePowerDefaulted])"
+        },
+        {
+            "id": "DI-082",
+            "name": "Settlement Period Effective To Date/Time",
+            "cmo": "M",
+            "rule": "The UTC end date and time of the settlement period for a consumption value. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-153",
+            "name": "UTC Period Consumption Value (Defaulted)",
+            "cmo": "M",
+            "rule": "Consumption Value (kWh/kVARh) for the UTC Period Duration. | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-154",
+            "name": "Default Load Shape Flag",
+            "cmo": "M",
+            "rule": "A flag to identify the period value is based on a default calculation. | Notes: X - No Default Data D - Standard Default Data B- Back Stop Data N - National Average Z - Zero Data"
+        }
+    ]
+},
     {
-        "id": "IF-018/PUB-018",
-        "name": "Notification of LDSO Maintained Data Changes",
-        "description": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the LDSO or notified to Registration Service directly by CSS",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Supplier (SUP), Data Service (ADS, SDS, UMSDS), Metering Service (MSA, MSS, UMSO) , Market-wide Data Service (MDS), EES & LDSO",
-        "context": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the LDSO or notified to Registration Service directly by CSS",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-018/PUB-018",
+    "name": "Notification of LDSO Maintained Data Changes",
+    "description": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the LDSO or notified to Registration Service directly by CSS",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Supplier (SUP), Data Service (ADS, SDS, UMSDS), Metering Service (MSA, MSS, UMSO) , Market-wide Data Service (MDS), EES & LDSO",
+    "context": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the LDSO or notified to Registration Service directly by CSS",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-018"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [AddressChg], [GSPChg], [DomPremInd], [DCCEnrolment], [DUOSTariffIDChg], [EnergyDirection], [MUMIndicator]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B013 CSS Registration Request ID (Mandatory if available in Registration Service)"
+        },
+        {
+            "id": "DI-849",
+            "name": "CSS Registration ID",
+            "cmo": "M",
+            "rule": "The CSS identifier associated with a Supplier's Registration"
+        },
+        {
+            "isHeader": true,
+            "title": "B001 - GSP EffectiveFrom (Mandatory for Events [AddressChg] & [GSPChg])"
+        },
+        {
+            "id": "DI-036",
+            "name": "GSP Group ID EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The date and time from which the GSP Group ID is in effect for the metering system. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B022 - MPAN Address (Mandatory for Events [AddressChg] & [GSPChg])"
+        },
+        {
+            "id": "DI-010",
+            "name": "Metering Point Postcode",
+            "cmo": "O",
+            "rule": "The full postcode of the metering point site."
+        },
+        {
+            "id": "DI-001",
+            "name": "Address Line 1",
+            "cmo": "O",
+            "rule": "A component of a metering point site address. There are defined parts of the address for each address line."
+        },
+        {
+            "id": "DI-002",
+            "name": "Address Line 2",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-003",
+            "name": "Address Line 3",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-004",
+            "name": "Address Line 4",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-005",
+            "name": "Address Line 5",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-006",
+            "name": "Address Line 6",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-007",
+            "name": "Address Line 7",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-008",
+            "name": "Address Line 8",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-009",
+            "name": "Address Line 9",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "isHeader": true,
+            "title": "B023 - MPAN Connection Info (Mandatory for Events [EnergyDirection], [MUMIndicator])"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current L - LV with CT H - HV with CT E - EHV with CT U - Unmetered"
+        },
+        {
+            "id": "DI-016",
+            "name": "Connection Type Effective FromDate",
+            "cmo": "M",
+            "rule": "The date and time from which the metering point Connection Type is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-035",
+            "name": "Energy Direction",
+            "cmo": "M",
+            "rule": "Indicates the direction of energy at a metering point. Values can be I = import / E = export. | Notes: I = Import E = Export"
+        },
+        {
+            "id": "DI-127",
+            "name": "Metered Indicator",
+            "cmo": "M",
+            "rule": "An indicator to show whether the Consumption Component is for a metered supply or unmetered supply. | Notes: False = U - Unmetered, True = M - Metered"
+        },
+        {
+            "isHeader": true,
+            "title": "B024 - MPAN DUOS Tariff ID (Mandatory for [DUOSTariffIDChg] )"
+        },
+        {
+            "id": "DI-128",
+            "name": "DUOS Tariff ID",
+            "cmo": "M",
+            "rule": "Reference to identify the DUoS Tariff assigned to an MPAN"
+        },
+        {
+            "id": "DI-129",
+            "name": "DUOS Tariff ID EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date on which DUoS Tariff came into effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B028 - Domestic Premise Indicator (Mandatory for Event [DomPremInd])"
+        },
+        {
+            "id": "DI-030",
+            "name": "Domestic Premise Indicator",
+            "cmo": "M",
+            "rule": "A flag that indicates if the MPAN of the registration appointment is used to identify a domestic premise. | Notes: T= True (Domestic) F= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-032",
+            "name": "Domestic Premise Indicator Effective From Date",
+            "cmo": "M",
+            "rule": "The date from which the metering point Domestic Premise Indicator is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B029 - DCC Enrolment (Mandatory for Event [DCCEnrolment]) (Mandatory for Commissioned Smart Meters)"
+        },
+        {
+            "id": "DI-025",
+            "name": "DCC Service Flag",
+            "cmo": "M",
+            "rule": "A DCC provided flag to indicate the status of the services being provided by the DCC to a Metering Point. | Notes: A = Active I = Installed Not Commissioned N = Non-Active"
+        },
+        {
+            "id": "DI-026",
+            "name": "DCC Effective From Date (DCCF)",
+            "cmo": "M",
+            "rule": "The first inclusive calendar date for which the status of the DCC Service flag applies. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        }
+    ]
+},
     {
     "id": "IF-019/PUB-019",
     "name": "Request to Create/Change MPAN Relationship",
@@ -2183,41 +3171,617 @@
     ]
 },
     {
-        "id": "IF-020/PUB-020",
-        "name": "MPAN Relationship Response",
-        "description": "Interface providing the Registration Service Response to an MPAN Relationship request to create/change.",
-        "sender": "Registration Service (REGS)/ LDSO",
-        "receiver": "Supplier (SUP), Data Service (ADS, SDS), Metering Service (MSS, MSA), LDSO & EES",
-        "context": "Interface providing the Registration Service Response to an MPAN Relationship request to create/change.",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-020/PUB-020",
+    "name": "MPAN Relationship Response",
+    "description": "Interface providing the Registration Service Response to an MPAN Relationship request to create/change.",
+    "sender": "Registration Service (REGS)/ LDSO",
+    "receiver": "Supplier (SUP), Data Service (ADS, SDS), Metering Service (MSS, MSA), LDSO & EES",
+    "context": "Interface providing the Registration Service Response to an MPAN Relationship request to create/change.",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-020"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [LinkedImportExportCreate], [LinkedImportExportAdd], [LinkedImportExportRemove], [RelatedCreate], [RelatedAdd], [RelatedRemove]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M1 - MPAN Relationship Principal MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-073",
+            "name": "Principal MPAN",
+            "cmo": "M",
+            "rule": "The Principal MPAN in a Related/Linked MPAN Relationship"
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "R0 - Response (Mandatory)"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Code used to identify the outcome of the Event Request | Notes: A= Accept R=Reject"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "C",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Required if [DI-979] = \"R\" Ref IF-019 Validation Rules & Outcomes"
+        },
+        {
+            "isHeader": true,
+            "title": "B090 - MPAN Relationship Subsidary MPAN Group below repeated for each Secondary MPAN as Required"
+        },
+        {
+            "isHeader": true,
+            "title": "*B090 - MPAN Relationship Subsidiary MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-074",
+            "name": "Subsidiary MPAN",
+            "cmo": "M",
+            "rule": "The subsidiary MPAN in a Related/Linked MPAN Relationship"
+        },
+        {
+            "isHeader": true,
+            "title": "B091 - MPAN Relationship Additonal Information (Optional)"
+        },
+        {
+            "id": "DI-120",
+            "name": "Additional Information",
+            "cmo": "M",
+            "rule": "A free format character string for providing additional details."
+        },
+        {
+            "isHeader": true,
+            "title": "B035 - Linked Import / Export MPAN (Mandatory if Linked MPAN Exists) - *B907 block repeated for each Linked I/E MPAN in the group"
+        },
+        {
+            "id": "DI-038",
+            "name": "Linked Import/Export MPAN",
+            "cmo": "M",
+            "rule": "When this metering point is part of an import/export pair, this identifies the related import or export metering point. Where more than one import MPAN exists, this shall be populated with the Primary Import MPAN. | Notes: This field is mandatory, but will be Null/Blank if no linkage exists."
+        },
+        {
+            "id": "DI-151",
+            "name": "Linked MPAN Energy Direction",
+            "cmo": "M",
+            "rule": "Energy Direction of the Linked MPANs | Notes: I = Import E= Export"
+        },
+        {
+            "id": "DI-801",
+            "name": "Import/Export MPAN Supplier DIP ID",
+            "cmo": "C",
+            "rule": "DIP ID of the Supplier Responsible for the Linked MPAN | Notes: Mandatory if available in Registration Service"
+        },
+        {
+            "id": "DI-212",
+            "name": "Import/Export MPAN Supplier MPID",
+            "cmo": "C",
+            "rule": "Import/Export MPAN Supplier MPID | Notes: Mandatory if available in Registration Service"
+        },
+        {
+            "isHeader": true,
+            "title": "> *B036 - Linked Import/Export Meter Details - *B910 B036 & B075 below repeated for each Meter /MAP pair"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter. | Notes: MSID for the 'existing' or 'newly installed' meter depending on Event type"
+        },
+        {
+            "id": "DI-059",
+            "name": "Meter Type",
+            "cmo": "M",
+            "rule": "The type of meter, in relation to its capabilities. E.g. AMR.S1, S2, S2ADE | Notes: Values as per ISD"
+        },
+        {
+            "id": "DI-048",
+            "name": "Manufacturers Make and Type",
+            "cmo": "O",
+            "rule": "The manufacturer's make name and type number of a Meter"
+        },
+        {
+            "id": "DI-085",
+            "name": "Electricity Smart Meter Equipment (ESME ID)",
+            "cmo": "C",
+            "rule": "The Electricity Smart Meter Equipment GUID is the unique identifier for a Smart electricity This is also known as the DCC GUID and is further defined within the DCC interface specifications. | Notes: Mandatory for Smart Meters (XX-XX-XX-XX-XX-XX-XX-XX)"
+        },
+        {
+            "id": "DI-090",
+            "name": "Meter Location",
+            "cmo": "M",
+            "rule": "The actual location of the metering system within the site | Notes: Values as Per Data Catalogue"
+        },
+        {
+            "id": "DI-091",
+            "name": "Number of Displayed Register Digits",
+            "cmo": "C",
+            "rule": "The number of digits prior to the decimal point displayed by the total cumulative register of a smart meter | Notes: Mandatory for SMETS2 Meters Where the Meter Type is S1 the Number of Displayed Register Digits value must be be per the manufacturer's specification\n\nWhere the Meter Type is S2A, S2AD, S2ADE, 2ADF, 2ADEF, 2AEF, 2AF, S2B, S2BD, S2BDE, 2BF,2BDF, 2BDEF or 2BEF the value must be “5”.\n\nWhere the Meter Type is prefixed with “S2C” the value must be “6”.\n\nWhere the Meter Type is 2CDEF, 2CF, 2CDF or 2CEF the value must be “6”"
+        },
+        {
+            "id": "DI-057",
+            "name": "Meter Installation Date/Time",
+            "cmo": "M",
+            "rule": "The date of installation for a meter at a metering point. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": ">> *B075 - MPAN Linked Meter Map Info (Mandatory for each Meter Provided) - Most Recent Record only for each B036 Meter provided above"
+        },
+        {
+            "id": "DI-055",
+            "name": "Meter Asset Provider ID",
+            "cmo": "M",
+            "rule": "The market-wide reference for the provider of the meter equipment. | Notes: Must be a valid set as per ISD"
+        },
+        {
+            "id": "DI-054",
+            "name": "Meter Asset Provider Effective From Date",
+            "cmo": "M",
+            "rule": "The inclusive calendar date from which the meter asset provider is in effect for the metering system. | Notes: Must be a valid date and time"
+        }
+    ]
+},
     {
-        "id": "IF-021/PUB-021",
-        "name": "Provide Settlement Period Consumption",
-        "description": "Data Service will provide Actual or Estimated UTC Settlement Period Consumption data (Active and where appropriate Reactive), for each MPAN, for each day that they are appointed.",
-        "sender": "Data Services - Smart Data Service (SDS) / Advanced Data Service (ADS) / UMSDS",
-        "receiver": "Load Shaping Service (LSS) / Market-wide Data Service (MDS) / Distributor (LDSO) / Supplier (SUP)",
-        "context": "Data Service will provide Actual or Estimated UTC Settlement Period Consumption data (Active and where appropriate Reactive), for each MPAN, for each day that they are appointed.",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-021/PUB-021",
+    "name": "Provide Settlement Period Consumption",
+    "description": "Data Service will provide Actual or Estimated UTC Settlement Period Consumption data (Active and where appropriate Reactive), for each MPAN, for each day that they are appointed.",
+    "sender": "Data Services - Smart Data Service (SDS) / Advanced Data Service (ADS) / UMSDS",
+    "receiver": "Load Shaping Service (LSS) / Market-wide Data Service (MDS) / Distributor (LDSO) / Supplier (SUP)",
+    "context": "Data Service will provide Actual or Estimated UTC Settlement Period Consumption data (Active and where appropriate Reactive), for each MPAN, for each day that they are appointed.",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-021"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ActivePower], [ReactivePower]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B044 - Data Service Information (Mandatory)"
+        },
+        {
+            "id": "DI-845",
+            "name": "Issuing Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the Data Service submitting the data"
+        },
+        {
+            "isHeader": true,
+            "title": "B067 - Connection Type (Mandatory)"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current L - LV with CT H - HV with CT E - EHV with CT U - Unmetered"
+        },
+        {
+            "id": "DI-016",
+            "name": "Connection Type Effective FromDate",
+            "cmo": "M",
+            "rule": "The date and time from which the metering point Connection Type is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B045 - MQID (Mandatory)"
+        },
+        {
+            "id": "DI-052",
+            "name": "Measurement Quantity ID",
+            "cmo": "M",
+            "rule": "Identifies the type of the quantity that is measured by the UTC Period Consumption Value. | Notes: AI – Active import AE – Active export RI – Reactive import RE – Reactive export"
+        },
+        {
+            "isHeader": true,
+            "title": "> *B046 - UTC Settlement Day (Mandatory) - Block below Repeated for each UTC Settlement Date"
+        },
+        {
+            "id": "DI-101",
+            "name": "UTC Settlement Date",
+            "cmo": "M",
+            "rule": "UTC Date for which the data applies | Notes: Should be populated with a time of Midnight for the UTC Day to which consumption applies"
+        },
+        {
+            "id": "DI-081",
+            "name": "Settlement Period Duration",
+            "cmo": "M",
+            "rule": "The settlement period duration in minutes. | Notes: nn"
+        },
+        {
+            "isHeader": true,
+            "title": ">> *B047- UTC Settlement Period Consumption Data (Mandatory) - Block below Repeated for each UTC Settlement Consumption Period as Required"
+        },
+        {
+            "id": "DI-082",
+            "name": "Settlement Period Effective To Date/Time {sp}",
+            "cmo": "M",
+            "rule": "The UTC end date and time of the settlement period for a consumption value. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-147",
+            "name": "UTC Period Consumption Value {v}",
+            "cmo": "M",
+            "rule": "Consumption Value (kWh/kVARh) for the Settlement Period Duration. | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-083",
+            "name": "Settlement Period Quality Indicator {q}",
+            "cmo": "M",
+            "rule": "Describes if the UTC Period Consumption Value is an actual or what estimation method was used to estimate it. | Notes: A = Actual, E= Estimate (UMS Only) A1,A2,A3, AAE1,AAE2,AAE3,EAE1,EAE2,EAE3 (ADV Only) E0 --> E9 = Estimation Method 1 - 9 EA1-->EA13 = ADS Estimation Methods ZE = De-Energised (for use with Unmetered Supplies only) ZE1--> ZE3 = Zero Estimation Method 1 -3\n\nRef Data Service Estimation Method Statement for additional guidance"
+        },
+        {
+            "id": "DI-076",
+            "name": "Estimation Reason Code {e}",
+            "cmo": "C",
+            "rule": "Reason why Data Service had to provide Estimated/Zero Data | Notes: Mandatory if SPQI (DI-083) is not 'A' 1=Opt Out 2=Missing 3=Invalid 4=Comms Fault 5=LTV 6=Disabled 7=De-Energised 8=Disconnected 9=Consumption Amendment 10=Non-Smart\n\nRef Data Service Estimation Method Statement for additional guidance"
+        },
+        {
+            "id": "DI-166",
+            "name": "Supplier Consumption Amendment Reason Code {arc}",
+            "cmo": "C",
+            "rule": "Supplier Consumption Amendment Reason Code | Notes: Required if DI-076 is Cons Amendment A= Agreed Read E = Estimation Issue M = Metering Issue (Crossed/Missed Exchange/Found) R = Reading Issue (Transposed / Misread) S = Stolen/Lost Meter T = Tampering/Theft X = Other"
+        }
+    ]
+},
     {
-        "id": "IF-022/PUB-022",
-        "name": "Provide Load Shape Period Data",
-        "description": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
-        "sender": "Load Shaping Service (LSS)",
-        "receiver": "Supplier (SUP), Data Services (ADS, SDS, UMSDS), Public (via separate file-sharing mechanism)",
-        "context": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-022/PUB-022",
+    "name": "Provide Load Shape Period Data",
+    "description": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
+    "sender": "Load Shaping Service (LSS)",
+    "receiver": "Supplier (SUP), Data Services (ADS, SDS, UMSDS), Public (via separate file-sharing mechanism)",
+    "context": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-022"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [LSSPeriodData]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "*B046 - UTC Settlement Day"
+        },
+        {
+            "id": "DI-101",
+            "name": "UTC Settlement Date",
+            "cmo": "M",
+            "rule": "UTC Date for which the Load Shape data applies | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM\n\nShould be populated with a time of Midnight for the UTC Day the Load Shape Applies"
+        },
+        {
+            "id": "DI-081",
+            "name": "Settlement Period Duration",
+            "cmo": "M",
+            "rule": "The settlement period duration in minutes. | Notes: nn"
+        },
+        {
+            "isHeader": true,
+            "title": "> *B051 - Load Shape Criteria (Mandatory), Repeated for each combination of LS Criteria"
+        },
+        {
+            "id": "DI-039",
+            "name": "Load Shape GSP Group ID",
+            "cmo": "O",
+            "rule": "The GSP Group ID associated with a Load Shape"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current L - LV with CT H - HV with CT E - EHV with CT U - Unmetered"
+        },
+        {
+            "id": "DI-050",
+            "name": "Market Segment Indicator",
+            "cmo": "M",
+            "rule": "An enumeration of Smart/Advanced/Unmetered. | Notes: S = Smart/Traditional A = Advanced U = Unmetered"
+        },
+        {
+            "id": "DI-031",
+            "name": "Load Shape Domestic Premise Indicator",
+            "cmo": "O",
+            "rule": "The Domectic Premise Indicator associated with a Load Shape | Notes: T= True (Domestic) F= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-052",
+            "name": "Measurement Quantity ID",
+            "cmo": "M",
+            "rule": "Identifies the type of the quantity that is measured by the UTC Period Consumption Value. | Notes: AI – Active import AE – Active export RI – Reactive import RE – Reactive export"
+        },
+        {
+            "isHeader": true,
+            "title": ">> *B052 Load Shape Period Data (Mandatory), Repeated for each Settlement Period"
+        },
+        {
+            "id": "DI-082",
+            "name": "Settlement Period Effective To Date/Time {sp}",
+            "cmo": "M",
+            "rule": "The UTC end date and time of the settlement period for a consumption value. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-102",
+            "name": "Load Shape Period Value",
+            "cmo": "M",
+            "rule": "Consumption Value (kWh) for the UTC Period Duration within a Load Shape. | Notes: eg 123456789.123"
+        },
+        {
+            "id": "DI-154",
+            "name": "Default Load Shape Flag",
+            "cmo": "M",
+            "rule": "A flag to identify the period value is based on a default calculation. | Notes: ‘A’ - Actual ‘D’ – Default ‘E’ – Back Stop ‘B’ – No data available"
+        }
+    ]
+},
     {
-        "id": "IF-023/PUB-023",
-        "name": "Provide Load Shape Totals Data",
-        "description": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
-        "sender": "Load Shaping Service (LSS)",
-        "receiver": "Supplier (SUP), Data Services (ADS, SDS, UMSDS), Public (via separate file-sharing mechanism)",
-        "context": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-023/PUB-023",
+    "name": "Provide Load Shape Totals Data",
+    "description": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
+    "sender": "Load Shaping Service (LSS)",
+    "receiver": "Supplier (SUP), Data Services (ADS, SDS, UMSDS), Public (via separate file-sharing mechanism)",
+    "context": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-023"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [LSSTotalsData]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "* B046 - UTC Settlement Day"
+        },
+        {
+            "id": "DI-101",
+            "name": "UTC Settlement Date",
+            "cmo": "M",
+            "rule": "UTC Date for which the Load Shape data applies | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM\n\nShould be populated with a time of Midnight for the UTC Day for which the Load Shape applies"
+        },
+        {
+            "id": "DI-081",
+            "name": "Settlement Period Duration",
+            "cmo": "M",
+            "rule": "The settlement period duration in minutes. | Notes: nn"
+        },
+        {
+            "isHeader": true,
+            "title": "> *B051 - Load Shape Criteria (Mandatory), Repeated for each combination of LS Criteria"
+        },
+        {
+            "id": "DI-039",
+            "name": "Load Shape GSP Group ID",
+            "cmo": "O",
+            "rule": "The GSP Group ID associated with a Load Shape"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current L - LV with CT H - HV with CT E - EHV with CT U - Unmetered"
+        },
+        {
+            "id": "DI-050",
+            "name": "Market Segment Indicator",
+            "cmo": "M",
+            "rule": "An enumeration of Smart/Advanced/Unmetered. | Notes: S = Smart/Traditional A = Advanced U = Unmetered"
+        },
+        {
+            "id": "DI-031",
+            "name": "Load Shape Domestic Premise Indicator",
+            "cmo": "O",
+            "rule": "The Domectic Premise Indicator associated with a Load Shape | Notes: T= True (Domestic) F= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-052",
+            "name": "Measurement Quantity ID",
+            "cmo": "M",
+            "rule": "Identifies the type of the quantity that is measured by the UTC Period ConsumptionValue. | Notes: AI – Active import AE – Active export RI – Reactive import RE – Reactive export"
+        },
+        {
+            "isHeader": true,
+            "title": "> B054 - Load Shape Annual Consumption, Repeated for each combination of LS Criteria"
+        },
+        {
+            "id": "DI-040",
+            "name": "Annual Load Shape Total",
+            "cmo": "M",
+            "rule": "Annual consumption associated with a particular Load Shape | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "isHeader": true,
+            "title": ">> *B053 Load Shape Total Data (Mandatory), Repeated for each Combination of Load Shape Criteria"
+        },
+        {
+            "id": "DI-046",
+            "name": "Load Shape Day Total",
+            "cmo": "M",
+            "rule": "The sum of all Period Values for the UTC Date. | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-045",
+            "name": "Load Shape Day Peak Total",
+            "cmo": "C",
+            "rule": "The sum of Period Values (kWh) for settlement periods (15 to 48) or (1 and 16 to 48). UTC times 7pm - Midnight | Notes: Smart Only nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-044",
+            "name": "Load Shape Day Off-Peak Total",
+            "cmo": "C",
+            "rule": "The sum of Period Values for settlement periods (kWh) (1 to 14) or (2 to 15). UTC times Midnight -7pm | Notes: Smart Only nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-043",
+            "name": "Load Shape 7 Day Rolling Total",
+            "cmo": "M",
+            "rule": "The sum of the 7 day rolling total (kWh) using the total for the UTC date plus the previous 6 UTC dates | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-042",
+            "name": "Load Shape 7 Day Rolling Peak Total",
+            "cmo": "C",
+            "rule": "The sum of the 7 day rolling Peak total (kWh) using the Peak total for the UTC date plus the last 6 UTC dates | Notes: Smart Only nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-041",
+            "name": "Load Shape 7 Day Rolling Off-peak Total",
+            "cmo": "C",
+            "rule": "The sum of the 7 day rolling Off-Peak total (kWh) using the Off-Peak total for the UTC date plus the last 6 UTC dates | Notes: Smart Only nnnnnnnnn.nnn"
+        }
+    ]
+},
     {
     "id": "IF-024/PUB-024",
     "name": "Notification of Data Service Influencing Circumstances",
@@ -2497,14 +4061,174 @@
     ]
 },
     {
-        "id": "IF-026/PUB-026",
-        "name": "Notification of Supplier Maintained Data Changes",
-        "description": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the Supplier",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Supplier (SUP)/ Data Service (ADS, SDS, UMSDS)/ Central Settlements (LSS)/ LDSO / Metering Service (MSA, MSS, UMSO)/ EES/ MDR",
-        "context": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the Supplier",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-026/PUB-026",
+    "name": "Notification of Supplier Maintained Data Changes",
+    "description": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the Supplier",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Supplier (SUP)/ Data Service (ADS, SDS, UMSDS)/ Central Settlements (LSS)/ LDSO / Metering Service (MSA, MSS, UMSO)/ EES/ MDR",
+    "context": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the Supplier",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info - Sender Set (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-026"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ConsentGranularity], [IHDInfo], [SMSO], [SSCandProfileClass]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "R0 - Response (Mandatory)"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Code used to identify the outcome of the Event Request | Notes: A= Accept R=Reject"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "C",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Required if [DI-979] = \"R\" Ref IF-025 Validation Rules & Outcomes"
+        },
+        {
+            "isHeader": true,
+            "title": "B013 CSS Registration Request ID (Mandatory if available in Registration Service)"
+        },
+        {
+            "id": "DI-849",
+            "name": "CSS Registration ID",
+            "cmo": "M",
+            "rule": "The CSS identifier associated with a Supplier's Registration"
+        },
+        {
+            "isHeader": true,
+            "title": "B068 - MPAN Consent Info (Mandatory for Event [ConsentGranularity] )"
+        },
+        {
+            "id": "DI-017",
+            "name": "Consent Granularity",
+            "cmo": "M",
+            "rule": "Describes the granularity of energy settlement data that a customer has deemed to have consented to. | Notes: H – HH Consent Granted D – Daily M - Monthly Reads Only N - No consent"
+        },
+        {
+            "id": "DI-018",
+            "name": "Consent Granularity Effective From Date",
+            "cmo": "M",
+            "rule": "The date from which the consent granularity was in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B030 - IHD Info (Mandatory for Event [IHDInfo])"
+        },
+        {
+            "id": "DI-137",
+            "name": "IHD Install Status",
+            "cmo": "O",
+            "rule": "Information regarding the In Home Display at a metering point. | Notes: I = Installed D = Declined E = Existing F = Failed "
+        },
+        {
+            "id": "DI-136",
+            "name": "IHD Status Effective From Date",
+            "cmo": "M",
+            "rule": "The first inclusive calendar date that an a notable IHD status was provided. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B031 - SMSO (Mandatory for Event [SMSO])"
+        },
+        {
+            "id": "DI-134",
+            "name": "SMSO (Smart Metering System Operator)",
+            "cmo": "O",
+            "rule": "The Id of the operator a Supplier has procured data and communication services from in respect of a Metering System (applies only to certain types of SMETS1 Metering)."
+        },
+        {
+            "id": "DI-135",
+            "name": "SMSO EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The first inclusive calendar date that a Smart Metering System Operator ID is the provider of communications services to a Metering System (applies only to certain types of SMETS1 Metering). | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B032 - MPAN Legacy Info (Mandatory where event is [SSCandProfileClass] AND Traditional Meters / Optional for other Meters)"
+        },
+        {
+            "id": "DI-122",
+            "name": "Profile Class",
+            "cmo": "C",
+            "rule": "A legacy classification, maintined by Suppliers, retained soley to assist with the undertsading of allocation of gross consumption to individual Settlement Periods. | Notes: Mandatory for Traditional Meters (if changing)"
+        },
+        {
+            "id": "DI-124",
+            "name": "Profile Class Effective From Date",
+            "cmo": "C",
+            "rule": "The Date from which the current Profile Class became Effective | Notes: Required if [DI-122] not null YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-123",
+            "name": "SSC",
+            "cmo": "C",
+            "rule": "A legacy classification, maintined by Suppliers, retained soley to assist with the undertsading of allocation of gross consumption to individual Settlement Periods. | Notes: Mandatory for Traditional Meters (if changing)"
+        },
+        {
+            "id": "DI-125",
+            "name": "SSC Effective From Date",
+            "cmo": "C",
+            "rule": "The Date from which the current Profile Class became Effective | Notes: Required if [DI-123] not null YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        }
+    ]
+},
     {
     "id": "IF-027/PUB-027",
     "name": "Request to Calculate & Submit Consumption Amendment",
@@ -2617,14 +4341,132 @@
     ]
 },
     {
-        "id": "IF-028/PUB-028",
-        "name": "Response to Consumption Amendment Request",
-        "description": "Response from the Data Service to a Supplier Request Calculate and Submit a Consumption Amendment",
-        "sender": "Data Service (ADS, SDS, UMSDS)",
-        "receiver": "Supplier (SUP)",
-        "context": "Response from the Data Service to a Supplier Request Calculate and Submit a Consumption Amendment",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-028/PUB-028",
+    "name": "Response to Consumption Amendment Request",
+    "description": "Response from the Data Service to a Supplier Request Calculate and Submit a Consumption Amendment",
+    "sender": "Data Service (ADS, SDS, UMSDS)",
+    "receiver": "Supplier (SUP)",
+    "context": "Response from the Data Service to a Supplier Request Calculate and Submit a Consumption Amendment",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-028"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ConsumptionAmendment]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "R0 - Response (Mandatory)"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Code used to identify the outcome of the Event Request | Notes: A= Accept R=Reject"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "C",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Required if [DI-979] = \"R\" Ref IF-027"
+        },
+        {
+            "isHeader": true,
+            "title": "*B045 - MQID (Block repeated for each MQID as Required)"
+        },
+        {
+            "id": "DI-052",
+            "name": "Measurement Quantity ID",
+            "cmo": "M",
+            "rule": "Identifies the type of the quantity | Notes: AI – Active import AE – Active export RI – Reactive import RE – Reactive export"
+        },
+        {
+            "isHeader": true,
+            "title": ">*B073 - Supplier Consumption Amendment Request (Block repeated for each Consumption Period(s))"
+        },
+        {
+            "id": "DI-162",
+            "name": "Consumption Amendment Supplier Reference",
+            "cmo": "O",
+            "rule": "Supplier's Unique Reference Number for Consumption Amendment Request"
+        },
+        {
+            "id": "DI-163",
+            "name": "Consumption Amendment Period Start Date",
+            "cmo": "M",
+            "rule": "Consumption Amendment Period Start Date | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-164",
+            "name": "Consumption Amendment Period End Date",
+            "cmo": "M",
+            "rule": "Consumption Amendment Period End Date | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-165",
+            "name": "Gross Revised Consumption",
+            "cmo": "M",
+            "rule": "Gross Revised Consumption (kWh/kVAR) | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-166",
+            "name": "Supplier Consumption Amendment Reason Code {arc}",
+            "cmo": "M",
+            "rule": "Supplier Consumption Amendment Reason Code | Notes: A= Agreed Read E = Estimation Issue M = Metering Issue (Crossed/Missed Exchange/Found) R = Reading Issue (Transposed / Misread) S = Stolen/Lost Meter T = Tampering/Theft X = Other"
+        }
+    ]
+},
     {
     "id": "IF-031/PUB-031",
     "name": "Request to Appoint Service Provider",
@@ -2807,68 +4649,2366 @@
     ]
 },
     {
-        "id": "IF-032/PUB-032",
-        "name": "Response to Initial Service Provider Appointment Request",
-        "description": "Registration Service Response to Suppliers initial request to Appoint a Service Provider, either Metering Service or Data Service",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Supplier (SUP)",
-        "context": "Registration Service Response to Suppliers initial request to Appoint a Service Provider, either Metering Service or Data Service",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-032/PUB-032",
+    "name": "Response to Initial Service Provider Appointment Request",
+    "description": "Registration Service Response to Suppliers initial request to Appoint a Service Provider, either Metering Service or Data Service",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Supplier (SUP)",
+    "context": "Registration Service Response to Suppliers initial request to Appoint a Service Provider, either Metering Service or Data Service",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-032"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MSAppInitialResp], [DSAppInitialResp]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "R0 - Response (Mandatory)"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Code used to identify the outcome of the Event Request | Notes: A= Accept R=Reject"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "C",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Required if [DI-979] = \"R\" Ref IF-031 Validation Rules & Outcomes"
+        },
+        {
+            "isHeader": true,
+            "title": "B013 CSS Registration Request ID (Mandatory if available in Registration Service)"
+        },
+        {
+            "id": "DI-849",
+            "name": "CSS Registration ID",
+            "cmo": "M",
+            "rule": "The CSS identifier associated with a Supplier's Registration"
+        },
+        {
+            "isHeader": true,
+            "title": "B070 - Proposed Metering Service Details (Mandatory for Event [MSAppInitalResp])"
+        },
+        {
+            "id": "DI-828",
+            "name": "Proposed Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of Metering Service supplier proposes should be appointed to an MPAN"
+        },
+        {
+            "id": "DI-213",
+            "name": "Proposed Metering Service MPID",
+            "cmo": "M",
+            "rule": "Proposed Metering Service MPID"
+        },
+        {
+            "id": "DI-830",
+            "name": "Proposed MS EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date at which Supplier would like proposed Metering Service appointment to take effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-019",
+            "name": "Contract Reference Metering Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the Metering Service."
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier)"
+        },
+        {
+            "isHeader": true,
+            "title": "B071- Proposed Data Service Details (Mandatory for Event [DSAppInitalResp])"
+        },
+        {
+            "id": "DI-831",
+            "name": "Proposed Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of Data Service supplier proposes should be appointed to an MPAN"
+        },
+        {
+            "id": "DI-214",
+            "name": "Proposed Data Service MPID",
+            "cmo": "M",
+            "rule": "Proposed Data Service MPID"
+        },
+        {
+            "id": "DI-833",
+            "name": "Proposed DS EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date at which Supplier would like proposed Data Service appointment to take effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-020",
+            "name": "Contract Reference Data Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the data service."
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier)"
+        },
+        {
+            "id": "DI-834",
+            "name": "Supplier Nominated MDR DIP ID",
+            "cmo": "O",
+            "rule": "The market-wide unique reference for a specific Meter Data Retriever (MDR)"
+        },
+        {
+            "id": "DI-215",
+            "name": "Supplier Nominated MDR MPID",
+            "cmo": "O",
+            "rule": "Supplier Nominated MDR MPID"
+        },
+        {
+            "id": "DI-836",
+            "name": "Supplier Nominated MDR EffectiveFromDate",
+            "cmo": "O",
+            "rule": "Date from which Supplier would like Nominated MDR to apply | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM Populated in circumstances when a Change of MDR is required"
+        },
+        {
+            "id": "DI-838",
+            "name": "Supplier Proposed Consent Granularity",
+            "cmo": "M",
+            "rule": "Supplier proposed Consent Granularity for a SP Appointment | Notes: H – HH Consent Granted D – Daily M - Monthly Reads Only N - No Consent"
+        },
+        {
+            "id": "DI-837",
+            "name": "Supplier Proposed Domestic Premise Indicator",
+            "cmo": "M",
+            "rule": "Supplier proposed DPI for a SP Appointment | Notes: Y= True (Domestic) N= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-126",
+            "name": "Traditional / Fall Back Read Frequency",
+            "cmo": "O",
+            "rule": "Supplier requested Traditional / Fall Back Meter Reading Frequency | Notes: F- Fortnightly W - Weekly M - Monthly Q - Quarterly S - Six Monthly A - Annually"
+        }
+    ]
+},
     {
-        "id": "IF-033/PUB-033",
-        "name": "Request to Consider Service Provider Appointment",
-        "description": "Registration Service request to a Service Provider to consider Appointment to an MPAN as either a Metering Service or Data Service",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO)",
-        "context": "Registration Service request to a Service Provider to consider Appointment to an MPAN as either a Metering Service or Data Service",
-        "supplier_type": "none"
-    },
+    "id": "IF-033/PUB-033",
+    "name": "Request to Consider Service Provider Appointment",
+    "description": "Registration Service request to a Service Provider to consider Appointment to an MPAN as either a Metering Service or Data Service",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO)",
+    "context": "Registration Service request to a Service Provider to consider Appointment to an MPAN as either a Metering Service or Data Service",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-033"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MSAppSPRequest], [DSAppSPRequest]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B012 Service Provider Appointment Requesting Supplier (Mandatory)"
+        },
+        {
+            "id": "DI-847",
+            "name": "Service Provider App Requesting Supplier DIP ID",
+            "cmo": "M",
+            "rule": "DIP of Supplier making the Service Appointment Request"
+        },
+        {
+            "id": "DI-206",
+            "name": "Service Provider Appointment Requesting Supplier MPID",
+            "cmo": "M",
+            "rule": "Service Provider Appointment Requesting Supplier MPID"
+        },
+        {
+            "isHeader": true,
+            "title": "B013 CSS Registration Request ID (Mandatory if available in Registration Service)"
+        },
+        {
+            "id": "DI-849",
+            "name": "CSS Registration ID",
+            "cmo": "M",
+            "rule": "The CSS identifier associated with a Supplier's Registration"
+        },
+        {
+            "isHeader": true,
+            "title": "B070- Proposed Metering Service Details (Mandatory for Event [MSAppSPRequest])"
+        },
+        {
+            "id": "DI-828",
+            "name": "Proposed Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of Metering Service supplier proposes should be appointed to an MPAN"
+        },
+        {
+            "id": "DI-213",
+            "name": "Proposed Metering Service MPID",
+            "cmo": "M",
+            "rule": "Proposed Metering Service MPID"
+        },
+        {
+            "id": "DI-830",
+            "name": "Proposed MS EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date at which Supplier would like proposed Metering Service appointment to take effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-019",
+            "name": "Contract Reference Metering Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the Metering Service."
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier)"
+        },
+        {
+            "isHeader": true,
+            "title": "B071- Proposed Data Service Details (Mandatory for Event [DSAppSPRequest])"
+        },
+        {
+            "id": "DI-831",
+            "name": "Proposed Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of Data Service supplier proposes should be appointed to an MPAN"
+        },
+        {
+            "id": "DI-214",
+            "name": "Proposed Data Service MPID",
+            "cmo": "M",
+            "rule": "Proposed Data Service MPID"
+        },
+        {
+            "id": "DI-833",
+            "name": "Proposed DS EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date at which Supplier would like proposed Data Service appointment to take effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-020",
+            "name": "Contract Reference Data Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the data service."
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier)"
+        },
+        {
+            "id": "DI-834",
+            "name": "Supplier Nominated MDR DIP ID",
+            "cmo": "O",
+            "rule": "The market-wide unique reference for a specific Meter Data Retriever (MDR)"
+        },
+        {
+            "id": "DI-215",
+            "name": "Supplier Nominated MDR MPID",
+            "cmo": "O",
+            "rule": "Supplier Nominated MDR MPID"
+        },
+        {
+            "id": "DI-836",
+            "name": "Supplier Nominated MDR EffectiveFromDate",
+            "cmo": "O",
+            "rule": "Date from which Supplier would like Nominated MDR to apply | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM Populated in circumstances when a Change of MDR is required"
+        },
+        {
+            "id": "DI-838",
+            "name": "Supplier Proposed Consent Granularity",
+            "cmo": "M",
+            "rule": "Supplier proposed Consent Granularity for a SP Appointment | Notes: H – HH Consent Granted D – Daily M - Monthly Reads Only N - No Consent"
+        },
+        {
+            "id": "DI-837",
+            "name": "Supplier Proposed Domestic Premise Indicator",
+            "cmo": "M",
+            "rule": "Supplier proposed DPI for a SP Appointment | Notes: T= True (Domestic) F= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-126",
+            "name": "Traditional / Fall Back Read Frequency",
+            "cmo": "O",
+            "rule": "Supplier requested Traditional / Fall Back Meter Reading Frequency | Notes: F- Fortnightly W - Weekly M - Monthly Q - Quarterly S - Six Monthly A - Annually"
+        },
+        {
+            "isHeader": true,
+            "title": "B072 - Incumbent Metering Service (Conditionally Mandatory - where available in Registration Service - Ref Interfaces Notes)"
+        },
+        {
+            "id": "DI-807",
+            "name": "Incumbent Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "This is the Metering Service with responsibility for an MPAN at the point a Proposed Appointment Request is 'Accepted' by a Prospective Metering Service. This party is responsible for providing the Prospective MS with MTDs for Traditional and Advanced Meters."
+        },
+        {
+            "id": "DI-217",
+            "name": "Incumbent Metering Service MPID",
+            "cmo": "M",
+            "rule": "Incumbent Metering Service MPID"
+        },
+        {
+            "isHeader": true,
+            "title": "B022 - MPAN Address (Mandatory)"
+        },
+        {
+            "id": "DI-010",
+            "name": "Metering Point Postcode",
+            "cmo": "O",
+            "rule": "The full postcode of the metering point site."
+        },
+        {
+            "id": "DI-001",
+            "name": "Address Line 1",
+            "cmo": "O",
+            "rule": "A component of a metering point site address. There are defined parts of the address for each address line."
+        },
+        {
+            "id": "DI-002",
+            "name": "Address Line 2",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-003",
+            "name": "Address Line 3",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-004",
+            "name": "Address Line 4",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-005",
+            "name": "Address Line 5",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-006",
+            "name": "Address Line 6",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-007",
+            "name": "Address Line 7",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-008",
+            "name": "Address Line 8",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-009",
+            "name": "Address Line 9",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "isHeader": true,
+            "title": "B023 - MPAN Connection Info (Mandatory)"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current L - LV with CT H - HV with CT E - EHV with CT U - Unmetered"
+        },
+        {
+            "id": "DI-016",
+            "name": "Connection Type Effective FromDate",
+            "cmo": "M",
+            "rule": "The date and time from which the metering point Connection Type is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-035",
+            "name": "Energy Direction",
+            "cmo": "M",
+            "rule": "Indicates the direction of energy at a metering point. Values can be I = import / E = export. | Notes: I = Import E = Export"
+        },
+        {
+            "id": "DI-127",
+            "name": "Metered Indicator",
+            "cmo": "M",
+            "rule": "An indicator to show whether the Consumption Component is for a metered supply or unmetered supply. | Notes: False = U - Unmetered, True = M - Metered"
+        },
+        {
+            "isHeader": true,
+            "title": "B024 - MPAN DUOS Tariff ID (Mandatory)"
+        },
+        {
+            "id": "DI-128",
+            "name": "DUOS Tariff ID",
+            "cmo": "M",
+            "rule": "Reference to identify the DUoS Tariff assigned to an MPAN"
+        },
+        {
+            "id": "DI-129",
+            "name": "DUOS Tariff ID EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date on which DUoS Tariff came into effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B025 - MPAN Energisation Status (Mandatory)"
+        },
+        {
+            "id": "DI-033",
+            "name": "Energisation Status",
+            "cmo": "M",
+            "rule": "Indicates if the metering point is considered energised (i.e. connected to the distribution system) and therefore active for settlement purposes. | Notes: D - De-Energised E - Energised"
+        },
+        {
+            "id": "DI-034",
+            "name": "Energisation Status Effective From Date",
+            "cmo": "M",
+            "rule": "The settlement date and time from which an energisation status is in effect for a metering system. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B026 - MPAN Market Segment (Mandatory)"
+        },
+        {
+            "id": "DI-050",
+            "name": "Market Segment Indicator",
+            "cmo": "M",
+            "rule": "An enumeration of Smart/Advanced/Unmetered. | Notes: S = Smart/Traditional A = Advanced U = Unmetered"
+        },
+        {
+            "id": "DI-051",
+            "name": "Market Segment Indicator Effective From Date",
+            "cmo": "M",
+            "rule": "The date from which the metering point Market Segment is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B029 - DCC Enrolment Status (Conditionally Mandatory - Required only for Smart Meters if available)"
+        },
+        {
+            "id": "DI-025",
+            "name": "DCC Service Flag",
+            "cmo": "M",
+            "rule": "A DCC provided flag to indicate the status of the services being provided by the DCC to a Metering Point. | Notes: A = Active I = Installed Not Commissioned N = Non-Active"
+        },
+        {
+            "id": "DI-026",
+            "name": "DCC Effective From Date (DCCF)",
+            "cmo": "M",
+            "rule": "The first inclusive calendar date for which the status of the DCC Service flag applies. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B031 - SMSO Info (Optional)"
+        },
+        {
+            "id": "DI-134",
+            "name": "SMSO (Smart Metering System Operator)",
+            "cmo": "M",
+            "rule": "The Id of the operator a Supplier has procured data and communication services from in respect of a Metering System (applies only to certain types of SMETS1 Metering)."
+        },
+        {
+            "id": "DI-135",
+            "name": "SMSO EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The first inclusive calendar date that a Smart Metering System Operator ID is the provider of communications services to a Metering System (applies only to certain types of SMETS1 Metering). | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B032 - MPAN Legacy Info (Mandatory for Traditional Meters / Optional for other Meters OR where not available in Registration Service)"
+        },
+        {
+            "id": "DI-122",
+            "name": "Profile Class",
+            "cmo": "C",
+            "rule": "A legacy classification, maintined by Suppliers, retained soley to assist with the undertsading of allocation of gross consumption to individual Settlement Periods. | Notes: Mandatory for Traditional Meters"
+        },
+        {
+            "id": "DI-124",
+            "name": "Profile Class Effective From Date",
+            "cmo": "C",
+            "rule": "The Date from which the current Profile Class became Effective | Notes: Required if [DI-122] not null YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-123",
+            "name": "SSC",
+            "cmo": "C",
+            "rule": "A legacy classification, maintined by Suppliers, retained soley to assist with the undertsading of allocation of gross consumption to individual Settlement Periods. | Notes: Mandatory for Traditional Meters"
+        },
+        {
+            "id": "DI-125",
+            "name": "SSC Effective From Date",
+            "cmo": "C",
+            "rule": "The Date from which the current Profile Class became Effective | Notes: Required if [DI-123] not null YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B905* - B074 and B075 Blocks below are repeated for each Installed Meter"
+        },
+        {
+            "isHeader": true,
+            "title": "B074 - MPAN Existing Meter Info (Mandatory if Metering Installed)"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter. | Notes: MSID for the 'existing' or 'newly installed' meter depending on Event type"
+        },
+        {
+            "id": "DI-059",
+            "name": "Meter Type",
+            "cmo": "M",
+            "rule": "The type of meter, in relation to its capabilities. E.g. AMR.S1, S2, S2ADE | Notes: Values as per ISD"
+        },
+        {
+            "id": "DI-048",
+            "name": "Manufacturers Make and Type",
+            "cmo": "O",
+            "rule": "The manufacturer's make name and type number of a Meter"
+        },
+        {
+            "id": "DI-085",
+            "name": "Electricity Smart Meter Equipment (ESME ID)",
+            "cmo": "C",
+            "rule": "The Electricity Smart Meter Equipment GUID is the unique identifier for a Smart electricity This is also known as the DCC GUID and is further defined within the DCC interface specifications. | Notes: Mandatory for Smart Meters (XX-XX-XX-XX-XX-XX-XX-XX)"
+        },
+        {
+            "id": "DI-090",
+            "name": "Meter Location",
+            "cmo": "M",
+            "rule": "The actual location of the metering system within the site | Notes: Values as Per Data Catalogue"
+        },
+        {
+            "id": "DI-091",
+            "name": "Number of Displayed Register Digits",
+            "cmo": "C",
+            "rule": "The number of digits prior to the decimal point displayed by the total cumulative register of a smart meter | Notes: Mandatory for SMETS2 Meters Where the Meter Type is S1 the Number of Displayed Register Digits value must be be per the manufacturer's specification\n\nWhere the Meter Type is S2A, S2AD, S2ADE, 2ADF, 2ADEF, 2AEF, 2AF, S2B, S2BD, S2BDE, 2BF,2BDF, 2BDEF or 2BEF the value must be “5”.\n\nWhere the Meter Type is prefixed with “S2C” the value must be “6”.\n\nWhere the Meter Type is 2CDEF, 2CF, 2CDF or 2CEF the value must be “6”"
+        },
+        {
+            "id": "DI-057",
+            "name": "Meter Installation Date/Time",
+            "cmo": "M",
+            "rule": "The date of installation for a meter at a metering point. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "> B075 - MPAN Existing Meter Map Info (Mandatory for each Meter Provided) - Most Recent Record only for each B074 Meter provided above"
+        },
+        {
+            "id": "DI-055",
+            "name": "Meter Asset Provider ID",
+            "cmo": "M",
+            "rule": "The market-wide reference for the provider of the meter equipment. | Notes: Must be a valid set as per ISD"
+        },
+        {
+            "id": "DI-054",
+            "name": "Meter Asset Provider Effective From Date",
+            "cmo": "M",
+            "rule": "The inclusive calendar date from which the meter asset provider is in effect for the metering system. | Notes: Must be a valid date and time"
+        },
+        {
+            "isHeader": true,
+            "title": "B907* - B035 blocks below are repeated for each Linked Import/Export MPAN"
+        },
+        {
+            "isHeader": true,
+            "title": "B035 - Linked Import / Export MPAN (Mandatory if Linked MPAN Exists)"
+        },
+        {
+            "id": "DI-038",
+            "name": "Linked Import/Export MPAN",
+            "cmo": "M",
+            "rule": "When this metering point is part of an import/export pair, this identifies the related import OR export metering point. (In the case of an Export MPAN, where more than one import MPAN exists, this shall be populated with the Primary Import MPAN). | Notes: This field is mandatory, but will be Null/Blank if no linkage exists."
+        },
+        {
+            "id": "DI-151",
+            "name": "Linked MPAN Energy Direction",
+            "cmo": "M",
+            "rule": "Energy Direction of the Linked MPANs | Notes: I = Import E= Export"
+        },
+        {
+            "id": "DI-801",
+            "name": "Import/Export MPAN Supplier DIP ID",
+            "cmo": "C",
+            "rule": "DIP ID of the Supplier Responsible for the Linked MPAN | Notes: Mandatory if available in Registration Service"
+        },
+        {
+            "id": "DI-212",
+            "name": "Import/Export MPAN Supplier MPID",
+            "cmo": "C",
+            "rule": "Import/Export MPAN Supplier MPID | Notes: Mandatory if available in Registration Service"
+        },
+        {
+            "isHeader": true,
+            "title": "> Repeated for each Installed Meter at the Linked MPAN"
+        },
+        {
+            "isHeader": true,
+            "title": "> B036 - Linked Import/Export Meter Details (Mandatory if Meter(s) exist)"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter. | Notes: MSID for the 'existing' or 'newly installed' meter depending on Event type"
+        },
+        {
+            "id": "DI-059",
+            "name": "Meter Type",
+            "cmo": "M",
+            "rule": "The type of meter, in relation to its capabilities. E.g. AMR.S1, S2, S2ADE | Notes: Values as per ISD"
+        },
+        {
+            "id": "DI-048",
+            "name": "Manufacturers Make and Type",
+            "cmo": "O",
+            "rule": "The manufacturer's make name and type number of a Meter"
+        },
+        {
+            "id": "DI-085",
+            "name": "Electricity Smart Meter Equipment (ESME ID)",
+            "cmo": "C",
+            "rule": "The Electricity Smart Meter Equipment GUID is the unique identifier for a Smart electricity This is also known as the DCC GUID and is further defined within the DCC interface specifications. | Notes: Mandatory for Smart Meters (XX-XX-XX-XX-XX-XX-XX-XX)"
+        },
+        {
+            "id": "DI-090",
+            "name": "Meter Location",
+            "cmo": "M",
+            "rule": "The actual location of the metering system within the site | Notes: Values as Per Data Catalogue"
+        },
+        {
+            "id": "DI-091",
+            "name": "Number of Displayed Register Digits",
+            "cmo": "C",
+            "rule": "The number of digits prior to the decimal point displayed by the total cumulative register of a smart meter | Notes: Mandatory for SMETS2 Meters Where the Meter Type is S1 the Number of Displayed Register Digits value must be be per the manufacturer's specification\n\nWhere the Meter Type is S2A, S2AD, S2ADE, 2ADF, 2ADEF, 2AEF, 2AF, S2B, S2BD, S2BDE, 2BF,2BDF, 2BDEF or 2BEF the value must be “5”.\n\nWhere the Meter Type is prefixed with “S2C” the value must be “6”.\n\nWhere the Meter Type is 2CDEF, 2CF, 2CDF or 2CEF the value must be “6”"
+        },
+        {
+            "id": "DI-057",
+            "name": "Meter Installation Date/Time",
+            "cmo": "M",
+            "rule": "The date of installation for a meter at a metering point. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": ">> B075 - Existing Meter MAP Info (Mandatory for each Meter Provided) - Most Recent Record only for each B036 Meter provided above"
+        },
+        {
+            "id": "DI-055",
+            "name": "Meter Asset Provider ID",
+            "cmo": "M",
+            "rule": "The market-wide reference for the provider of the meter equipment. | Notes: Must be a valid set as per ISD"
+        },
+        {
+            "id": "DI-054",
+            "name": "Meter Asset Provider Effective From Date",
+            "cmo": "M",
+            "rule": "The inclusive calendar date from which the meter asset provider is in effect for the metering system. | Notes: Must be a valid date and time"
+        },
+        {
+            "isHeader": true,
+            "title": "B908* B036 blocks are repeated for each Related MPAN, if Related exists"
+        },
+        {
+            "isHeader": true,
+            "title": "B037 - Related MPAN(s)"
+        },
+        {
+            "id": "DI-075",
+            "name": "Primary MPAN",
+            "cmo": "C",
+            "rule": "The primary in a related MPAN relationship. The primary is associated with the base load settlement configuration (contains no value, if not part of related MPAN pair). | Notes: Either Or should be populated where MPAN (DI-063 above) is part of a group of Related MPANs\n\nCollection of \"B037-B038-B075\" should be repeated for each Related MPAN"
+        },
+        {
+            "id": "DI-079",
+            "name": "Secondary MPAN",
+            "cmo": "C",
+            "rule": "The secondary in a related MPAN relationship."
+        },
+        {
+            "isHeader": true,
+            "title": "> Repeated for each Installed Meter (B036) at the Related MPAN"
+        },
+        {
+            "isHeader": true,
+            "title": "> B038 - Related MPAN Meter Details"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter. | Notes: MSID for the 'existing' or 'newly installed' meter depending on Event type"
+        },
+        {
+            "id": "DI-059",
+            "name": "Meter Type",
+            "cmo": "M",
+            "rule": "The type of meter, in relation to its capabilities. E.g. AMR.S1, S2, S2ADE | Notes: Values as per ISD"
+        },
+        {
+            "id": "DI-048",
+            "name": "Manufacturers Make and Type",
+            "cmo": "O",
+            "rule": "The manufacturer's make name and type number of a Meter"
+        },
+        {
+            "id": "DI-085",
+            "name": "Electricity Smart Meter Equipment (ESME ID)",
+            "cmo": "C",
+            "rule": "The Electricity Smart Meter Equipment GUID is the unique identifier for a Smart electricity This is also known as the DCC GUID and is further defined within the DCC interface specifications. | Notes: Mandatory for Smart Meters (XX-XX-XX-XX-XX-XX-XX-XX)"
+        },
+        {
+            "id": "DI-090",
+            "name": "Meter Location",
+            "cmo": "M",
+            "rule": "The actual location of the metering system within the site | Notes: Values as Per Data Catalogue"
+        },
+        {
+            "id": "DI-091",
+            "name": "Number of Displayed Register Digits",
+            "cmo": "C",
+            "rule": "The number of digits prior to the decimal point displayed by the total cumulative register of a smart meter | Notes: Mandatory for SMETS2 Meters Where the Meter Type is S1 the Number of Displayed Register Digits value must be be per the manufacturer's specification\n\nWhere the Meter Type is S2A, S2AD, S2ADE, 2ADF, 2ADEF, 2AEF, 2AF, S2B, S2BD, S2BDE, 2BF,2BDF, 2BDEF or 2BEF the value must be “5”.\n\nWhere the Meter Type is prefixed with “S2C” the value must be “6”.\n\nWhere the Meter Type is 2CDEF, 2CF, 2CDF or 2CEF the value must be “6”"
+        },
+        {
+            "id": "DI-057",
+            "name": "Meter Installation Date/Time",
+            "cmo": "M",
+            "rule": "The date of installation for a meter at a metering point. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": ">> B075 - Existing Meter MAP Info (Mandatory for each Meter Provided) - Most Recent Record only for each B038 Meter provided above"
+        },
+        {
+            "id": "DI-055",
+            "name": "Meter Asset Provider ID",
+            "cmo": "M",
+            "rule": "The market-wide reference for the provider of the meter equipment. | Notes: Must be a valid set as per ISD"
+        },
+        {
+            "id": "DI-054",
+            "name": "Meter Asset Provider Effective From Date",
+            "cmo": "M",
+            "rule": "The inclusive calendar date from which the meter asset provider is in effect for the metering system. | Notes: Must be a valid date and time"
+        }
+    ]
+},
     {
-        "id": "IF-034/PUB-034",
-        "name": "Service Provider Appointment Response",
-        "description": "Service Providers Response to request for Appointment or Change of Appointment for an MPAN",
-        "sender": "Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO)",
-        "receiver": "Registration Service (REGS)",
-        "context": "Service Providers Response to request for Appointment or Change of Appointment for an MPAN",
-        "supplier_type": "none"
-    },
+    "id": "IF-034/PUB-034",
+    "name": "Service Provider Appointment Response",
+    "description": "Service Providers Response to request for Appointment or Change of Appointment for an MPAN",
+    "sender": "Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO)",
+    "receiver": "Registration Service (REGS)",
+    "context": "Service Providers Response to request for Appointment or Change of Appointment for an MPAN",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-034"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MSAppSPResponse], [DSAppSPResponse], [SDS-MDRUpdate]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B007 - Service Provider Appointment Outcome Mandatory for [MSAppSPReponse] & [DSAppSPReponse] - NOT required for [SDS-MDRUpdate]"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Code used to identify the outcome of the Event Request | Notes: A= Accept R=Reject"
+        },
+        {
+            "id": "DI-143",
+            "name": "Proposed Appointment Response Code",
+            "cmo": "C",
+            "rule": "A code which defines the Appointment Request Outcome. | Notes: DI-979 is value \"R\" or \"L\" Ref List of Applicable codes in IF-033"
+        },
+        {
+            "isHeader": true,
+            "title": "B012 Service Provider Appointment Requesting Supplier (Mandatory)"
+        },
+        {
+            "id": "DI-847",
+            "name": "Service Provider App Requesting Supplier DIP ID",
+            "cmo": "M",
+            "rule": "DIP of Supplier making the Service Appointment Request"
+        },
+        {
+            "id": "DI-206",
+            "name": "Service Provider Appointment Requesting Supplier MPID",
+            "cmo": "M",
+            "rule": "Service Provider Appointment Requesting Supplier MPID"
+        },
+        {
+            "isHeader": true,
+            "title": "B013 CSS Registration Request ID (Mandatory if available)"
+        },
+        {
+            "id": "DI-849",
+            "name": "CSS Registration ID",
+            "cmo": "M",
+            "rule": "The CSS identifier associated with a Supplier's Registration"
+        },
+        {
+            "isHeader": true,
+            "title": "B070 - Proposed Metering Service Details (Mandatory for Event [MSAppSPResponse])"
+        },
+        {
+            "id": "DI-828",
+            "name": "Proposed Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of Metering Service supplier proposes should be appointed to an MPAN"
+        },
+        {
+            "id": "DI-213",
+            "name": "Proposed Metering Service MPID",
+            "cmo": "M",
+            "rule": "Proposed Metering Service MPID"
+        },
+        {
+            "id": "DI-830",
+            "name": "Proposed MS EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date at which Supplier would like proposed Metering Service appointment to take effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-019",
+            "name": "Contract Reference Metering Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the Metering Service."
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier)"
+        },
+        {
+            "isHeader": true,
+            "title": "B071 - Proposed Data Service Details (Mandatory for Event [DSAppSPResponse )"
+        },
+        {
+            "id": "DI-831",
+            "name": "Proposed Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of Data Service supplier proposes should be appointed to an MPAN"
+        },
+        {
+            "id": "DI-214",
+            "name": "Proposed Data Service MPID",
+            "cmo": "M",
+            "rule": "Proposed Data Service MPID"
+        },
+        {
+            "id": "DI-833",
+            "name": "Proposed DS EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date at which Supplier would like proposed Data Service appointment to take effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-020",
+            "name": "Contract Reference Data Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the data service."
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier)"
+        },
+        {
+            "id": "DI-834",
+            "name": "Supplier Nominated MDR DIP ID",
+            "cmo": "O",
+            "rule": "The market-wide unique reference for a specific Meter Data Retriever (MDR)"
+        },
+        {
+            "id": "DI-215",
+            "name": "Supplier Nominated MDR MPID",
+            "cmo": "O",
+            "rule": "Supplier Nominated MDR MPID"
+        },
+        {
+            "id": "DI-836",
+            "name": "Supplier Nominated MDR EffectiveFromDate",
+            "cmo": "O",
+            "rule": "Date from which Supplier would like Nominated MDR to apply | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM Populated in circumstances when a Change of MDR is required"
+        },
+        {
+            "id": "DI-838",
+            "name": "Supplier Proposed Consent Granularity",
+            "cmo": "M",
+            "rule": "Supplier proposed Consent Granularity for a SP Appointment | Notes: H – HH Consent Granted D – Daily M - Monthly Reads Only N - No Consent"
+        },
+        {
+            "id": "DI-837",
+            "name": "SupplierProposed Domestic Premise Indicator",
+            "cmo": "M",
+            "rule": "Supplier proposed DPI for a SP Appointment | Notes: T= True (Domestic) F= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-126",
+            "name": "Traditional / Fall Back Read Frequency",
+            "cmo": "O",
+            "rule": "Supplier requested Traditional / Fall Back Meter Reading Frequency | Notes: F- Fortnightly W - Weekly M - Monthly Q - Quarterly S - Six Monthly A - Annually"
+        },
+        {
+            "isHeader": true,
+            "title": "B018 - SDS Nominated MDR (Mandatory for Event [SDS-MDRUpdate] & ([DSAppSPResponse] where Smart meters installed))"
+        },
+        {
+            "id": "DI-839",
+            "name": "SDS Nominated MDR DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the MDR the SDS has requested to be assigned to an MPAN"
+        },
+        {
+            "id": "DI-216",
+            "name": "SDS Nominated MDR MPID",
+            "cmo": "M",
+            "rule": "SDS Nominated MDR MPID"
+        },
+        {
+            "id": "DI-841",
+            "name": "SDS Nominated MDR Effective From Date",
+            "cmo": "M",
+            "rule": "Date from which Supplier would like Nominated MDR to apply | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        }
+    ]
+},
     {
-        "id": "IF-035/PUB-035",
-        "name": "Notification of Service Provider Appointment Status",
-        "description": "Registration Service Notification on Appointment Status. This could be that Appointment has been Accepted or Rejected by Service Provider; has become Lapsed (i.e. could not be successfully matched with a SecuredActive Switch). It is also used to advise the Incumbent Metering Service to issue MTDs to incoming Service Providers.",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Supplier (SUP), Incumbent Metering Service, Data Service (ADS, SDS, UMSDS), Metering Service (MSA, MSS, UMSO)",
-        "context": "Registration Service Notification on Appointment Status. This could be that Appointment has been Accepted or Rejected by Service Provider; has become Lapsed (i.e. could not be successfully matched with a SecuredActive Switch). It is also used to advise the Incumbent Metering Service to issue MTDs to incoming Service Providers.",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-035/PUB-035",
+    "name": "Notification of Service Provider Appointment Status",
+    "description": "Registration Service Notification on Appointment Status. This could be that Appointment has been Accepted or Rejected by Service Provider; has become Lapsed (i.e. could not be successfully matched with a SecuredActive Switch). It is also used to advise the Incumbent Metering Service to issue MTDs to incoming Service Providers.",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Supplier (SUP), Incumbent Metering Service, Data Service (ADS, SDS, UMSDS), Metering Service (MSA, MSS, UMSO)",
+    "context": "Registration Service Notification on Appointment Status. This could be that Appointment has been Accepted or Rejected by Service Provider; has become Lapsed (i.e. could not be successfully matched with a SecuredActive Switch). It is also used to advise the Incumbent Metering Service to issue MTDs to incoming Service Providers.",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-035"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MSAppAccepted], [MSAppRejected], [MSAppLapsed], [DSAppAccepted], [DSAppRejected], [DSAppLapsed], [IMS-SendMTD], [SDS-MDROutcome], [DCC-MDROutcome]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B007 - Service Provider Appointment Outcome (not required for [SDS-MDROutcome], [DCC-MDROutcome])"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Response Code associated with a Business Process Action Request | Notes: [IMS_SendMTD] A= Accept R=Reject L=Lapsed"
+        },
+        {
+            "id": "DI-143",
+            "name": "Proposed Appointment Response Code",
+            "cmo": "C",
+            "rule": "A code which defines the Appointment Request Outcome. | Notes: DI-979 is value \"R\" or \"L\" [IMS_SendMTD] Copied from IF-034 sent by the Service Provider for Acceptance/ Rejection. Populated by Registration Service in the case of Lapsed"
+        },
+        {
+            "isHeader": true,
+            "title": "B012 Service Provider Appointment Requesting Supplier (Mandatory)"
+        },
+        {
+            "id": "DI-847",
+            "name": "SP App Requesting Supplier DIP ID",
+            "cmo": "M",
+            "rule": "DIP of Supplier making the Service Appointment Request"
+        },
+        {
+            "id": "DI-206",
+            "name": "Service Provider Appointment Requesting Supplier MPID",
+            "cmo": "M",
+            "rule": "Service Provider Appointment Requesting Supplier MPID"
+        },
+        {
+            "isHeader": true,
+            "title": "B013 CSS Registration Request ID (Mandatory if available in Registration Service)"
+        },
+        {
+            "id": "DI-849",
+            "name": "CSS Registration ID",
+            "cmo": "M",
+            "rule": "The CSS identifier associated with a Supplier's Registration"
+        },
+        {
+            "isHeader": true,
+            "title": "B070 - Proposed Metering Service Details (Mandatory for Event [MSAppAccepted], [MSAppRejected],[MSAppLapsed])"
+        },
+        {
+            "id": "DI-828",
+            "name": "Proposed Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of Metering Service supplier proposes should be appointed to an MPAN"
+        },
+        {
+            "id": "DI-213",
+            "name": "Proposed Metering Service MPID",
+            "cmo": "M",
+            "rule": "Proposed Metering Service MPID"
+        },
+        {
+            "id": "DI-830",
+            "name": "Proposed MS EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date at which Supplier would like proposed Metering Service appointment to take effect | Notes: [IMS_SendMTD] YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-019",
+            "name": "Contract Reference Metering Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the Metering Service. | Notes: [IMS_SendMTD]"
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: [IMS_SendMTD] COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier)"
+        },
+        {
+            "isHeader": true,
+            "title": "B071 - Proposed Data Service Details (Mandatory for Event [DSAppAccepted],[DSAppRejected],[DSAppLapsed])"
+        },
+        {
+            "id": "DI-831",
+            "name": "Proposed Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of Data Service supplier proposes should be appointed to an MPAN"
+        },
+        {
+            "id": "DI-214",
+            "name": "Proposed Data Service MPID",
+            "cmo": "M",
+            "rule": "Proposed Data Service MPID"
+        },
+        {
+            "id": "DI-833",
+            "name": "Proposed DS EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date at which Supplier would like proposed Data Service appointment to take effect | Notes: [IMS_SendMTD] YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-020",
+            "name": "Contract Reference Data Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the data service. | Notes: [IMS_SendMTD]"
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: [IMS_SendMTD] COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier)"
+        },
+        {
+            "id": "DI-834",
+            "name": "Supplier Nominated MDR DIP ID",
+            "cmo": "O",
+            "rule": "The market-wide unique reference for a specific Meter Data Retriever (MDR) | Notes: [IMS_SendMTD]"
+        },
+        {
+            "id": "DI-215",
+            "name": "Supplier Nominated MDR MPID",
+            "cmo": "O",
+            "rule": "Supplier Nominated MDR MPID | Notes: [IMS_SendMTD]"
+        },
+        {
+            "id": "DI-836",
+            "name": "Supplier Nominated MDR Effective From Date",
+            "cmo": "O",
+            "rule": "Date from which Supplier would like Nominated MDR to apply | Notes: [IMS_SendMTD] YYYY-MM-DDTHH:MM.SS±TZH:TZM Populated in circumstances when a Change of MDR is required"
+        },
+        {
+            "id": "DI-838",
+            "name": "Supplier Proposed Consent Granularity",
+            "cmo": "M",
+            "rule": "Supplier proposed Consent Granularity for a SP Appointment | Notes: [IMS_SendMTD] H – HH Consent Granted D – Daily M - Monthly Reads Only N - No Consent"
+        },
+        {
+            "id": "DI-837",
+            "name": "Supplier Proposed Domestic Premise Indicator",
+            "cmo": "M",
+            "rule": "Supplier proposed DPI for a SP Appointment | Notes: [IMS_SendMTD] T= True (Domestic) F= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-126",
+            "name": "Traditional / Fall Back Read Frequency",
+            "cmo": "O",
+            "rule": "Supplier requested Traditional / Fall Back Meter Reading Frequency | Notes: [IMS_SendMTD] F- Fortnightly W - Weekly M - Monthly Q - Quarterly S - Six Monthly A - Annually"
+        },
+        {
+            "isHeader": true,
+            "title": "B019 - Assigned MDR (Conditionally Mandatory - [DSAppAccepted] Smart Meters Only)"
+        },
+        {
+            "id": "DI-842",
+            "name": "Assigned MDR DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the MDR assigned to an MPAN"
+        },
+        {
+            "id": "DI-209",
+            "name": "Assigned MDR MPID",
+            "cmo": "M",
+            "rule": "Assigned MDR MPID"
+        },
+        {
+            "id": "DI-844",
+            "name": "Assigned MDR EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The Effective Date from which the MDR Effective Date to be recorded as in Registration and DCC | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B066 - DCC MDR Outcome (Mandatory For Event[DCC-MDROutcome] Only)"
+        },
+        {
+            "id": "DI-842",
+            "name": "Assigned MDR DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the MDR assigned to an MPAN"
+        },
+        {
+            "id": "DI-209",
+            "name": "Assigned MDR MPID",
+            "cmo": "M",
+            "rule": "Assigned MDR MPID"
+        },
+        {
+            "id": "DI-844",
+            "name": "Assigned MDR EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The Effective Date from which the MDR Effective Date to be recorded as in Registration and DCC | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Response Code associated with a Business Process Action Request | Notes: A= Accept R=Reject"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "C",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Required if [DI-979] = \"R\" Passed through from CSS/DCC Response Message"
+        },
+        {
+            "isHeader": true,
+            "title": "B092 - SDS MDR Update Outcome (Mandatory for Event [SDS-MDROutcome] Only)"
+        },
+        {
+            "id": "DI-842",
+            "name": "Assigned MDR DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the MDR assigned to an MPAN"
+        },
+        {
+            "id": "DI-209",
+            "name": "Assigned MDR MPID",
+            "cmo": "M",
+            "rule": "Assigned MDR MPID"
+        },
+        {
+            "id": "DI-844",
+            "name": "Assigned MDR EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The Effective Date from which the MDR Effective Date to be recorded as in Registration and DCC | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B099 - SDS MDR Update Outcome (Mandatory for Event [SDS-MDROutcome] Only)"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Response Code associated with a Business Process Action Request | Notes: A= Accept R=Reject"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "C",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Required if [DI-979] = \"R\" Ref Note 1 below"
+        }
+    ]
+},
     {
-        "id": "IF-036/PUB-036",
-        "name": "Confirmation of Service Provider Appointment",
-        "description": "Registration Service formal Confirmation of Appointment & provision of MPAN Supporting Data and MTDs",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Supplier (SUP) / Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO) / LDSO / MDS / EES",
-        "context": "Registration Service formal Confirmation of Appointment & provision of MPAN Supporting Data and MTDs",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-036/PUB-036",
+    "name": "Confirmation of Service Provider Appointment",
+    "description": "Registration Service formal Confirmation of Appointment & provision of MPAN Supporting Data and MTDs",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Supplier (SUP) / Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO) / LDSO / MDS / EES",
+    "context": "Registration Service formal Confirmation of Appointment & provision of MPAN Supporting Data and MTDs",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-036"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MSAppActive], [DSAppActive]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B012 Service Provider Appointment Requesting Supplier (Mandatory)"
+        },
+        {
+            "id": "DI-847",
+            "name": "Service Provider Appointment Requesting Supplier DIP ID",
+            "cmo": "M",
+            "rule": "DIP of Supplier making the Service Appointment Request"
+        },
+        {
+            "id": "DI-206",
+            "name": "Service Provider Appointment Requesting Supplier MPID",
+            "cmo": "M",
+            "rule": "Service Provider Appointment Requesting Supplier MPID"
+        },
+        {
+            "isHeader": true,
+            "title": "B013 CSS Registration Request ID (Mandatory if available in Registration Service)"
+        },
+        {
+            "id": "DI-849",
+            "name": "CSS Registration ID",
+            "cmo": "M",
+            "rule": "The CSS identifier associated with a Supplier's Registration"
+        },
+        {
+            "isHeader": true,
+            "title": "B014 - Metering Service Details (Mandatory for Event [MSAppActive])"
+        },
+        {
+            "id": "DI-822",
+            "name": "Incoming Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID for the next/incoming Metering Service"
+        },
+        {
+            "id": "DI-204",
+            "name": "Incoming Metering Service MPID",
+            "cmo": "M",
+            "rule": "Incoming Metering Service MPID"
+        },
+        {
+            "id": "DI-824",
+            "name": "Incoming MS EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The Date from which next/incoming Metering Service appointment is/was effective | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-019",
+            "name": "Contract Reference Metering Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the Metering Service. | Notes: MDS &LDSO&DS"
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: MDS &LDSO&DS COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier), ALG (Auto Alignment of MPAN Service Providers)"
+        },
+        {
+            "isHeader": true,
+            "title": "B015 - Data Service Details (Mandatory for Event [DSAppActive])"
+        },
+        {
+            "id": "DI-825",
+            "name": "Incoming Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID for the next/incoming Data Service"
+        },
+        {
+            "id": "DI-205",
+            "name": "Incoming Data Service MPID",
+            "cmo": "M",
+            "rule": "Incoming Data Service MPID"
+        },
+        {
+            "id": "DI-827",
+            "name": "Incoming Data Service Effective From Date",
+            "cmo": "M",
+            "rule": "Incoming (Next) Data Service Effective From Date | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-020",
+            "name": "Contract Reference Data Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the data service. | Notes: MDS &LDSO&MS"
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: MDS &LDSO&DS COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier), ALG (Auto Alignment of MPAN Service Providers)"
+        },
+        {
+            "id": "DI-126",
+            "name": "Traditional / Fall Back Read Frequency",
+            "cmo": "O",
+            "rule": "Supplier requested Traditional / Fall Back Meter Reading Frequency | Notes: MDS &LDSO&MS F- Fortnightly W - Weekly M - Monthly Q - Quarterly S - Six Monthly A - Annually"
+        },
+        {
+            "isHeader": true,
+            "title": "B019 - Assigned MDR (Conditionally Mandatory - [DSAppActive] Smart Meters Only)"
+        },
+        {
+            "id": "DI-842",
+            "name": "Assigned MDR DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the MDR assigned to an MPAN | Notes: MDS &LDSO&MS"
+        },
+        {
+            "id": "DI-209",
+            "name": "Assigned MDR MPID",
+            "cmo": "M",
+            "rule": "Assigned MDR MPID | Notes: MDS &LDSO&MS"
+        },
+        {
+            "id": "DI-844",
+            "name": "Assigned MDR EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The Effective Date from which the MDR Effective Date to be recorded as in Registration and DCC | Notes: MDS &LDSO&MS YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B005 - Incumbent/Outgoing Service Providers (Conditionally Mandatory - where availible in Registration Service)"
+        },
+        {
+            "id": "DI-809",
+            "name": "Current Metering Service DIP ID",
+            "cmo": "C",
+            "rule": "DIP ID of the Metering Service Appointed at the point message was created by the Registration Service, i.e. the Currently Appointed Metering Service | Notes: Mandatory if available in Registration DS"
+        },
+        {
+            "id": "DI-207",
+            "name": "Current Metering Service MPID",
+            "cmo": "C",
+            "rule": "Metering Service MPID | Notes: Mandatory if available in Registration DS"
+        },
+        {
+            "id": "DI-811",
+            "name": "Current Data Service DIP ID",
+            "cmo": "C",
+            "rule": "DIP ID of the Data Service Appointed at the point message was created by the Registration Service, i.e. the Currently Appointed Data Service | Notes: Mandatory if available in Registration MS"
+        },
+        {
+            "id": "DI-208",
+            "name": "Current Data Service MPID",
+            "cmo": "C",
+            "rule": "Current Data Service MPID | Notes: Mandatory if available in Registration MS"
+        },
+        {
+            "isHeader": true,
+            "title": "B016 - Partner Metering Service Info - Conditionally Mandatory for [DSAppActive] and where available in Registration Service"
+        },
+        {
+            "id": "DI-822",
+            "name": "Partner Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID for the next/incoming Metering Service | Notes: MDS &LDSO"
+        },
+        {
+            "id": "DI-204",
+            "name": "Incoming Metering Service MPID",
+            "cmo": "M",
+            "rule": "Incoming Metering Service MPID | Notes: MDS &LDSO"
+        },
+        {
+            "id": "DI-824",
+            "name": "Partner Metering Service Effective From Date",
+            "cmo": "M",
+            "rule": "The Date from which next/incoming Metering Service appointment is/was effective | Notes: MDS &LDSO"
+        },
+        {
+            "isHeader": true,
+            "title": "B017 - Partner Data Service Info - Conditionally Mandatory for [MSAppActive] and where available in Registration Service"
+        },
+        {
+            "id": "DI-825",
+            "name": "Partner Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID for the next/incoming Data Service | Notes: MDS &LDSO"
+        },
+        {
+            "id": "DI-205",
+            "name": "Incoming Data Service MPID",
+            "cmo": "M",
+            "rule": "Incoming Data Service MPID | Notes: MDS &LDSO"
+        },
+        {
+            "id": "DI-827",
+            "name": "Partner Data Service EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The Date from which next/incoming Data Service appointment is/was effective | Notes: MDS &LDSO"
+        },
+        {
+            "isHeader": true,
+            "title": "B022 - MPAN Address (Mandatory)"
+        },
+        {
+            "id": "DI-010",
+            "name": "Metering Point Postcode",
+            "cmo": "O",
+            "rule": "The full postcode of the metering point site."
+        },
+        {
+            "id": "DI-001",
+            "name": "Address Line 1",
+            "cmo": "O",
+            "rule": "A component of a metering point site address. There are defined parts of the address for each address line."
+        },
+        {
+            "id": "DI-002",
+            "name": "Address Line 2",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-003",
+            "name": "Address Line 3",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-004",
+            "name": "Address Line 4",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-005",
+            "name": "Address Line 5",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-006",
+            "name": "Address Line 6",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-007",
+            "name": "Address Line 7",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-008",
+            "name": "Address Line 8",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-009",
+            "name": "Address Line 9",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "isHeader": true,
+            "title": "B023 - MPAN Connection Info (Mandatory)"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current L - LV with CT H - HV with CT E - EHV with CT U - Unmetered"
+        },
+        {
+            "id": "DI-016",
+            "name": "Connection Type Effective FromDate",
+            "cmo": "M",
+            "rule": "The date and time from which the metering point Connection Type is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-035",
+            "name": "Energy Direction",
+            "cmo": "M",
+            "rule": "Indicates the direction of energy at a metering point. Values can be I = import / E = export. | Notes: I = Import E = Export"
+        },
+        {
+            "id": "DI-127",
+            "name": "Metered Indicator",
+            "cmo": "M",
+            "rule": "An indicator to show whether the Consumption Component is for a metered supply or unmetered supply. | Notes: False = U - Unmetered, True = M - Metered"
+        },
+        {
+            "isHeader": true,
+            "title": "B024 - MPAN DUOS Tariff ID (Mandatory)"
+        },
+        {
+            "id": "DI-128",
+            "name": "DUOS Tariff ID",
+            "cmo": "M",
+            "rule": "Reference to identify the DUoS Tariff assigned to an MPAN"
+        },
+        {
+            "id": "DI-129",
+            "name": "DUOS Tariff ID EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date on which DUoS Tariff came into effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B025 - MPAN Energisation Status (Mandatory)"
+        },
+        {
+            "id": "DI-033",
+            "name": "Energisation Status",
+            "cmo": "M",
+            "rule": "Indicates if the metering point is considered energised (i.e. connected to the distribution system) and therefore active for settlement purposes. | Notes: D - De-Energised E - Energised"
+        },
+        {
+            "id": "DI-034",
+            "name": "Energisation Status Effective From Date",
+            "cmo": "M",
+            "rule": "The settlement date and time from which an energisation status is in effect for a metering system. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B026 - MPAN Market Segment (Mandatory)"
+        },
+        {
+            "id": "DI-050",
+            "name": "Market Segment Indicator",
+            "cmo": "M",
+            "rule": "An enumeration of Smart/Advanced/Unmetered. | Notes: S = Smart/Traditional A = Advanced U = Unmetered"
+        },
+        {
+            "id": "DI-051",
+            "name": "Market Segment Indicator Effective From Date",
+            "cmo": "M",
+            "rule": "The date from which the metering point Market Segment is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B027 - Assumed Annual Consumption (Conditionally Mandatory - if available in Regsitration)"
+        },
+        {
+            "id": "DI-148",
+            "name": "Annual Consumption",
+            "cmo": "M",
+            "rule": "ECS Calculated Annual Consumption (kWh) | Notes: eg. 123456789.123"
+        },
+        {
+            "id": "DI-149",
+            "name": "Annual Consumption EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date on which Assumed Annual Consumption was Calculated/is Effective From"
+        },
+        {
+            "id": "DI-150",
+            "name": "Annual Consumption Quality Indicator",
+            "cmo": "M",
+            "rule": "Assumed Annual Consumption Quality Indicator | Notes: A= 100% Actual data 1 = > 75% Actual data 2 = <75% Actual data 3 = 100% Estimated data# 4 = > 50% no data 5 = < 50% no data D= Default"
+        },
+        {
+            "isHeader": true,
+            "title": "B028 - Domestic Premise Indicator (Mandatory)"
+        },
+        {
+            "id": "DI-030",
+            "name": "Domestic Premise Indicator",
+            "cmo": "M",
+            "rule": "A flag that indicates if the MPAN of the registration appointment is used to identify a domestic premise. | Notes: T= True (Domestic) F= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-032",
+            "name": "Domestic Premise Indicator Effective From Date",
+            "cmo": "M",
+            "rule": "The date from which the metering point Domestic Premise Indicator is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B068 - MPAN Consent Info (Mandatory for event 'DSAppActive' only, and where available In Registration Service)"
+        },
+        {
+            "id": "DI-017",
+            "name": "Consent Granularity",
+            "cmo": "M",
+            "rule": "Describes the granularity of energy settlement data that a customer has deemed to have consented to. | Notes: LDSO H – HH Consent Granted D – Daily M - Monthly Reads Only N - No consent"
+        },
+        {
+            "id": "DI-018",
+            "name": "Consent Granularity Effective From Date",
+            "cmo": "M",
+            "rule": "The date from which the consent granularity was in effect. | Notes: MDS &LDSO&MS YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B029 - DCC Enrolment Status (Conditionally Mandatory - Required only for Smart Meters if available)"
+        },
+        {
+            "id": "DI-025",
+            "name": "DCC Service Flag",
+            "cmo": "M",
+            "rule": "A DCC provided flag to indicate the status of the services being provided by the DCC to a Metering Point. | Notes: A = Active I = Installed Not Commissioned N = Non-Active"
+        },
+        {
+            "id": "DI-026",
+            "name": "DCC Effective From Date (DCCF)",
+            "cmo": "M",
+            "rule": "The first inclusive calendar date for which the status of the DCC Service flag applies. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B030 - MPAN IHD Information (Optional)"
+        },
+        {
+            "id": "DI-137",
+            "name": "IHD Install Status",
+            "cmo": "M",
+            "rule": "Information regarding the In Home Display at a metering point. | Notes: I = Installed D = Declined E = Existing F = Failed "
+        },
+        {
+            "id": "DI-136",
+            "name": "IHD Status Effective From Date",
+            "cmo": "M",
+            "rule": "The first inclusive calendar date that an a notable IHD status was provided. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B031 - SMSO Info (Optional)"
+        },
+        {
+            "id": "DI-134",
+            "name": "SMSO (Smart Metering System Operator)",
+            "cmo": "M",
+            "rule": "The Id of the operator a Supplier has procured data and communication services from in respect of a Metering System (applies only to certain types of SMETS1 Metering)."
+        },
+        {
+            "id": "DI-135",
+            "name": "SMSO EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The first inclusive calendar date that a Smart Metering System Operator ID is the provider of communications services to a Metering System (applies only to certain types of SMETS1 Metering). | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B032 - MPAN Legacy Info (Mandatory for Traditional Meters / Optional for other Meters OR where not available in Registration Service)"
+        },
+        {
+            "id": "DI-122",
+            "name": "Profile Class",
+            "cmo": "C",
+            "rule": "A legacy classification, maintined by Suppliers, retained soley to assist with the undertsading of allocation of gross consumption to individual Settlement Periods. | Notes: Mandatory for Traditional Meters"
+        },
+        {
+            "id": "DI-124",
+            "name": "Profile Class Effective From Date",
+            "cmo": "C",
+            "rule": "The Date from which the current Profile Class became Effective | Notes: Required if [DI-122] not null YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-123",
+            "name": "SSC",
+            "cmo": "C",
+            "rule": "A legacy classification, maintined by Suppliers, retained soley to assist with the undertsading of allocation of gross consumption to individual Settlement Periods. | Notes: Mandatory for Traditional Meters"
+        },
+        {
+            "id": "DI-125",
+            "name": "SSC Effective From Date",
+            "cmo": "C",
+            "rule": "The Date from which the current Profile Class became Effective | Notes: Required if [DI-123] not null YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B905 - B074 and B075 Blocks below are repeated for each Installed Meter"
+        },
+        {
+            "isHeader": true,
+            "title": "B074 - Existing MPAN Meter Details (Mandatory if Metering Installed)"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter. | Notes: MSID for the 'existing' or 'newly installed' meter depending on Event type"
+        },
+        {
+            "id": "DI-059",
+            "name": "Meter Type",
+            "cmo": "M",
+            "rule": "The type of meter, in relation to its capabilities. E.g. AMR.S1, S2, S2ADE | Notes: Values as per ISD"
+        },
+        {
+            "id": "DI-048",
+            "name": "Manufacturers Make and Type",
+            "cmo": "O",
+            "rule": "The manufacturer's make name and type number of a Meter"
+        },
+        {
+            "id": "DI-085",
+            "name": "Electricity Smart Meter Equipment (ESME ID)",
+            "cmo": "C",
+            "rule": "The Electricity Smart Meter Equipment GUID is the unique identifier for a Smart electricity This is also known as the DCC GUID and is further defined within the DCC interface specifications. | Notes: Mandatory for Smart Meters (XX-XX-XX-XX-XX-XX-XX-XX)"
+        },
+        {
+            "id": "DI-090",
+            "name": "Meter Location",
+            "cmo": "M",
+            "rule": "The actual location of the metering system within the site | Notes: Values as Per Data Catalogue"
+        },
+        {
+            "id": "DI-091",
+            "name": "Number of Displayed Register Digits",
+            "cmo": "C",
+            "rule": "The number of digits prior to the decimal point displayed by the total cumulative register of a smart meter | Notes: Mandatory for SMETS2 Meters Where the Meter Type is S1 the Number of Displayed Register Digits value must be be per the manufacturer's specification\n\nWhere the Meter Type is S2A, S2AD, S2ADE, 2ADF, 2ADEF, 2AEF, 2AF, S2B, S2BD, S2BDE, 2BF,2BDF, 2BDEF or 2BEF the value must be “5”.\n\nWhere the Meter Type is prefixed with “S2C” the value must be “6”.\n\nWhere the Meter Type is 2CDEF, 2CF, 2CDF or 2CEF the value must be “6”"
+        },
+        {
+            "id": "DI-057",
+            "name": "Meter Installation Date/Time",
+            "cmo": "M",
+            "rule": "The date of installation for a meter at a metering point. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "> B075 - Existing Meter MAP Info (Mandatory for each Meter Provided) - Most Recent Record only for each B074 Meter provided above"
+        },
+        {
+            "id": "DI-055",
+            "name": "Meter Asset Provider ID",
+            "cmo": "M",
+            "rule": "The market-wide reference for the provider of the meter equipment. | Notes: Must be a valid set as per ISD"
+        },
+        {
+            "id": "DI-054",
+            "name": "Meter Asset Provider Effective From Date",
+            "cmo": "M",
+            "rule": "The inclusive calendar date from which the meter asset provider is in effect for the metering system. | Notes: Must be a valid date and time"
+        },
+        {
+            "isHeader": true,
+            "title": "B035 block below are repeated for each Linked Import/Export MPAN"
+        },
+        {
+            "isHeader": true,
+            "title": "B035 - Linked Import / Export MPAN (Mandatory if Linked MPAN Exists)"
+        },
+        {
+            "id": "DI-038",
+            "name": "Linked Import/Export MPAN",
+            "cmo": "M",
+            "rule": "When this metering point is part of an import/export pair, this identifies the related import or export metering point. Where more than one import MPAN exists, this shall be populated with the Primary Import MPAN. | Notes: This field is mandatory, but will be Null/Blank if no linkage exists."
+        },
+        {
+            "id": "DI-151",
+            "name": "Linked MPAN Energy Direction",
+            "cmo": "M",
+            "rule": "Energy Direction of the Linked MPANs | Notes: I = Import E= Export"
+        },
+        {
+            "id": "DI-801",
+            "name": "Import/Export MPAN Supplier DIP ID",
+            "cmo": "C",
+            "rule": "DIP ID of the Supplier Responsible for the Linked MPAN | Notes: Mandatory if available in Registration Service"
+        },
+        {
+            "id": "DI-212",
+            "name": "Import/Export MPAN Supplier MPID",
+            "cmo": "C",
+            "rule": "Import/Export MPAN Supplier MPID | Notes: Mandatory if available in Registration Service"
+        },
+        {
+            "isHeader": true,
+            "title": "B037 block below are repeated for each Related MPAN, where Related MPAN(s) exist"
+        },
+        {
+            "isHeader": true,
+            "title": "B037 - Related MPAN(s)"
+        },
+        {
+            "id": "DI-075",
+            "name": "Primary MPAN",
+            "cmo": "C",
+            "rule": "The primary in a related MPAN relationship. The primary is associated with the base load settlement configuration (contains no value, if not part of related MPAN pair). | Notes: Either Or should be populated where MPAN (DI-063 above) is part of a group of Related MPANs\n\n\"B037\" should be repeated for each Related MPAN"
+        },
+        {
+            "id": "DI-079",
+            "name": "Secondary MPAN",
+            "cmo": "C",
+            "rule": "The secondary in a related MPAN relationship."
+        }
+    ]
+},
     {
-        "id": "IF-037/PUB-037",
-        "name": "Notification of Service Provider De-Appointment",
-        "description": "Notification to a Service Provider that they have been De-Appointed, and no longer have responsibility for the MPAN",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Supplier (SUP) / Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO) / MDS / LDSO / EES",
-        "context": "Notification to a Service Provider that they have been De-Appointed, and no longer have responsibility for the MPAN",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-037/PUB-037",
+    "name": "Notification of Service Provider De-Appointment",
+    "description": "Notification to a Service Provider that they have been De-Appointed, and no longer have responsibility for the MPAN",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Supplier (SUP) / Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO) / MDS / LDSO / EES",
+    "context": "Notification to a Service Provider that they have been De-Appointed, and no longer have responsibility for the MPAN",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-037"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MSDeApp], [DSDeApp], [MSDeAppUpdate], [DSDeAppUpdate]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B013 CSS Registration Request ID (Mandatory if available in Registration Service)"
+        },
+        {
+            "id": "DI-849",
+            "name": "CSS Registration ID",
+            "cmo": "M",
+            "rule": "The CSS identifier associated with a Supplier's Registration"
+        },
+        {
+            "isHeader": true,
+            "title": "B008 - Metering Service De-Appointment Details (Mandatory for [MSDeApp])"
+        },
+        {
+            "id": "DI-813",
+            "name": "De-Appointed Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID for the Metering Service subject to De-Appointment"
+        },
+        {
+            "id": "DI-202",
+            "name": "De-appointed Metering Service MPID",
+            "cmo": "M",
+            "rule": "De-appointed Metering Service MPID"
+        },
+        {
+            "id": "DI-061",
+            "name": "Metering Service Effective From Date",
+            "cmo": "M",
+            "rule": "The Date from which the Metering Service was Appointed | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-815",
+            "name": "Metering Service Effective To Date",
+            "cmo": "M",
+            "rule": "The Date at which the Metering Service is De-Appointed. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-819",
+            "name": "De-Appointment Reason Code",
+            "cmo": "M",
+            "rule": "A code indicating reason for termination of Service Provider Appointment | Notes: CSUPP= Change of Supplier, CSERV = Change of Service Provider, DEREG = RMP Terminated by CSS, CSEGM = Change of Segment, CCONN = Change of Connection Type, IMPEXP = Linked MPAN, RELATED= Related MPAN"
+        },
+        {
+            "isHeader": true,
+            "title": "B009 - Data Service De-Appointment Details (Mandatory for [DSDeApp])"
+        },
+        {
+            "id": "DI-816",
+            "name": "De-Appointed Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID for the Data Service subject to De-Appointment"
+        },
+        {
+            "id": "DI-203",
+            "name": "De-appointed Data Service MPID",
+            "cmo": "M",
+            "rule": "De-appointed Data Service MPID"
+        },
+        {
+            "id": "DI-023",
+            "name": "Data Service Effective From Date",
+            "cmo": "M",
+            "rule": "The Date from which the Data Service was Appointed | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-818",
+            "name": "Data Service Effective To Date",
+            "cmo": "M",
+            "rule": "The Date at which the Data Service is De-Appointed. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-819",
+            "name": "De-Appointment Reason Code",
+            "cmo": "M",
+            "rule": "A code indicating reason for termination of Service Provider Appointment | Notes: CSUPP= Change of Supplier, CSERV = Change of Service Provider, DEREG = RMP Terminated by CSS, CSEGM = Change of Segment, CCONN = Change of Connection Type, IMPEXP = Associated Import/Export MPAN, RELATED = Related MPAN"
+        },
+        {
+            "isHeader": true,
+            "title": "B010 - Incoming Metering Service Details (Conditionally Mandatory for Event [MSDeApp] if [DI-819] is not DEREG) - where available in Registration Service / Mandatory for [MSDeAppUpdate] - Ref Interface Notes"
+        },
+        {
+            "id": "DI-822",
+            "name": "Incoming Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID for the next/incoming Metering Service"
+        },
+        {
+            "id": "DI-204",
+            "name": "Incoming Metering Service MPID",
+            "cmo": "M",
+            "rule": "Incoming Metering Service MPID"
+        },
+        {
+            "id": "DI-824",
+            "name": "Incoming Metering Service Effective From Date",
+            "cmo": "M",
+            "rule": "The Date from which next/incoming Metering Service appointment is/was effective | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B011 - Incoming Data Service Details (Conditionally Mandatory for Event [DSDeApp] if [DI-819] is not DEREG) - where available in Registration Service / Mandatory for [DSDeAppUpdate]- Ref Interface Notes"
+        },
+        {
+            "id": "DI-825",
+            "name": "Incoming Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID for the next/incoming Data Service"
+        },
+        {
+            "id": "DI-205",
+            "name": "Incoming Data Service MPID",
+            "cmo": "M",
+            "rule": "Incoming Data Service MPID"
+        },
+        {
+            "id": "DI-827",
+            "name": "Incoming Data Service Effective From Date",
+            "cmo": "M",
+            "rule": "The Date from which next/incoming Data Service appointment is/was effective | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B002 - Incoming Supplier Information - Mandatory for Event [MSDeApp] & [DSDeApp] where De-appointment Reason Code is 'CSUPP'"
+        },
+        {
+            "id": "DI-803",
+            "name": "Incoming Supplier DIP ID",
+            "cmo": "M",
+            "rule": "The market-wide unique reference for a supplier that is responsible for the settlement liabilities."
+        },
+        {
+            "id": "DI-200",
+            "name": "Incoming Supplier MPID",
+            "cmo": "M",
+            "rule": "Incoming Supplier MPID"
+        },
+        {
+            "id": "DI-086",
+            "name": "Supplier Effective From Date",
+            "cmo": "M",
+            "rule": "The date and time from which a supplier came into effect, with regard to their relationship with the metering point. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        }
+    ]
+},
     {
-        "id": "IF-038/PUB-038",
-        "name": "Customer Direct Contract Request",
-        "description": "Request from Service Provider either to record, delete or amend a Customer Direct Contract with that Service Provider, for a given MPAN",
-        "sender": "Metering Service (MSA, MSS, UMSO)/Data Service (ADS, SDS, UMSDS)",
-        "receiver": "Registration Service (REGS)",
-        "context": "Request from Service Provider either to record, delete or amend a Customer Direct Contract with that Service Provider, for a given MPAN",
-        "supplier_type": "none"
-    },
+    "id": "IF-038/PUB-038",
+    "name": "Customer Direct Contract Request",
+    "description": "Request from Service Provider either to record, delete or amend a Customer Direct Contract with that Service Provider, for a given MPAN",
+    "sender": "Metering Service (MSA, MSS, UMSO)/Data Service (ADS, SDS, UMSDS)",
+    "receiver": "Registration Service (REGS)",
+    "context": "Request from Service Provider either to record, delete or amend a Customer Direct Contract with that Service Provider, for a given MPAN",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-038"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [DirectContractMSAdd], [DirectContractDSAdd], [DirectContractMSRemove], [DirectContractDSRemove]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B020 - Customer Direct Contract MS Info ~ Mandatory for event [DirectContractMSAdd]"
+        },
+        {
+            "id": "DI-140",
+            "name": "Customer Direct Contract Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the Metering Service that has recorded the existence of a Customer Direct Contract for that MPAN."
+        },
+        {
+            "id": "DI-145",
+            "name": "Customer Direct Contract Metering Service EffectiveTo Date",
+            "cmo": "M",
+            "rule": "Date on which Customer Direct Contract Metering Service Ends | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B021 - Customer Direct Contract DS Info ~ Mandatory for event [DirectContractDSAdd]"
+        },
+        {
+            "id": "DI-138",
+            "name": "Customer Direct Contract Data Service DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the Data Service that has recorded the existence of a Customer Direct Contract for that MPAN."
+        },
+        {
+            "id": "DI-146",
+            "name": "Customer Direct Contract Data Service EffectiveTo Date",
+            "cmo": "M",
+            "rule": "Date on which Customer Direct Contract Data Service Ends | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        }
+    ]
+},
     {
         "id": "IF-039/PUB-039",
         "name": "Customer Direct Contract Advisory Response",
