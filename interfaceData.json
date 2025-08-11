@@ -1,0 +1,544 @@
+[
+    {
+        "id": "IF-001/PUB-001",
+        "name": "Notification of Change of Supplier",
+        "description": "Notification of Change of Supplier",
+        "sender": "Registration Service",
+        "receiver": "Incoming Supplier (SUP), Marketwide Data Service (MDS), LDSO",
+        "context": "Following a successful Change of Supplier, the CSS will notify this to the Registration Service. The Registration Service will then notify parties that a successful Change of Supplier has taken place. This provides the Gaining Supplier with key information about the MPAN as it currently exists in the Registration Service.",
+        "supplier_type": "supplier_receive",
+        "data_items": [
+            {
+                "isHeader": true,
+                "title": "S0- Transactional Info (Mandatory)"
+            },
+            {
+                "id": "DI-000",
+                "name": "Interface Id",
+                "cmo": "M",
+                "rule": "Interface Id | Notes: IF-001"
+            },
+            {
+                "id": "DI-992",
+                "name": "Schema Version",
+                "cmo": "M",
+                "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+            },
+            {
+                "id": "DI-999",
+                "name": "Event Code",
+                "cmo": "M",
+                "rule": "Code used to identify the nature of the Event | Notes: [InitialRegistration], [ChangeOfSupplier]"
+            },
+            {
+                "isHeader": true,
+                "title": "S1 - Sender Info (Mandatory)"
+            },
+            {
+                "isHeader": true,
+                "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+            },
+            {
+                "isHeader": true,
+                "title": "A0 - Addressing (Optional for non-Primary Routing)"
+            },
+            {
+                "isHeader": true,
+                "title": "M0 - MPAN (Mandatory)"
+            },
+            {
+                "id": "DI-063",
+                "name": "MPAN Core",
+                "cmo": "M",
+                "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+            },
+            {
+                "id": "DI-108",
+                "name": "Distributor DIP ID",
+                "cmo": "M",
+                "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+            },
+            {
+                "id": "DI-037",
+                "name": "GSP Group ID",
+                "cmo": "M",
+                "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+            },
+            {
+                "isHeader": true,
+                "title": "B013 CSS Registration Request ID (Mandatory)"
+            },
+            {
+                "id": "DI-849",
+                "name": "CSS Registration ID",
+                "cmo": "M",
+                "rule": "The CSS identifier associated with a Supplier's Registration"
+            },
+            {
+                "isHeader": true,
+                "title": "B002 - Incoming Supplier Information - Mandatory for Event [ChangeOfSupplier] & [InitialRegistration]"
+            },
+            {
+                "id": "DI-803",
+                "name": "Incoming Supplier DIP ID",
+                "cmo": "M",
+                "rule": "The market-wide unique reference for a supplier that is responsible for the settlement liabilities."
+            },
+            {
+                "id": "DI-200",
+                "name": "Incoming Supplier MPID",
+                "cmo": "M",
+                "rule": "Incoming Supplier MPID"
+            },
+            {
+                "id": "DI-086",
+                "name": "Supplier Effective From Date",
+                "cmo": "M",
+                "rule": "The date and time from which a supplier came into effect, with regard to their relationship with the metering point. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+            },
+            {
+                "isHeader": true,
+                "title": "B003 - Outgoing Supplier Information - Mandatory for Event [ChangeOfSupplier]"
+            },
+            {
+                "id": "DI-805",
+                "name": "Outgoing Supplier DIP ID",
+                "cmo": "M",
+                "rule": "The market-wide unique reference for a supplier that is responsible for the settlement liabilities."
+            },
+            {
+                "id": "DI-201",
+                "name": "Outgoing Supplier MPID",
+                "cmo": "M",
+                "rule": "Outgoing Supplier MPID"
+            },
+            {
+                "id": "DI-121",
+                "name": "Outgoing Supplier Effective To Date",
+                "cmo": "M",
+                "rule": "The last inclusive settlement date after which a Supplier's registration to a metering system ceases to be valid. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+            },
+            {
+                "isHeader": true,
+                "title": "B037 - Related MPAN(s)"
+            },
+            {
+                "id": "DI-075",
+                "name": "Primary MPAN",
+                "cmo": "C",
+                "rule": "The primary in a related MPAN relationship. The primary is associated with the base load settlement configuration (contains no value, if not part of related MPAN pair)."
+            },
+            {
+                "id": "DI-079",
+                "name": "Secondary MPAN",
+                "cmo": "C",
+                "rule": "The secondary in a related MPAN relationship."
+            }
+        ]
+    },
+    {
+        "id": "IF-002/PUB-002",
+        "name": "Notification to New Supplier of Site Information",
+        "description": "Notification to New Supplier of Site Information",
+        "sender": "Registration Service",
+        "receiver": "Incoming Supplier (SUP)",
+        "context": "Following notification of a potential/pending Switch from CSS, the Registration Service will issue this message to the incoming Supplier to advise the incoming Supplier of Site Information so that the Supplier can determine the correct Service Providers to appoint (this is the equivilent to the D0217/D0260)",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-003/PUB-003",
+        "name": "Notification of Reverse Migration and Deappointment",
+        "description": "Notification of Reverse Migration and Deappointment",
+        "sender": "Registration Service",
+        "receiver": "Data Service (ADS, SDS, UMSDS) / Metering Service (MSA, MSS, UMSO) / LDSO / MDS / Supplier",
+        "context": "This provides Notification of a Reverse Migration to MDS/LDSO. It also advises MHHS Service Providers that they have been De-Appointed (as a result of a Reverse Migration) and where appropriate details of the incoming 'old regime' agents i.e. MOP / DC.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-004/PUB-004",
+        "name": "Comms Hub Information (Optional)",
+        "description": "Optional interface to allow passing of Comms Hub information",
+        "sender": "Metering Service Smart (MSS) / Supplier (SUP)",
+        "receiver": "Supplier (SUP) / Metering Service Smart (MSS)",
+        "context": "Use of this interface is optional. It is provided for use by Smart Metering Services & Suppliers that bilaterally agree to share Comms Hub information between themselves.",
+        "supplier_type": "supplier_both"
+    },
+    {
+        "id": "IF-005/PUB-005",
+        "name": "Metering Service MTD Updates to Registration",
+        "description": "To notify the Registration Service of Metering related Data Item changes, for example, New install, Removal, MEX, change to existing Meter Details",
+        "sender": "Metering Service Smart (MSS) & Metering Service Advanced (MSA)",
+        "receiver": "Registration Service (REGS)",
+        "context": "This interface is used by Metering Services to notify any changes required to Metering Technical Information, to the Registration Service For example, Meter Installations, Removals and Exchanges. The interface also allows for corrections to the currently installed meter & the historical record of installed metering assets.",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-006/PUB-006",
+        "name": "Notification of Metering Service MTD Update to Registration",
+        "description": "Outcome of Metering Service Request to Update Registration after Install, Removal, MEX or Updates to Existing Meter",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Metering Service (MSS, MSA), Data Service (SDS, ADS) , Supplier (SUP), LDSO, EES & MDR",
+        "context": "This interface is used by Registration Service to notify the outcome of changes of Metering Technical Information to the Metering Service, and if successfull other participants. For example, Meter Installations, Removals and Exchanges. This response also includes confirmation of other existing meter(s) installed at the MPAN, which were not impacted by the Metering Event.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-007/PUB-007",
+        "name": "Change of Energisation Status",
+        "description": "This interface is used by the Metering Service to notify the Registration Service of changes to the energisation status or to inform the Supplier where a request to change the energisation status has been rejected.",
+        "sender": "Metering Service Smart (MSS) & Metering Service Advanced (MSA), Unmetered Supplies Operator (UMSO)",
+        "receiver": "Registration Service (REGS), Supplier (SUP) (Failed to action only)",
+        "context": "This interface is used by the Metering Service to notify the Registration Service of changes to the energisation status or to inform the Supplier where a request to change the energisation status has been rejected.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-008/PUB-008",
+        "name": "Notification of Change of Energisation Status Request",
+        "description": "This interface is used by Registration Service to notify the outcome of Change of Energisation Status Requests.",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Metering Service (MSS, MSA, UMSO), Data Service (SDS, ADS, UMSDS), Supplier (SUP), LDSO, Market-wide Data Service (MDS), EES & MDR",
+        "context": "This interface is used by Registration Service to notify the outcome of Change of Energisation Status Requests.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-009/PUB-009",
+        "name": "Notification of MPAN Disconnection/Termination",
+        "description": "This interface is used by Registration Service to notify participants that an MPAN has been Disconnected by LDSO and/or terminated by CSS. It is no longer possible to register an MPAN following this point.",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Supplier (SUP), LDSO, Market-wide Data Service (MDS), EES",
+        "context": "This interface is used by Registration Service to notify participants that an MPAN has been Disconnected by LDSO and/or terminated by CSS. It is no longer possible to register an MPAN following this point.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-013/PUB-013",
+        "name": "Notification of Defaulted Consumption",
+        "description": "This interface will be issued by ECS/MDS to advise Supplier, Data Service and if required the LDSO of the volume(s) for each Settlement Period which have been Defaulted",
+        "sender": "Market-wide Data Service (MDS)",
+        "receiver": "Data Services - Smart Data Service (SDS) / Advanced Data Service (ADS) / UMSDS / Supplier (SUP) / LDSO",
+        "context": "This interface will be issued by ECS/MDS to advise Supplier, Data Service and if required the LDSO of the volume(s) for each Settlement Period which have been Defaulted",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-014/PUB-014",
+        "name": "Rejection of Consumption Data/Warning",
+        "description": "Rejection of Data Service provided Actual or Estimated UTC Settlement Period Consumption data/ Warning of Consumption on a De-energised MPAN",
+        "sender": "Marketwide Data Service (MDS)",
+        "receiver": "Data Services (SDS, ADS, UMSDS), Supplier (SUP)",
+        "context": "Rejection of Data Service provided Actual or Estimated UTC Settlement Period Consumption data/ Warning of Consumption on a De-energised MPAN",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-015/PUB-015",
+        "name": "Request for Consumption Replay",
+        "description": "This interface is used by Advanced Data Services to request a Replay of historic Consumption submissions for a newly acquired MPAN, from the DIP.",
+        "sender": "Advanced Data Service (ADS)",
+        "receiver": "DIP Replay Service",
+        "context": "This interface is used by Advanced Data Services to request a Replay of historic Consumption submissions for a newly acquired MPAN, from the DIP.",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-016/PUB-016",
+        "name": "Consumption Replay",
+        "description": "This interface is used by the DIP in order to Replay historic Consumption submissions for a newly acquired MPAN, back to the Advanced Data Service.",
+        "sender": "DIP",
+        "receiver": "Advanced Data Service (ADS)",
+        "context": "This interface is used by the DIP in order to Replay historic Consumption submissions for a newly acquired MPAN, back to the Advanced Data Service.",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-018/PUB-018",
+        "name": "Notification of LDSO Maintained Data Changes",
+        "description": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the LDSO or notified to Registration Service directly by CSS",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Supplier (SUP), Data Service (ADS, SDS, UMSDS), Metering Service (MSA, MSS, UMSO) , Market-wide Data Service (MDS), EES & LDSO",
+        "context": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the LDSO or notified to Registration Service directly by CSS",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-019/PUB-019",
+        "name": "Request to Create/Change MPAN Relationship",
+        "description": "Interface to allow Supplier to request/specify the Creation, Addition or Removal of MPAN(s) from a MPAN Relationship - either an Import/Export or Related MPAN grouping.",
+        "sender": "Supplier (SUP)",
+        "receiver": "Registration Service (REGS)/LDSO",
+        "context": "Interface to allow Supplier to request/specify the Creation, Addition or Removal of MPAN(s) from a MPAN Relationship - either an Import/Export or Related MPAN grouping.",
+        "supplier_type": "supplier_send"
+    },
+    {
+        "id": "IF-020/PUB-020",
+        "name": "MPAN Relationship Response",
+        "description": "Interface providing the Registration Service Response to an MPAN Relationship request to create/change.",
+        "sender": "Registration Service (REGS)/ LDSO",
+        "receiver": "Supplier (SUP), Data Service (ADS, SDS), Metering Service (MSS, MSA), LDSO & EES",
+        "context": "Interface providing the Registration Service Response to an MPAN Relationship request to create/change.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-021/PUB-021",
+        "name": "Provide Settlement Period Consumption",
+        "description": "Data Service will provide Actual or Estimated UTC Settlement Period Consumption data (Active and where appropriate Reactive), for each MPAN, for each day that they are appointed.",
+        "sender": "Data Services - Smart Data Service (SDS) / Advanced Data Service (ADS) / UMSDS",
+        "receiver": "Load Shaping Service (LSS) / Market-wide Data Service (MDS) / Distributor (LDSO) / Supplier (SUP)",
+        "context": "Data Service will provide Actual or Estimated UTC Settlement Period Consumption data (Active and where appropriate Reactive), for each MPAN, for each day that they are appointed.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-022/PUB-022",
+        "name": "Provide Load Shape Period Data",
+        "description": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
+        "sender": "Load Shaping Service (LSS)",
+        "receiver": "Supplier (SUP), Data Services (ADS, SDS, UMSDS), Public (via separate file-sharing mechanism)",
+        "context": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-023/PUB-023",
+        "name": "Provide Load Shape Totals Data",
+        "description": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
+        "sender": "Load Shaping Service (LSS)",
+        "receiver": "Supplier (SUP), Data Services (ADS, SDS, UMSDS), Public (via separate file-sharing mechanism)",
+        "context": "Central settlement will calculate Settlement Period Load Shapes on a daily basis. These new load shapes are created for each UTC Settlement Period of a UTC Settlement Date and must be delivered to the Data Services, within agreed timescales, so as to allow for Data Service Validation & Estimation processes to operate in an accurate & timely fashion.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-024/PUB-024",
+        "name": "Notification of Data Service Influencing Circumstances",
+        "description": "Notification to the Data Service of circumstances which may impact or influence Data Service treatment of a site",
+        "sender": "Supplier (SUP)",
+        "receiver": "Data Service (ADS, SDS), MDR",
+        "context": "Notification to the Data Service of circumstances which may impact or influence Data Service treatment of a site",
+        "supplier_type": "supplier_send"
+    },
+    {
+        "id": "IF-025/PUB-025",
+        "name": "Request to Update Supplier Maintained Data",
+        "description": "This interface is to allow Supplier to maintain Registration Service Data Items for which it has ownership/responsibility",
+        "sender": "Supplier (SUP)",
+        "receiver": "Registration Service (REGS)",
+        "context": "This interface is to allow Supplier to maintain Registration Service Data Items for which it has ownership/responsibility",
+        "supplier_type": "supplier_send"
+    },
+    {
+        "id": "IF-026/PUB-026",
+        "name": "Notification of Supplier Maintained Data Changes",
+        "description": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the Supplier",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Supplier (SUP)/ Data Service (ADS, SDS, UMSDS)/ Central Settlements (LSS)/ LDSO / Metering Service (MSA, MSS, UMSO)/ EES/ MDR",
+        "context": "This interface is to notify participants of changes to Registration Service Data Items, principally those maintained by the Supplier",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-027/PUB-027",
+        "name": "Request to Calculate & Submit Consumption Amendment",
+        "description": "Request by Supplier for the Data Service to Calculate and Submit a Consumption Amendment",
+        "sender": "Supplier (SUP)",
+        "receiver": "Advanced Data Service (ADS) and Smart Data Service (SDS)",
+        "context": "Request by Supplier for the Data Service to Calculate and Submit a Consumption Amendment",
+        "supplier_type": "supplier_send"
+    },
+    {
+        "id": "IF-028/PUB-028",
+        "name": "Response to Consumption Amendment Request",
+        "description": "Response from the Data Service to a Supplier Request Calculate and Submit a Consumption Amendment",
+        "sender": "Data Service (ADS, SDS, UMSDS)",
+        "receiver": "Supplier (SUP)",
+        "context": "Response from the Data Service to a Supplier Request Calculate and Submit a Consumption Amendment",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-031/PUB-031",
+        "name": "Request to Appoint Service Provider",
+        "description": "Initial request from Supplier to Registration Service to Appoint a Service Provider, either Metering Service or Data Service",
+        "sender": "Supplier (SUP)",
+        "receiver": "Registration Service (REGS)",
+        "context": "Initial request from Supplier to Registration Service to Appoint a Service Provider, either Metering Service or Data Service",
+        "supplier_type": "supplier_send"
+    },
+    {
+        "id": "IF-032/PUB-032",
+        "name": "Response to Initial Service Provider Appointment Request",
+        "description": "Registration Service Response to Suppliers initial request to Appoint a Service Provider, either Metering Service or Data Service",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Supplier (SUP)",
+        "context": "Registration Service Response to Suppliers initial request to Appoint a Service Provider, either Metering Service or Data Service",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-033/PUB-033",
+        "name": "Request to Consider Service Provider Appointment",
+        "description": "Registration Service request to a Service Provider to consider Appointment to an MPAN as either a Metering Service or Data Service",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO)",
+        "context": "Registration Service request to a Service Provider to consider Appointment to an MPAN as either a Metering Service or Data Service",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-034/PUB-034",
+        "name": "Service Provider Appointment Response",
+        "description": "Service Providers Response to request for Appointment or Change of Appointment for an MPAN",
+        "sender": "Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO)",
+        "receiver": "Registration Service (REGS)",
+        "context": "Service Providers Response to request for Appointment or Change of Appointment for an MPAN",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-035/PUB-035",
+        "name": "Notification of Service Provider Appointment Status",
+        "description": "Registration Service Notification on Appointment Status. This could be that Appointment has been Accepted or Rejected by Service Provider; has become Lapsed (i.e. could not be successfully matched with a SecuredActive Switch). It is also used to advise the Incumbent Metering Service to issue MTDs to incoming Service Providers.",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Supplier (SUP), Incumbent Metering Service, Data Service (ADS, SDS, UMSDS), Metering Service (MSA, MSS, UMSO)",
+        "context": "Registration Service Notification on Appointment Status. This could be that Appointment has been Accepted or Rejected by Service Provider; has become Lapsed (i.e. could not be successfully matched with a SecuredActive Switch). It is also used to advise the Incumbent Metering Service to issue MTDs to incoming Service Providers.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-036/PUB-036",
+        "name": "Confirmation of Service Provider Appointment",
+        "description": "Registration Service formal Confirmation of Appointment & provision of MPAN Supporting Data and MTDs",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Supplier (SUP) / Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO) / LDSO / MDS / EES",
+        "context": "Registration Service formal Confirmation of Appointment & provision of MPAN Supporting Data and MTDs",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-037/PUB-037",
+        "name": "Notification of Service Provider De-Appointment",
+        "description": "Notification to a Service Provider that they have been De-Appointed, and no longer have responsibility for the MPAN",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Supplier (SUP) / Data Service (ADS, SDS, UMSDS)/ Metering Service (MSA, MSS, UMSO) / MDS / LDSO / EES",
+        "context": "Notification to a Service Provider that they have been De-Appointed, and no longer have responsibility for the MPAN",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-038/PUB-038",
+        "name": "Customer Direct Contract Request",
+        "description": "Request from Service Provider either to record, delete or amend a Customer Direct Contract with that Service Provider, for a given MPAN",
+        "sender": "Metering Service (MSA, MSS, UMSO)/Data Service (ADS, SDS, UMSDS)",
+        "receiver": "Registration Service (REGS)",
+        "context": "Request from Service Provider either to record, delete or amend a Customer Direct Contract with that Service Provider, for a given MPAN",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-039/PUB-039",
+        "name": "Customer Direct Contract Advisory Response",
+        "description": "Registration Service Response to Service Provider request to either to record, delete or amend a Customer Direct Contract with that Service Provider, for a given MPAN",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Metering Service (MSA, MSS, UMSO)/Data Service (ADS, SDS, UMSDS) / Supplier (SUP)/ EES",
+        "context": "Registration Service Response to Service Provider request to either to record, delete or amend a Customer Direct Contract with that Service Provider, for a given MPAN",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-040/PUB-040",
+        "name": "Notification of Annual Consumption",
+        "description": "On a monthly basis the Market-wide Data Service will calculate an Annual Consumption for each MPAN. This interface is to notify participants of the value, quality and calculation date of that consumption.",
+        "sender": "Market-wide Data Service (MDS)",
+        "receiver": "Suppliers (SUP), Data Service (SDS, ADS, UMSDS), LDSO, Registration Service (REGS) & EES",
+        "context": "On a monthly basis the Market-wide Data Service will calculate an Annual Consumption for each MPAN. This interface is to notify participants of the value, quality and calculation date of that consumption.",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-041/PUB-041",
+        "name": "Smart / Advanced Readings",
+        "description": "New Interface to exchange Exchange, Smart and Smart COR Meter Readings between MHHS Parties",
+        "sender": "MS, DS, Supplier",
+        "receiver": "Advanced Data Service (ADS) and Smart Data Service (SDS) / Supplier (SUP)/ LDSO",
+        "context": "This interface is to allow Cumulative Reads and/or, Smart/Advanced Register Redings, to be exchanged in a number of business scenarios. Following MHHS implementation, in most cases consumption values will be available directly from the meter. However, there may be occasions when consumption may not be available, therefore a Cumulative Reading will need to be captured/shared as a 'fall back' measure",
+        "supplier_type": "supplier_both"
+    },
+    {
+        "id": "IF-043/PUB-043",
+        "name": "Registration Service Notification of Change of Connection Type",
+        "description": "Registration Notification of a Successful Change in Connection Type",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Supplier (SUP), Data Service (ADS,SDS), Metering Service (MSS, MSA), MDS, LDSO & EES",
+        "context": "Registration Service Notification of a Change in Connection Type",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-044/PUB-044",
+        "name": "Registration Service Notification of Change of Segment",
+        "description": "Registration Notification of a Successful Change in Market Segment",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Supplier (SUP), MDS, LDSO & EES",
+        "context": "Registration Service Notification of a Change in Market Segment",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-045/PUB-045",
+        "name": "Registration Service Reminder Notification",
+        "description": "Reminder Notification to a Supplier that some element of Registration Data is inconsistent or invalid, & action is required to resolve it",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Supplier (SUP)/ Advanced Data Service (ADS) and Smart Data Service (SDS) / Advanced Metering Service (MSA) and Smart Metering Service (MSS)",
+        "context": "Reminder Notification to a Supplier that some element of Registration Data is inconsistent or invalid, & action is required to resolve it",
+        "supplier_type": "supplier_receive"
+    },
+    {
+        "id": "IF-047/PUB-047",
+        "name": "Notification of the Publication of a Downloadable Asset",
+        "description": "URI Listing showing location of Downloadable Resources (For example ISD)",
+        "sender": "Central Settlements (ISD)",
+        "receiver": "Public (All Roles)",
+        "context": "The purpose of this interface is to notify DIP Participants of the Publication of a Downloadable Asset, such as ISD or other Reports, and the URI that can be used to access the publication.",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-050/PUB-050",
+        "name": "EES Updates",
+        "description": "The purpose of this interface is to provide updates to EES from the Registration Service which are not required to be serviced by any other interface.",
+        "sender": "Registration Service (REGS)",
+        "receiver": "EES Only",
+        "context": "Registration Service sends this to provide updates to EES which are not required to be serviced by any other interface.",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-051/PUB-051",
+        "name": "EES Data Refresh",
+        "description": "Flow from Registration Service to EES providing a 'refresh'of the current data position in the Registration Service",
+        "sender": "Registration Service (REGS)",
+        "receiver": "Electricity Enquiry Service (EES) ONLY",
+        "context": "Flow from Registration Service to EES providing a 'refresh'of the current data position in the Registration Service",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-061/PUB-061",
+        "name": "MDR Start Request",
+        "description": "Request from SDS that an MDR begins Data Retrieval Activity",
+        "sender": "Smart Data Service (SDS)",
+        "receiver": "Meter Data Retriever (MDR)",
+        "context": "Request from the SDS that an MDR starts Data Retrieval Activity",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-062/PUB-062",
+        "name": "MDR Start Request Response",
+        "description": "Reponse from MDR to SDS Request to Start Data Retrieval Activity",
+        "sender": "Meter Data Retriever (MDR)",
+        "receiver": "Smart Data Service (SDS)",
+        "context": "This is the reponse from MDR to SDS Request to Start Data Retrieval Activity",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-063/PUB-063",
+        "name": "MDR Stop Request",
+        "description": "Request from SDS that an MDR Stop Data Retrieval Activity",
+        "sender": "Smart Data Service (SDS)",
+        "receiver": "Meter Data Retriever (MDR)",
+        "context": "Request from the SDS that an MDR stops Data Retrieval Activity",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-064/PUB-064",
+        "name": "MDR Provide Consumption",
+        "description": "MDR Provide Consumption to SDS",
+        "sender": "Meter Data Retriever (MDR)",
+        "receiver": "Smart Data Service (SDS)",
+        "context": "MDR Provide Consumption to SDS",
+        "supplier_type": "none"
+    },
+    {
+        "id": "IF-065/PUB-065",
+        "name": "MDR Request / Provide Meter Reading",
+        "description": "MDR Provide Meter Reading(s) to SDS",
+        "sender": "Meter Data Retriever (MDR) or Smart Data Service (SDS)",
+        "receiver": "Smart Data Service (SDS) or Meter Data Retreiver (MDR)",
+        "context": "MDR Provide Meter Reading(s) to SDS",
+        "supplier_type": "none"
+    }
+]
