@@ -7010,7 +7010,7 @@
     ]
 },
     {
-    "id": "IF-039",
+    "id": "IF-039/PUB-039",
     "name": "Customer Direct Contract Response",
     "description": "The response from Registration Service, confirming the acceptance or rejection of the Customer Direct Contract Request",
     "sender": "Registration Service (REGS)",
