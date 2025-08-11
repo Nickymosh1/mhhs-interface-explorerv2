@@ -833,14 +833,130 @@
         "supplier_type": "supplier_receive"
     },
     {
-        "id": "IF-024/PUB-024",
-        "name": "Notification of Data Service Influencing Circumstances",
-        "description": "Notification to the Data Service of circumstances which may impact or influence Data Service treatment of a site",
-        "sender": "Supplier (SUP)",
-        "receiver": "Data Service (ADS, SDS), MDR",
-        "context": "Notification to the Data Service of circumstances which may impact or influence Data Service treatment of a site",
-        "supplier_type": "supplier_send"
-    },
+    "id": "IF-024/PUB-024",
+    "name": "Notification of Data Service Influencing Circumstances",
+    "description": "Notification to the Data Service of circumstances which may impact or influence Data Service treatment of a site",
+    "sender": "Supplier (SUP)",
+    "receiver": "Data Service (ADS, SDS), MDR",
+    "context": "Notification to the Data Service of circumstances which may impact or influence Data Service treatment of a site",
+    "supplier_type": "supplier_send",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info - Sender Set (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-024"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [SN-Vacant], [SN-NoComms], [SN-RemoteEnabled], [SN-RemoteDisabled], [SN-SupplierAC], [SN-OffPeakDec]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B057 - Supplier Advisory Notification (Mandatory, not required for SN-OffPeakDec)"
+        },
+        {
+            "id": "DI-100",
+            "name": "Supplier Notification Effective From Date",
+            "cmo": "M",
+            "rule": "The Date from which a Supper Notification [to DS] becomes Effective From | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-098",
+            "name": "Supplier Notification Expiry Date",
+            "cmo": "O",
+            "rule": "The Date from which a Supper Notification [to DS] Expires | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-120",
+            "name": "Additional Information",
+            "cmo": "O",
+            "rule": "A free format character string for providing additional details."
+        },
+        {
+            "isHeader": true,
+            "title": "B069 Supplier Advisory Notification Meter ID ( Mandatory for SN-RemoteEnabled and SN-RemoteDisabled)"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter."
+        },
+        {
+            "isHeader": true,
+            "title": "B058 - Supplier Nominated Annual Consumption (Mandatory for Event [SN-SupplierAC])"
+        },
+        {
+            "id": "DI-152",
+            "name": "Supplier Nominated Annual Consumption",
+            "cmo": "M",
+            "rule": "Supplier Nominated Annual Consumption Value, to be used as required by Data Service in preference to the ECS calculated Annual Consumption | Notes: 123456789.123"
+        },
+        {
+            "isHeader": true,
+            "title": "*B097 - Off Peak Declaration (Mandatory for Event [SN-OffPeakDec]) - Block below Repeated for each Off Peak Consumption Day"
+        },
+        {
+            "id": "DI-510",
+            "name": "Off Peak Declaration Date",
+            "cmo": "M",
+            "rule": "Settlement Day to which OPD should be applied | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-511",
+            "name": "Off Peak Declaration Proportion",
+            "cmo": "M",
+            "rule": "Proportion (%) of consumption to be considered as Off-Peak | Notes: nnn"
+        }
+    ]
+},
     {
         "id": "IF-025/PUB-025",
         "name": "Request to Update Supplier Maintained Data",
