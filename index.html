@@ -293,13 +293,12 @@
                 interfaceData = await response.json();
             } catch (error) {
                 console.error("Could not load or parse interface data:", error);
-                // You could display an error message to the user here
                 const interfaceList = document.getElementById('interfaceList');
                 interfaceList.innerHTML = `<p class="text-center text-red-600 p-4">Error: Could not load interface data. Please check the console for details.</p>`;
-                return; // Stop execution if data fails to load
+                return;
             }
 
-            // --- STEP 2: SETUP APPLICATION (this is all your previous code) ---
+            // --- STEP 2: SETUP APPLICATION ---
             const searchInput = document.getElementById('searchInput');
             const interfaceList = document.getElementById('interfaceList');
             const welcomeMessage = document.getElementById('welcomeMessage');
@@ -310,7 +309,7 @@
             let currentSearchTerm = '';
             let filteredInterfaces = [];
             
-const renderInterfaceList = () => {
+            const renderInterfaceList = () => {
                 const keywords = currentSearchTerm.toLowerCase().split(' ').filter(k => k.trim() !== '');
 
                 filteredInterfaces = interfaceData.filter(item => {
@@ -346,11 +345,6 @@ const renderInterfaceList = () => {
                         searchableText += ` ${dataItemText.toLowerCase()}`;
                     }
                     
-                    // --- TEMPORARY DEBUGGING LINE ---
-                    if (item.id === 'IF-025/PUB-025') {
-                        console.log("Searchable text for IF-025:", searchableText);
-                    }
-
                     return keywords.every(keyword => searchableText.includes(keyword));
                 });
 
@@ -368,7 +362,26 @@ const renderInterfaceList = () => {
                 }
                 
                 const fragment = document.createDocumentFragment();
-                filteredInterfaces.forEach
+                filteredInterfaces.forEach(item => {
+                    const typeStyles = {
+                        supplier_send: 'border-send',
+                        supplier_receive: 'border-receive',
+                        supplier_both: 'border-both',
+                        none: 'border-l-4 border-gray-300'
+                    };
+                    const element = document.createElement('div');
+                    element.className = `interface-card p-4 mb-2 bg-[var(--white)] rounded-xl cursor-pointer shadow-lg ${typeStyles[item.supplier_type]}`;
+                    element.dataset.id = item.id;
+                    element.setAttribute('role', 'button');
+                    element.setAttribute('tabindex', '0');
+                    element.innerHTML = `
+                        <p class="font-bold text-[var(--dark-purple)] pointer-events-none text-base mb-1">${escapeHtml(item.id)}</p>
+                        <p class="text-[var(--purple)] opacity-90 pointer-events-none leading-relaxed text-sm">${escapeHtml(item.name)}</p>
+                    `;
+                    fragment.appendChild(element);
+                });
+                interfaceList.appendChild(fragment);
+            };
 
             const showDetails = (id) => {
                 const item = filteredInterfaces.find(i => i.id === id) || interfaceData.find(i => i.id === id);
@@ -396,7 +409,7 @@ const renderInterfaceList = () => {
                         </h3>`;
 
                 if (item.data_items && item.data_items.length > 0) {
-                   dataItemsHtml += '<div class="overflow-y-auto overflow-x-auto max-h-[50vh]"><table class="w-full text-sm text-left">';
+                    dataItemsHtml += '<div class="overflow-y-auto overflow-x-auto max-h-[50vh]"><table class="w-full text-sm text-left">';
                     item.data_items.forEach(di => {
                         if (di.isHeader) {
                             dataItemsHtml += `<thead class="text-xs text-[var(--dark-purple)] uppercase bg-[var(--birch)]"><tr class="border-b"><th colspan="4" class="px-4 py-2 font-bold">${escapeHtml(di.title)}</th></tr></thead>`;
