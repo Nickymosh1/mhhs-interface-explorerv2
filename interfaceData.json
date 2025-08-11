@@ -501,14 +501,124 @@
         "supplier_type": "supplier_receive"
     },
     {
-        "id": "IF-004/PUB-004",
-        "name": "Comms Hub Information (Optional)",
-        "description": "Optional interface to allow passing of Comms Hub information",
-        "sender": "Metering Service Smart (MSS) / Supplier (SUP)",
-        "receiver": "Supplier (SUP) / Metering Service Smart (MSS)",
-        "context": "Use of this interface is optional. It is provided for use by Smart Metering Services & Suppliers that bilaterally agree to share Comms Hub information between themselves.",
-        "supplier_type": "supplier_both"
-    },
+    "id": "IF-004/PUB-004",
+    "name": "Comms Hub Information (Optional)",
+    "description": "Optional interface to allow passing of Comms Hub information",
+    "sender": "Metering Service Smart (MSS) / Supplier (SUP)",
+    "receiver": "Supplier (SUP) / Metering Service Smart (MSS)",
+    "context": "Use of this interface is optional. It is provided for use by Smart Metering Services & Suppliers that bilaterally agree to share Comms Hub information between themselves.",
+    "supplier_type": "supplier_both",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-004"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [CommsHubInfo]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1- Sender Info - (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The  DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-109",
+            "name": "Distributor DIP EZ Name",
+            "cmo": "O",
+            "rule": "The DIP EZ Name of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-029",
+            "name": "Distributor ID",
+            "cmo": "M",
+            "rule": "The market-wide unique reference for the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B093 - Comms Hub Info (Mandatory if Event = [CommsHubInfo])"
+        },
+        {
+            "id": "DI-195",
+            "name": "Comms Hub Activity",
+            "cmo": "M",
+            "rule": "Comms Hub Activity Type | Notes: 1 = Installation 2 = Removal 3 = Exchanged 4= Found (Found Asset or Initally installed by Gas Supplier) 5 = For Information"
+        },
+        {
+            "id": "DI-190",
+            "name": "Comms Hub Serial Number",
+            "cmo": "M",
+            "rule": "Comms Hub Serial Number"
+        },
+        {
+            "id": "DI-191",
+            "name": "Comms Hub GUID",
+            "cmo": "M",
+            "rule": "Comms Hub GUID | Notes:  XX-XX-XX-XX-XX-XX-XX-XX"
+        },
+        {
+            "id": "DI-192",
+            "name": "GPF (Gas) GUID",
+            "cmo": "O",
+            "rule": "Comms Hub Associated Gas GUID (if available) | Notes:  XX-XX-XX-XX-XX-XX-XX-XX"
+        },
+        {
+            "id": "DI-193",
+            "name": "Comms Hub Installation Date",
+            "cmo": "O",
+            "rule": "Comms Hub Installation Date | Notes: YYYY-MM-DDTHH:MM.SS\u00b1TZH:TZM"
+        },
+        {
+            "id": "DI-194",
+            "name": "Comms Hub F/W Version",
+            "cmo": "O",
+            "rule": "Comms Hub Firmware Version (if available)"
+        }
+    ]
+},
     {
         "id": "IF-005/PUB-005",
         "name": "Metering Service MTD Updates to Registration",
