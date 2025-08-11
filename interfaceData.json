@@ -1502,14 +1502,134 @@
         "supplier_type": "supplier_receive"
     },
     {
-        "id": "IF-041/PUB-041",
-        "name": "Smart / Advanced Readings",
-        "description": "New Interface to exchange Exchange, Smart and Smart COR Meter Readings between MHHS Parties",
-        "sender": "MS, DS, Supplier",
-        "receiver": "Advanced Data Service (ADS) and Smart Data Service (SDS) / Supplier (SUP)/ LDSO",
-        "context": "This interface is to allow Cumulative Reads and/or, Smart/Advanced Register Redings, to be exchanged in a number of business scenarios. Following MHHS implementation, in most cases consumption values will be available directly from the meter. However, there may be occasions when consumption may not be available, therefore a Cumulative Reading will need to be captured/shared as a 'fall back' measure",
-        "supplier_type": "supplier_both"
-    },
+    "id": "IF-041/PUB-041",
+    "name": "Smart / Advanced Readings",
+    "description": "New Interface to exchange Exchange, Smart and Smart COR Meter Readings between MHHS Parties",
+    "sender": "MS, DS, Supplier",
+    "receiver": "Advanced Data Service (ADS) and Smart Data Service (SDS) / Supplier (SUP)/ LDSO",
+    "context": "This interface is to allow Cumulative Reads and/or, Smart/Advanced Register Redings, to be exchanged in a number of business scenarios. Following MHHS implementation, in most cases consumption values will be available directly from the meter. However, there may be occasions when consumption may not be available, therefore a Cumulative Reading will need to be captured/shared as a 'fall back' measure",
+    "supplier_type": "supplier_both",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info - Sender Set (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-041"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ReadingRemv], [ReadingInstl], [ReadingEnergisationChg], [ReadingCOR], [ReadingOnSite], [ReadingCOS], [DSEstimate], [SupplierAgreedCOS], [ReadingOverride], [ReadingRemote]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "* B064 - Cumulative Reading Information (Conditionally Mandatory) - Block Repeated for each Meter(s) associated with the MPAN"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter."
+        },
+        {
+            "id": "DI-088",
+            "name": "Cumulative Register Reading",
+            "cmo": "M",
+            "rule": "The value of the Cumulative meter register at a specified date and time. | Notes: e.g. 123456789.123"
+        },
+        {
+            "id": "DI-089",
+            "name": "Cumulative Register Reading Date / Time",
+            "cmo": "M",
+            "rule": "The date and time [in UTC] of the Cumulative Register Meter Read. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM This should be considered to be midnight where an exact time is unavailible"
+        },
+        {
+            "id": "DI-094",
+            "name": "Reading Method",
+            "cmo": "M",
+            "rule": "Indicates how the Cumulative meter reading was obtained/derived | Notes: A -Actual Data Recovered from Meter C - Customer E- Estimate by SDS S - Estimate by Supplier X - Derived Reading (Based on Actual) Y - Dervied Reading (Based in Estimate)"
+        },
+        {
+            "id": "DI-096",
+            "name": "Site Visit Check Code",
+            "cmo": "O",
+            "rule": "A code identifying either nature of checks made/to be made on metering equipment during a site visit or identifying reason for failure to obtain readings. | Notes: Ref Data Catalogue for valid values"
+        },
+        {
+            "isHeader": true,
+            "title": "* B065 - Meter Configurable Register Reading (Conditionally Mandatory) - Block Repeated for each set of Configured Register(s) for each Meter"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter."
+        },
+        {
+            "id": "DI-099",
+            "name": "Configurable Register Reading Date /Time",
+            "cmo": "M",
+            "rule": "The date and time [in UTC] of a Configurable Register Meter Read. This should be considered to be midnight where an exact time is unavailible | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-103",
+            "name": "Configurable Register ID",
+            "cmo": "M",
+            "rule": "Register ID relating to a specific configurable (billing) register on a Smart/Advanced Meter | Notes: nn"
+        },
+        {
+            "id": "DI-104",
+            "name": "Configurable Register Reading",
+            "cmo": "M",
+            "rule": "Reading associated to a specific Register ID on a Smart/Advanced Meter | Notes: e.g. 123456789.123"
+        }
+    ]
+},
     {
         "id": "IF-043/PUB-043",
         "name": "Registration Service Notification of Change of Connection Type",
