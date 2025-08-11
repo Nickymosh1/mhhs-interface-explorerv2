@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHHS Interface Explorer | E.ON Next Theme</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --eon-red: #FF4822;
+            --birch: #FAF6F4;
+            --white: #FFFFFF;
+            --dark-purple: #36164A;
+            --purple: #5E0D98;
+            
+            --shadow-red: #e50000;
+            --shadow-birch: #f2e6e1;
+            --shadow-purple: #170920;
+
+            /* Data Colors */
+            --data-sun: #FFDE00;
+            --data-gas-off: #9254FF;
+            --data-leaf: #1AE570;
+            
+            /* Shadow colors for data buttons */
+            --shadow-gas-off: #7a46d4;
+            --shadow-sun: #d9bd00;
+            --shadow-leaf: #16c25e;
+        }
+        
+        /* Modern gradient backgrounds */
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--birch) 0%, #f0e9e6 100%);
+        }
+        
+        .card-gradient {
+            background: linear-gradient(145deg, var(--white) 0%, #fdfcfc 100%);
+        }
+        
+        /* Glass morphism effect */
+        .glass {
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Improved scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--eon-red), var(--purple));
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--purple), var(--eon-red));
+        }
+        
+        /* Enhanced filter buttons */
+        .filter-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+        
+        .filter-btn.active-filter {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .filter-btn[data-filter="all"].active-filter {
+            background: linear-gradient(135deg, var(--eon-red), #ff6b4a) !important;
+            color: var(--white) !important;
+            box-shadow: 0 8px 25px rgba(229, 0, 0, 0.3);
+        }
+        .filter-btn[data-filter="supplier_send"].active-filter {
+            background: linear-gradient(135deg, var(--data-gas-off), #a66eff) !important;
+            color: var(--white) !important;
+            box-shadow: 0 8px 25px rgba(122, 70, 212, 0.3);
+        }
+        .filter-btn[data-filter="supplier_receive"].active-filter {
+            background: linear-gradient(135deg, var(--data-sun), #ffe533) !important;
+            color: var(--dark-purple) !important;
+            box-shadow: 0 8px 25px rgba(217, 189, 0, 0.3);
+        }
+        .filter-btn[data-filter="supplier_both"].active-filter {
+            background: linear-gradient(135deg, var(--data-leaf), #33ff87) !important;
+            color: var(--dark-purple) !important;
+            box-shadow: 0 8px 25px rgba(22, 194, 94, 0.3);
+        }
+        .filter-btn[data-filter="none"].active-filter {
+            background: linear-gradient(135deg, var(--dark-purple), var(--purple)) !important;
+            color: var(--white) !important;
+            box-shadow: 0 8px 25px rgba(23, 9, 32, 0.3);
+        }
+        
+        /* Modern interface cards */
+        .interface-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .interface-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .interface-card:hover::before {
+            opacity: 1;
+        }
+        
+        .interface-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Enhanced border styles */
+        .border-send {
+            background: linear-gradient(90deg, var(--data-gas-off), transparent);
+            background-size: 4px 100%;
+            background-repeat: no-repeat;
+        }
+        
+        .border-receive {
+            background: linear-gradient(90deg, var(--data-sun), transparent);
+            background-size: 4px 100%;
+            background-repeat: no-repeat;
+        }
+        
+        .border-both {
+            background: linear-gradient(90deg, var(--data-leaf), transparent);
+            background-size: 4px 100%;
+            background-repeat: no-repeat;
+        }
+        
+        /* Header enhancements */
+        .hero-text {
+            background: linear-gradient(135deg, var(--eon-red), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Details panel improvements */
+        .details-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Status badges */
+        .status-badge {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .status-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.8s;
+        }
+        
+        .status-badge:hover::before {
+            left: 100%;
+        }
+        
+        /* Search input improvements */
+        .search-input {
+            background: linear-gradient(145deg, var(--birch), #f5f1ef);
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            background: var(--white);
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(255, 72, 34, 0.1);
+        }
+        
+        /* Welcome message improvements */
+        .welcome-icon {
+            background: linear-gradient(135deg, var(--eon-red), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="gradient-bg text-[var(--dark-purple)] min-h-screen">
+
+    <div class="container mx-auto p-4 md:p-6">
+        <header class="text-center mb-10">
+            <div class="float-animation inline-block">
+                <h1 class="text-4xl md:text-6xl font-bold hero-text mb-3">MHHS Interface Explorer</h1>
+            </div>
+            <p class="text-lg text-[var(--purple)] opacity-80 max-w-2xl mx-auto leading-relaxed">
+                Discover and explore interfaces based on the Supplier's role in the MHHS ecosystem.
+            </p>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-6">
+
+            <aside class="lg:w-1/3 xl:w-1/4 glass p-6 rounded-3xl shadow-2xl backdrop-blur-sm">
+                <h2 id="filter-heading" class="text-xl font-bold mb-5 text-[var(--eon-red)]">Find an Interface</h2>
+                
+                <div class="mb-5">
+                    <input type="search" id="searchInput" placeholder="Search by ID, name, or description..."
+                           class="search-input w-full px-4 py-3 border-0 rounded-xl focus:ring-2 focus:ring-[var(--eon-red)] transition placeholder:text-[var(--purple)] placeholder:opacity-60 text-base">
+                </div>
+
+                <div role="group" aria-labelledby="filter-heading" class="flex flex-wrap gap-2 mb-5">
+                    <button class="filter-btn border-0 text-[var(--purple)] bg-[var(--birch)] px-3 py-1.5 rounded-lg text-xs font-medium shadow-md" data-filter="all" aria-pressed="true">All Interfaces</button>
+                    <button class="filter-btn border-0 text-[var(--purple)] px-3 py-1.5 rounded-lg text-xs font-medium shadow-md" data-filter="supplier_send" aria-pressed="false" style="background: linear-gradient(135deg, #9254FF20, #9254FF10);">Supplier Send</button>
+                    <button class="filter-btn border-0 text-[var(--dark-purple)] px-3 py-1.5 rounded-lg text-xs font-medium shadow-md" data-filter="supplier_receive" aria-pressed="false" style="background: linear-gradient(135deg, #FFDE0030, #FFDE0020);">Supplier Receive</button>
+                    <button class="filter-btn border-0 text-[var(--purple)] px-3 py-1.5 rounded-lg text-xs font-medium shadow-md" data-filter="none" aria-pressed="false" style="background: linear-gradient(135deg, #e5e7eb, #f3f4f6);">Not Involved</button>
+                </div>
+
+                <div id="interfaceList" class="overflow-y-auto h-[60vh] pr-2" role="region" aria-live="polite" aria-atomic="true">
+                    </div>
+            </aside>
+
+            <main id="detailsPanel" class="lg:w-2/3 xl:w-3/4 card-gradient p-6 md:p-8 rounded-3xl shadow-2xl" role="main" aria-live="polite">
+                <div id="welcomeMessage" class="flex flex-col items-center justify-center h-full text-center py-16">
+                    <div class="welcome-icon mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2zM9 9h6v6H9V9z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-3 hero-text">Select an Interface</h2>
+                    <p class="text-lg text-[var(--purple)] opacity-80 max-w-md leading-relaxed">Click on any interface from the list to explore its details.</p>
+                </div>
+                <div id="detailsContent" class="hidden">
+                    </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // --- STEP 1: FETCH DATA FROM THE JSON FILE ---
+            let interfaceData = [];
+            try {
+                const response = await fetch('interfaceData.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                interfaceData = await response.json();
+            } catch (error) {
+                console.error("Could not load or parse interface data:", error);
+                // You could display an error message to the user here
+                const interfaceList = document.getElementById('interfaceList');
+                interfaceList.innerHTML = `<p class="text-center text-red-600 p-4">Error: Could not load interface data. Please check the console for details.</p>`;
+                return; // Stop execution if data fails to load
+            }
+
+            // --- STEP 2: SETUP APPLICATION (this is all your previous code) ---
+            const searchInput = document.getElementById('searchInput');
+            const interfaceList = document.getElementById('interfaceList');
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            const detailsContent = document.getElementById('detailsContent');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            let currentFilter = 'all';
+            let currentSearchTerm = '';
+            let filteredInterfaces = [];
+            
+            const renderInterfaceList = () => {
+                const lowerCaseSearchTerm = currentSearchTerm.toLowerCase();
+                
+                filteredInterfaces = interfaceData.filter(item => {
+                    const matchesFilter =
+                        currentFilter === 'all' ||
+                        item.supplier_type === currentFilter ||
+                        (currentFilter === 'supplier_send' && item.supplier_type === 'supplier_both') ||
+                        (currentFilter === 'supplier_receive' && item.supplier_type === 'supplier_both');
+                    
+                    const matchesSearch = !lowerCaseSearchTerm ||
+                                          (item.id && item.id.toLowerCase().includes(lowerCaseSearchTerm)) ||
+                                          (item.name && item.name.toLowerCase().includes(lowerCaseSearchTerm)) ||
+                                          (item.description && item.description.toLowerCase().includes(lowerCaseSearchTerm));
+                    return matchesFilter && matchesSearch;
+                });
+
+                interfaceList.innerHTML = '';
+
+                if (filteredInterfaces.length === 0) {
+                    interfaceList.innerHTML = `<div class="text-center text-[var(--purple)] opacity-80 p-4 bg-[var(--birch)] rounded-2xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.44-1.01-5.9-2.62l2.9-2.379a4 4 0 011.02.189M12 9a3 3 0 013 3m0 0a3 3 0 01-3 3m0-3h.01m9 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-base font-medium">No interfaces found</p>
+                        <p class="text-xs opacity-70">Try adjusting your search or filter</p>
+                    </div>`;
+                    return;
+                }
+                
+                const fragment = document.createDocumentFragment();
+                filteredInterfaces.forEach(item => {
+                    const typeStyles = {
+                        supplier_send: 'border-send',
+                        supplier_receive: 'border-receive',
+                        supplier_both: 'border-both',
+                        none: 'border-l-4 border-gray-300'
+                    };
+                    const element = document.createElement('div');
+                    element.className = `interface-card p-4 mb-2 bg-[var(--white)] rounded-xl cursor-pointer shadow-lg ${typeStyles[item.supplier_type]}`;
+                    element.dataset.id = item.id;
+                    element.setAttribute('role', 'button');
+                    element.setAttribute('tabindex', '0');
+                    element.innerHTML = `
+                        <p class="font-bold text-[var(--dark-purple)] pointer-events-none text-base mb-1">${escapeHtml(item.id)}</p>
+                        <p class="text-[var(--purple)] opacity-90 pointer-events-none leading-relaxed text-sm">${escapeHtml(item.name)}</p>
+                    `;
+                    fragment.appendChild(element);
+                });
+                interfaceList.appendChild(fragment);
+            };
+
+            const showDetails = (id) => {
+                const item = filteredInterfaces.find(i => i.id === id) || interfaceData.find(i => i.id === id);
+                if (!item) return;
+
+                welcomeMessage.classList.add('hidden');
+                detailsContent.classList.remove('hidden');
+                detailsContent.classList.add('details-fade-in');
+
+                const typeInfo = {
+                    supplier_send: { label: 'Supplier Send', classes: 'status-badge bg-gradient-to-r from-[var(--data-gas-off)] to-purple-600 text-white shadow-lg' },
+                    supplier_receive: { label: 'Supplier Receive', classes: 'status-badge bg-gradient-to-r from-[var(--data-sun)] to-yellow-400 text-[var(--dark-purple)] shadow-lg' },
+                    supplier_both: { label: 'Supplier Send & Receive', classes: 'status-badge bg-gradient-to-r from-[var(--data-leaf)] to-green-400 text-[var(--dark-purple)] shadow-lg' },
+                    none: { label: 'Supplier Not Involved', classes: 'status-badge bg-gradient-to-r from-gray-500 to-gray-600 text-white shadow-lg' }
+                };
+
+                const context = item.context || "No additional context is available for this interface.";
+                
+                let dataItemsHtml = `<div class="bg-gradient-to-br from-[var(--white)] to-[var(--birch)] rounded-2xl p-6 shadow-xl border border-gray-100 mt-8">
+                        <h3 class="text-xl font-bold text-[var(--eon-red)] mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            Data Items
+                        </h3>`;
+
+                if (item.data_items && item.data_items.length > 0) {
+                    dataItemsHtml += '<div class="overflow-x-auto"><table class="w-full text-sm text-left">';
+                    item.data_items.forEach(di => {
+                        if (di.isHeader) {
+                            dataItemsHtml += `<thead class="text-xs text-[var(--dark-purple)] uppercase bg-[var(--birch)]"><tr class="border-b"><th colspan="4" class="px-4 py-2 font-bold">${escapeHtml(di.title)}</th></tr></thead>`;
+                            dataItemsHtml += `<thead class="text-xs text-[var(--purple)] uppercase"><tr class="border-b"><th class="px-4 py-2">ID</th><th class="px-4 py-2">Data Item</th><th class="px-4 py-2">M/O/C</th><th class="px-4 py-2">Description / Rule</th></tr></thead>`;
+                        } else {
+                            dataItemsHtml += `<tbody class="divide-y"><tr class="hover:bg-gray-50">
+                                <td class="px-4 py-2 font-mono font-bold">${escapeHtml(di.id)}</td>
+                                <td class="px-4 py-2">${escapeHtml(di.name)}</td>
+                                <td class="px-4 py-2 font-semibold">${escapeHtml(di.cmo)}</td>
+                                <td class="px-4 py-2 text-xs opacity-80">${escapeHtml(di.rule)}</td>
+                            </tr></tbody>`;
+                        }
+                    });
+                    dataItemsHtml += '</table></div>';
+                } else {
+                    dataItemsHtml += '<p class="text-[var(--dark-purple)] opacity-70">No data items are associated with this interface.</p>';
+                }
+
+                dataItemsHtml += '</div>';
+
+                detailsContent.innerHTML = `<div class="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4 mb-6">
+                        <div class="flex-1">
+                            <h2 class="text-3xl lg:text-4xl font-bold text-[var(--dark-purple)] mb-2 leading-tight" tabindex="-1">${escapeHtml(item.name)}</h2>
+                            <p class="text-lg text-[var(--purple)] opacity-90 font-medium">${escapeHtml(item.id)}</p>
+                        </div>
+                        <span class="text-xs font-semibold px-4 py-2 rounded-xl ${typeInfo[item.supplier_type].classes} whitespace-nowrap">${escapeHtml(typeInfo[item.supplier_type].label)}</span>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-[var(--birch)] to-[var(--white)] p-6 rounded-2xl shadow-xl border border-gray-100">
+                            <h4 class="font-bold text-[var(--eon-red)] text-xs mb-2 uppercase tracking-wider flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+                                FROM
+                            </h4>
+                            <p class="font-semibold text-[var(--dark-purple)] text-base leading-relaxed">${escapeHtml(item.sender) || 'N/A'}</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-[var(--birch)] to-[var(--white)] p-6 rounded-2xl shadow-xl border border-gray-100">
+                            <h4 class="font-bold text-[var(--eon-red)] text-xs mb-2 uppercase tracking-wider flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                TO
+                            </h4>
+                            <p class="font-semibold text-[var(--dark-purple)] text-base leading-relaxed">${escapeHtml(item.receiver) || 'N/A'}</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-[var(--white)] to-[var(--birch)] rounded-2xl p-6 shadow-xl border border-gray-100">
+                        <h3 class="text-xl font-bold text-[var(--eon-red)] mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.44-1.01-5.9-2.62l2.9-2.379a4 4 0 011.02.189M12 9a3 3 0 013 3m0 0a3 3 0 01-3 3m0-3h.01m9 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Context & Purpose
+                        </h3>
+                        <p class="text-[var(--dark-purple)] leading-relaxed text-base">${escapeHtml(context)}</p>
+                    </div>
+                    ${dataItemsHtml}`;
+                detailsContent.querySelector('h2').focus();
+            };
+            
+            const escapeHtml = (text) => {
+                if (!text) return '';
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            };
+            
+            let debounceTimer;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    currentSearchTerm = e.target.value;
+                    renderInterfaceList();
+                }, 300);
+            });
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    currentFilter = button.dataset.filter;
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active-filter');
+                        btn.setAttribute('aria-pressed', 'false');
+                    });
+                    button.classList.add('active-filter');
+                    button.setAttribute('aria-pressed', 'true');
+                    renderInterfaceList();
+                });
+            });
+
+            interfaceList.addEventListener('click', (e) => {
+                const itemElement = e.target.closest('[data-id]');
+                if (itemElement) {
+                    showDetails(itemElement.dataset.id);
+                }
+            });
+
+            interfaceList.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    const itemElement = e.target.closest('[data-id]');
+                    if (itemElement) {
+                        e.preventDefault();
+                        showDetails(itemElement.dataset.id);
+                    }
+                }
+            });
+
+            // Initialize the application
+            document.querySelector('.filter-btn[data-filter="all"]').classList.add('active-filter');
+            renderInterfaceList();
+        });
+    </script>
+</body>
+</html>
