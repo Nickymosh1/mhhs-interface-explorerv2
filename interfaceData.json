@@ -1120,14 +1120,116 @@
         "supplier_type": "supplier_receive"
     },
     {
-        "id": "IF-027/PUB-027",
-        "name": "Request to Calculate & Submit Consumption Amendment",
-        "description": "Request by Supplier for the Data Service to Calculate and Submit a Consumption Amendment",
-        "sender": "Supplier (SUP)",
-        "receiver": "Advanced Data Service (ADS) and Smart Data Service (SDS)",
-        "context": "Request by Supplier for the Data Service to Calculate and Submit a Consumption Amendment",
-        "supplier_type": "supplier_send"
-    },
+    "id": "IF-027/PUB-027",
+    "name": "Request to Calculate & Submit Consumption Amendment",
+    "description": "Request by Supplier for the Data Service to Calculate and Submit a Consumption Amendment",
+    "sender": "Supplier (SUP)",
+    "receiver": "Advanced Data Service (ADS) and Smart Data Service (SDS)",
+    "context": "Request by Supplier for the Data Service to Calculate and Submit a Consumption Amendment",
+    "supplier_type": "supplier_send",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-027"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ConsumptionAmendment]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "*B045 - MQID (Block repeated for each MQID as Required)"
+        },
+        {
+            "id": "DI-052",
+            "name": "Measurement Quantity ID",
+            "cmo": "M",
+            "rule": "Identifies the type of the quantity | Notes: AI – Active import AE – Active export RI – Reactive import RE – Reactive export"
+        },
+        {
+            "isHeader": true,
+            "title": "*B073 - Supplier Consumption Amendment Request (Block repeated for each Consumption Period)"
+        },
+        {
+            "id": "DI-162",
+            "name": "Consumption Amendment Supplier Reference",
+            "cmo": "O",
+            "rule": "Supplier's Unique Reference Number for Consumption Amendment Request"
+        },
+        {
+            "id": "DI-163",
+            "name": "Consumption Amendment Period Start Date",
+            "cmo": "M",
+            "rule": "Consumption Amendment Period Start Date | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-164",
+            "name": "Consumption Amendment Period End Date",
+            "cmo": "M",
+            "rule": "Consumption Amendment Period End Date | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-165",
+            "name": "Gross Revised Consumption",
+            "cmo": "M",
+            "rule": "Gross Revised Consumption (kWh/kVAR) | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-166",
+            "name": "Supplier Consumption Amendment Reason Code",
+            "cmo": "M",
+            "rule": "Supplier Consumption Amendment Reason Code | Notes: A= Agreed Read E = Estimation Issue M = Metering Issue (Crossed/Missed Exchange/Found) R = Reading Issue (Transposed / Misread) S = Stolen/Lost Meter T = Tampering/Theft X = Other"
+        }
+    ]
+},
     {
         "id": "IF-028/PUB-028",
         "name": "Response to Consumption Amendment Request",
