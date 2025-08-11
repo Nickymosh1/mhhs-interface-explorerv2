@@ -310,23 +310,52 @@
             let currentSearchTerm = '';
             let filteredInterfaces = [];
             
-            const renderInterfaceList = () => {
-                const lowerCaseSearchTerm = currentSearchTerm.toLowerCase();
-                
+const renderInterfaceList = () => {
+                // --- NEW: Search keyword logic ---
+                const keywords = currentSearchTerm.toLowerCase().split(' ').filter(k => k.trim() !== '');
+
+                // Filter interfaces based on current filter and search term
                 filteredInterfaces = interfaceData.filter(item => {
+                    // Filter button logic (remains the same)
                     const matchesFilter =
                         currentFilter === 'all' ||
                         item.supplier_type === currentFilter ||
                         (currentFilter === 'supplier_send' && item.supplier_type === 'supplier_both') ||
                         (currentFilter === 'supplier_receive' && item.supplier_type === 'supplier_both');
                     
-                    const matchesSearch = !lowerCaseSearchTerm ||
-                                          (item.id && item.id.toLowerCase().includes(lowerCaseSearchTerm)) ||
-                                          (item.name && item.name.toLowerCase().includes(lowerCaseSearchTerm)) ||
-                                          (item.description && item.description.toLowerCase().includes(lowerCaseSearchTerm));
-                    return matchesFilter && matchesSearch;
+                    if (!matchesFilter) {
+                        return false;
+                    }
+
+                    // --- NEW: Comprehensive search logic ---
+                    if (keywords.length === 0) {
+                        return true; // If no search term, show all items that match the filter
+                    }
+
+                    // Create a single block of text with all searchable information
+                    let searchableText = [
+                        item.id,
+                        item.name,
+                        item.description,
+                        item.context,
+                        item.sender,
+                        item.receiver
+                    ].join(' ').toLowerCase();
+
+                    // Add all data item details to the searchable text
+                    if (item.data_items) {
+                        item.data_items.forEach(di => {
+                            if (!di.isHeader) { // We don't need to search the headers themselves
+                                searchableText += ` ${di.id} ${di.name} ${di.rule}`;
+                            }
+                        });
+                    }
+                    
+                    // Check if every keyword is present in the searchable text
+                    return keywords.every(keyword => searchableText.includes(keyword));
                 });
 
+                // The rest of the function (for displaying the list) remains the same
                 interfaceList.innerHTML = '';
 
                 if (filteredInterfaces.length === 0) {
