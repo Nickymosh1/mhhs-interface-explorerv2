@@ -1240,14 +1240,186 @@
         "supplier_type": "supplier_receive"
     },
     {
-        "id": "IF-031/PUB-031",
-        "name": "Request to Appoint Service Provider",
-        "description": "Initial request from Supplier to Registration Service to Appoint a Service Provider, either Metering Service or Data Service",
-        "sender": "Supplier (SUP)",
-        "receiver": "Registration Service (REGS)",
-        "context": "Initial request from Supplier to Registration Service to Appoint a Service Provider, either Metering Service or Data Service",
-        "supplier_type": "supplier_send"
-    },
+    "id": "IF-031/PUB-031",
+    "name": "Request to Appoint Service Provider",
+    "description": "Initial request from Supplier to Registration Service to Appoint a Service Provider, either Metering Service or Data Service",
+    "sender": "Supplier (SUP)",
+    "receiver": "Registration Service (REGS)",
+    "context": "Initial request from Supplier to Registration Service to Appoint a Service Provider, either Metering Service or Data Service",
+    "supplier_type": "supplier_send",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-031"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MSApp], [DSApp]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B013 CSS Registration Request ID (Mandatory if available)"
+        },
+        {
+            "id": "DI-849",
+            "name": "CSS Registration ID",
+            "cmo": "M",
+            "rule": "The CSS identifier associated with a Supplier's Registration"
+        },
+        {
+            "isHeader": true,
+            "title": "B070 - Proposed Metering Service Details (Mandatory for Event [MSApp])"
+        },
+        {
+            "id": "DI-828",
+            "name": "Proposed Metering Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of Metering Service supplier proposes should be appointed to an MPAN"
+        },
+        {
+            "id": "DI-213",
+            "name": "Proposed Metering Service MPID",
+            "cmo": "M",
+            "rule": "Proposed Metering Service MPID"
+        },
+        {
+            "id": "DI-830",
+            "name": "Proposed MS EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date at which Supplier would like proposed Metering Service appointment to take effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-019",
+            "name": "Contract Reference Metering Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the Metering Service. | Notes: Whilst this field is described as optional, participants should note that some Service Providers may insist on / require a Contract Reference to be provided in order for the Appointment Request to be accepted"
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier)"
+        },
+        {
+            "isHeader": true,
+            "title": "B071 - Proposed Data Service Details (Mandatory for Event [DSApp])"
+        },
+        {
+            "id": "DI-831",
+            "name": "Proposed Data Service DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of Data Service supplier proposes should be appointed to an MPAN"
+        },
+        {
+            "id": "DI-214",
+            "name": "Proposed Data Service MPID",
+            "cmo": "M",
+            "rule": "Proposed Data Service MPID"
+        },
+        {
+            "id": "DI-833",
+            "name": "Proposed DS Effective From Date",
+            "cmo": "M",
+            "rule": "Date at which Supplier would like proposed Data Service appointment to take effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-020",
+            "name": "Contract Reference Data Service",
+            "cmo": "O",
+            "rule": "The unique reference of the contractual agreement between a supplier and the data service. | Notes: Whilst this field is described as optional, participants should note that some Service Providers may insist on / require a Contract Reference to be provided in order for the Appointment Request to be accepted"
+        },
+        {
+            "id": "DI-800",
+            "name": "Service Provider Appointment Scenario",
+            "cmo": "M",
+            "rule": "Code used to identify the scenario around Service Provider Appointment | Notes: COS (Change of Supplier), CSP (Change of SP), USP (Update existing SP Appointment), SEG (Change of Segment), MCA (Migration Change of Agent), MCS (Migration Change of Supplier)"
+        },
+        {
+            "id": "DI-834",
+            "name": "Supplier Nominated MDR DIP ID",
+            "cmo": "O",
+            "rule": "The market-wide unique reference for a specific Meter Data Retriever (MDR)"
+        },
+        {
+            "id": "DI-215",
+            "name": "Supplier Nominated MDR MPID",
+            "cmo": "O",
+            "rule": "Supplier Nominated MDR MPID"
+        },
+        {
+            "id": "DI-836",
+            "name": "Supplier Nominated MDR Effective From Date",
+            "cmo": "O",
+            "rule": "Date from which Supplier would like Nominated MDR to apply | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM Populated in circumstances when a Change of MDR is required"
+        },
+        {
+            "id": "DI-838",
+            "name": "Supplier Proposed Consent Granularity",
+            "cmo": "M",
+            "rule": "Supplier proposed Consent Granularity for a SP Appointment | Notes: H – HH Consent Granted D – Daily M - Monthly Reads Only N - No Consent"
+        },
+        {
+            "id": "DI-837",
+            "name": "Supplier Proposed Domestic Premise Indicator",
+            "cmo": "M",
+            "rule": "Supplier proposed DPI for a SP Appointment | Notes: T= True (Domestic) F= False (Non-Domestic)"
+        },
+        {
+            "id": "DI-126",
+            "name": "Traditional / Fall Back Read Frequency",
+            "cmo": "O",
+            "rule": "Supplier requested Traditional / Fall Back Meter Reading Frequency | Notes: F- Fortnightly W - Weekly M - Monthly Q - Quarterly S - Six Monthly A - Annually"
+        }
+    ]
+},
     {
         "id": "IF-032/PUB-032",
         "name": "Response to Initial Service Provider Appointment Request",
