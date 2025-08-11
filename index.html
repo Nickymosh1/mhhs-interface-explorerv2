@@ -388,7 +388,7 @@
                         </h3>`;
 
                 if (item.data_items && item.data_items.length > 0) {
-                    dataItemsHtml += '<div class="overflow-x-auto"><table class="w-full text-sm text-left">';
+                   dataItemsHtml += '<div class="overflow-y-auto overflow-x-auto max-h-[50vh]"><table class="w-full text-sm text-left">';
                     item.data_items.forEach(di => {
                         if (di.isHeader) {
                             dataItemsHtml += `<thead class="text-xs text-[var(--dark-purple)] uppercase bg-[var(--birch)]"><tr class="border-b"><th colspan="4" class="px-4 py-2 font-bold">${escapeHtml(di.title)}</th></tr></thead>`;
