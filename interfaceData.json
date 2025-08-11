@@ -7343,14 +7343,100 @@
     ]
 },
     {
-        "id": "IF-043/PUB-043",
-        "name": "Registration Service Notification of Change of Connection Type",
-        "description": "Registration Notification of a Successful Change in Connection Type",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Supplier (SUP), Data Service (ADS,SDS), Metering Service (MSS, MSA), MDS, LDSO & EES",
-        "context": "Registration Service Notification of a Change in Connection Type",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-043/PUB-043",
+    "name": "Change of Connection Type",
+    "description": "Used by the Registration Service (REGS) to notify the DCC of a change in connection type for a given MPAN, i.e. a change in connection from LV with CT to LV with CT/WHOLE CURRENT.",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Data Communications Company (DCC)",
+    "context": "Used by the Registration Service (REGS) to notify the DCC of a change in connection type for a given MPAN, i.e. a change in connection from LV with CT to LV with CT/WHOLE CURRENT.",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-043"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ConnectionTypeChange]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B023 - MPAN Connection Info (Mandatory)"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current, L - LV with CT, H - HV with CT, E - EHV with CT, U - Unmetered"
+        },
+        {
+            "id": "DI-016",
+            "name": "Connection Type Effective FromDate",
+            "cmo": "M",
+            "rule": "The date and time from which the metering point Connection Type is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-035",
+            "name": "Energy Direction",
+            "cmo": "M",
+            "rule": "Indicates the direction of energy at a metering point. Values can be I = import / E = export. | Notes: I = Import, E = Export"
+        },
+        {
+            "id": "DI-127",
+            "name": "Metered Indicator",
+            "cmo": "M",
+            "rule": "An indicator to show whether the Consumption Component is for a metered supply or unmetered supply. | Notes: False = U - Unmetered, True = M - Metered"
+        }
+    ]
+},
     {
         "id": "IF-044/PUB-044",
         "name": "Registration Service Notification of Change of Segment",
