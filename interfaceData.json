@@ -710,14 +710,92 @@
         "supplier_type": "supplier_receive"
     },
     {
-        "id": "IF-019/PUB-019",
-        "name": "Request to Create/Change MPAN Relationship",
-        "description": "Interface to allow Supplier to request/specify the Creation, Addition or Removal of MPAN(s) from a MPAN Relationship - either an Import/Export or Related MPAN grouping.",
-        "sender": "Supplier (SUP)",
-        "receiver": "Registration Service (REGS)/LDSO",
-        "context": "Interface to allow Supplier to request/specify the Creation, Addition or Removal of MPAN(s) from a MPAN Relationship - either an Import/Export or Related MPAN grouping.",
-        "supplier_type": "supplier_send"
-    },
+    "id": "IF-019/PUB-019",
+    "name": "Request to Create/Change MPAN Relationship",
+    "description": "Interface to allow Supplier to request/specify the Creation, Addition or Removal of MPAN(s) from a MPAN Relationship - either an Import/Export or Related MPAN grouping.",
+    "sender": "Supplier (SUP)",
+    "receiver": "Registration Service (REGS)/LDSO",
+    "context": "Interface to allow Supplier to request/specify the Creation, Addition or Removal of MPAN(s) from a MPAN Relationship - either an Import/Export or Related MPAN grouping.",
+    "supplier_type": "supplier_send",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-019"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [LinkedImportExportCreate], [LinkedImportExportAdd], [LinkedImportExportRemove], [RelatedCreate], [RelatedAdd], [RelatedRemove]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M1- MPAN Relationship Principal MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-073",
+            "name": "Principal MPAN",
+            "cmo": "M",
+            "rule": "The Principal MPAN in a Related/Linked MPAN Relationship"
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "*B090- MPAN Relationship Subsidiary MPAN (Mandatory) - Group below repeated for each Secondary MPAN as Required"
+        },
+        {
+            "id": "DI-074",
+            "name": "Subsidiary MPAN",
+            "cmo": "M",
+            "rule": "The subsidiary MPAN in a Related/Linked MPAN Relationship"
+        },
+        {
+            "isHeader": true,
+            "title": "B091 MPAN Relationship Additonal Information (Optional)"
+        },
+        {
+            "id": "DI-120",
+            "name": "Additional Information",
+            "cmo": "M",
+            "rule": "A free format character string for providing additional details."
+        }
+    ]
+},
     {
         "id": "IF-020/PUB-020",
         "name": "MPAN Relationship Response",
