@@ -329,35 +329,46 @@
          * Filters the interface data based on current search and filter state, then renders the list.
          */
         function filterAndRender() {
-            const lowerCaseSearchTerm = state.currentSearchTerm.toLowerCase();
+            // Splits the search query into individual words
+            const searchTerms = state.currentSearchTerm.toLowerCase().split(' ').filter(term => term.trim() !== '');
             
             state.filteredInterfaces = state.interfaceData.filter(item => {
-                // Reverted filter logic to handle 'supplier_both' correctly
+                // Filter logic for buttons
                 const matchesFilter =
                     state.currentFilter === 'all' ||
                     item.supplier_type === state.currentFilter ||
                     (state.currentFilter === 'supplier_send' && item.supplier_type === 'supplier_both') ||
                     (state.currentFilter === 'supplier_receive' && item.supplier_type === 'supplier_both');
 
-                // --- SMART SEARCH LOGIC ---
-                // Checks top-level info OR info within data_items
-                const matchesSearch = !lowerCaseSearchTerm ||
-                    (item.id && item.id.toLowerCase().includes(lowerCaseSearchTerm)) ||
-                    (item.name && item.name.toLowerCase().includes(lowerCaseSearchTerm)) ||
-                    (item.description && item.description.toLowerCase().includes(lowerCaseSearchTerm)) ||
-                    (item.data_items && item.data_items.some(di => 
-                        !di.isHeader && (
-                            (di.name && di.name.toLowerCase().includes(lowerCaseSearchTerm)) ||
-                            (di.rule && di.rule.toLowerCase().includes(lowerCaseSearchTerm)) ||
-                            (di.id && di.id.toLowerCase().includes(lowerCaseSearchTerm))
-                        )
-                    ));
-                
-                return matchesFilter && matchesSearch;
+                if (!matchesFilter) return false;
+
+                // If no search term, show all items that match the filter
+                if (searchTerms.length === 0) return true;
+
+                // --- NEW SMART SEARCH LOGIC ---
+                // Combine all searchable text fields from the interface and its data items into one string
+                let searchableContent = [
+                    item.id,
+                    item.name,
+                    item.description
+                ].join(' ').toLowerCase();
+
+                if (item.data_items) {
+                    item.data_items.forEach(di => {
+                        if (!di.isHeader) {
+                            searchableContent += ` ${di.id} ${di.name} ${di.rule}`;
+                        }
+                    });
+                }
+                searchableContent = searchableContent.toLowerCase();
+
+                // Check if EVERY search term is present in the combined content string
+                return searchTerms.every(term => searchableContent.includes(term));
             });
 
             renderInterfaceList();
         }
+
 
         /**
          * Renders the list of filtered interfaces.
