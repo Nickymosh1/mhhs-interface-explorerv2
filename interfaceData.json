@@ -7438,93 +7438,1404 @@
     ]
 },
     {
-        "id": "IF-044/PUB-044",
-        "name": "Registration Service Notification of Change of Segment",
-        "description": "Registration Notification of a Successful Change in Market Segment",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Supplier (SUP), MDS, LDSO & EES",
-        "context": "Registration Service Notification of a Change in Market Segment",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-044/PUB-044",
+    "name": "Registration Service Notification of Change of Segment",
+    "description": "Registration Notification of a Successful Change in Market Segment",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Supplier (SUP), MDS, LDSO & EES",
+    "context": "Registration Service Notification of a Change in Market Segment",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-044"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MarketSegmentChange]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B026 - MPAN Market Segment (Mandatory)"
+        },
+        {
+            "id": "DI-050",
+            "name": "Market Segment Indicator",
+            "cmo": "M",
+            "rule": "An enumeration of Smart/Advanced/Unmetered. | Notes: S = Smart/Traditional, A = Advanced, U = Unmetered"
+        },
+        {
+            "id": "DI-051",
+            "name": "Market Segment Indicator Effective From Date",
+            "cmo": "M",
+            "rule": "The date from which the metering point Market Segment is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B023 - MPAN Connection Info (Mandatory)"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current, L - LV with CT, H - HV with CT, E - EHV with CT, U - Unmetered"
+        },
+        {
+            "id": "DI-016",
+            "name": "Connection Type Effective FromDate",
+            "cmo": "M",
+            "rule": "The date and time from which the metering point Connection Type is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-035",
+            "name": "Energy Direction",
+            "cmo": "M",
+            "rule": "Indicates the direction of energy at a metering point. Values can be I = import / E = export. | Notes: I = Import, E = Export"
+        },
+        {
+            "id": "DI-127",
+            "name": "Metered Indicator",
+            "cmo": "M",
+            "rule": "An indicator to show whether the Consumption Component is for a metered supply or unmetered supply. | Notes: False = U - Unmetered, True = M - Metered"
+        }
+    ]
+},
     {
-        "id": "IF-045/PUB-045",
-        "name": "Registration Service Reminder Notification",
-        "description": "Reminder Notification to a Supplier that some element of Registration Data is inconsistent or invalid, & action is required to resolve it",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Supplier (SUP)/ Advanced Data Service (ADS) and Smart Data Service (SDS) / Advanced Metering Service (MSA) and Smart Metering Service (MSS)",
-        "context": "Reminder Notification to a Supplier that some element of Registration Data is inconsistent or invalid, & action is required to resolve it",
-        "supplier_type": "supplier_receive"
-    },
+    "id": "IF-045/PUB-045",
+    "name": "Registration Service Reminder Notification",
+    "description": "Reminder Notification to a Supplier that some element of Registration Data is inconsistent or invalid, & action is required to resolve it",
+    "sender": "Registration Service (REGS)",
+    "receiver": "Supplier (SUP)/ Advanced Data Service (ADS) and Smart Data Service (SDS) / Advanced Metering Service (MSA) and Smart Metering Service (MSS)",
+    "context": "Reminder Notification to a Supplier that some element of Registration Data is inconsistent or invalid, & action is required to resolve it",
+    "supplier_type": "supplier_receive",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-045"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [InvalidMarketSegment], [ConsentGranularityInvalid], [NoMSAppointed], [NoDSAppointed]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B060 - Registration Reminder Additional Information (Optional)"
+        },
+        {
+            "id": "DI-120",
+            "name": "Additional Information",
+            "cmo": "M",
+            "rule": "Additional Information"
+        }
+    ]
+},
     {
-        "id": "IF-047/PUB-047",
-        "name": "Notification of the Publication of a Downloadable Asset",
-        "description": "URI Listing showing location of Downloadable Resources (For example ISD)",
-        "sender": "Central Settlements (ISD)",
-        "receiver": "Public (All Roles)",
-        "context": "The purpose of this interface is to notify DIP Participants of the Publication of a Downloadable Asset, such as ISD or other Reports, and the URI that can be used to access the publication.",
-        "supplier_type": "none"
-    },
+    "id": "IF-047/PUB-047",
+    "name": "Notification of the Publication of a Downloadable Asset",
+    "description": "URI Listing showing location of Downloadable Resources (For example ISD)",
+    "sender": "Central Settlements (ISD)",
+    "receiver": "Public (All Roles)",
+    "context": "The purpose of this interface is to notify DIP Participants of the Publication of a Downloadable Asset, such as ISD or other Reports, and the URI that can be used to access the publication.",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info - Sender Set (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-047"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ISD]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "P01 - Publication Information"
+        },
+        {
+            "id": "DI-960",
+            "name": "Publication Description",
+            "cmo": "M",
+            "rule": "Description of Publication | Notes: For Example: ISD May 2024"
+        },
+        {
+            "id": "DI-961",
+            "name": "Publication Version ID",
+            "cmo": "M",
+            "rule": "Publication Version ID / Number"
+        },
+        {
+            "id": "DI-962",
+            "name": "Publication Issued Date",
+            "cmo": "M",
+            "rule": "Date/Time Publication was issued"
+        },
+        {
+            "isHeader": true,
+            "title": "> P01 Block Below Repeated for each Distribution Variant"
+        },
+        {
+            "isHeader": true,
+            "title": "> P02 - Distribution Variant"
+        },
+        {
+            "id": "DI-963",
+            "name": "Distribution Variant ID",
+            "cmo": "M",
+            "rule": "Unique Identifier for Distibution Variant | Notes: For Example: Full, Deltas, MST, LLF"
+        },
+        {
+            "id": "DI-964",
+            "name": "Distribution Variant Name",
+            "cmo": "M",
+            "rule": "Distribution Variant Name"
+        },
+        {
+            "id": "DI-965",
+            "name": "Distribution Variant Description",
+            "cmo": "O",
+            "rule": "Distribution Variant Description"
+        },
+        {
+            "id": "DI-966",
+            "name": "Distribution Variant Version ID",
+            "cmo": "M",
+            "rule": "Version Number of the Distribution Variant"
+        },
+        {
+            "id": "DI-967",
+            "name": "Distribution Variant Issued Date",
+            "cmo": "M",
+            "rule": "Publication Date of the Distribution Variant"
+        },
+        {
+            "id": "DI-968",
+            "name": "Distribution Variant Format",
+            "cmo": "O",
+            "rule": "File Type of the Distribution Variant Components (e.g. JSON/CSV/PDF File) | Notes: (e.g. JSON/CSV/PDF File)"
+},
     {
-        "id": "IF-050/PUB-050",
-        "name": "EES Updates",
-        "description": "The purpose of this interface is to provide updates to EES from the Registration Service which are not required to be serviced by any other interface.",
-        "sender": "Registration Service (REGS)",
-        "receiver": "EES Only",
-        "context": "Registration Service sends this to provide updates to EES which are not required to be serviced by any other interface.",
-        "supplier_type": "none"
-    },
+    "id": "IF-050/PUB-050",
+    "name": "EES Updates",
+    "description": "The purpose of this interface is to provide updates to EES from the Registration Service which are not required to be serviced by any other interface.",
+    "sender": "Registration Service (REGS)",
+    "receiver": "EES Only",
+    "context": "Registration Service sends this to provide updates to EES which are not required to be serviced by any other interface.",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-050"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MPANCreation], [MPStatusChange], [GreenDeal]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Optional for non-Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B001 - GSP EffectiveFrom (Mandatory for Event [MPANCreation])"
+        },
+        {
+            "id": "DI-036",
+            "name": "GSP Group ID EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The date and time from which the GSP Group ID is in effect for the metering system. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B022 - MPAN Address (Mandatory for Event [MPANCreation])"
+        },
+        {
+            "id": "DI-010",
+            "name": "Metering Point Postcode",
+            "cmo": "O",
+            "rule": "The full postcode of the metering point site."
+        },
+        {
+            "id": "DI-001",
+            "name": "Address Line 1",
+            "cmo": "O",
+            "rule": "A component of a metering point site address. There are defined parts of the address for each address line."
+        },
+        {
+            "id": "DI-002",
+            "name": "Address Line 2",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-003",
+            "name": "Address Line 3",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-004",
+            "name": "Address Line 4",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-005",
+            "name": "Address Line 5",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-006",
+            "name": "Address Line 6",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-007",
+            "name": "Address Line 7",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-008",
+            "name": "Address Line 8",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "id": "DI-009",
+            "name": "Address Line 9",
+            "cmo": "O",
+            "rule": "A component of a metering point site address"
+        },
+        {
+            "isHeader": true,
+            "title": "B023 - MPAN Connection Info (Mandatory for Event [MPANCreation])"
+        },
+        {
+            "id": "DI-015",
+            "name": "Connection Type Indicator",
+            "cmo": "M",
+            "rule": "A code to indicate the type of connection at the metering point. | Notes: W - Whole Current, L - LV with CT, H - HV with CT, E - EHV with CT, U - Unmetered"
+        },
+        {
+            "id": "DI-016",
+            "name": "Connection Type Effective From Date",
+            "cmo": "M",
+            "rule": "The date and time from which the metering point Connection Type is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-035",
+            "name": "Energy Direction",
+            "cmo": "M",
+            "rule": "Indicates the direction of energy at a metering point. Values can be I = import / E = export. | Notes: I = Import, E = Export"
+        },
+        {
+            "id": "DI-127",
+            "name": "Metered Indicator",
+            "cmo": "M",
+            "rule": "An indicator to show whether the Consumption Component is for a metered supply or unmetered supply. | Notes: False = U - Unmetered, True = M - Metered"
+        },
+        {
+            "isHeader": true,
+            "title": "B024 - MPAN DUOS Tariff ID (Mandatory for Event [MPANCreation])"
+        },
+        {
+            "id": "DI-128",
+            "name": "DUOS Tariff ID",
+            "cmo": "M",
+            "rule": "Reference to identify the DUoS Tariff assigned to an MPAN"
+        },
+        {
+            "id": "DI-129",
+            "name": "DUOS Tariff ID EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "Date on which DUoS Tariff came into effect | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B025 - MPAN Energisation Status (Mandatory for Event [MPANCreation])"
+        },
+        {
+            "id": "DI-033",
+            "name": "Energisation Status",
+            "cmo": "M",
+            "rule": "Indicates if the metering point is considered energised (i.e. connected to the distribution system) and therefore active for settlement purposes. | Notes: D - De-Energised, E - Energised"
+        },
+        {
+            "id": "DI-034",
+            "name": "Energisation Status Effective From Date",
+            "cmo": "M",
+            "rule": "The settlement date and time from which an energisation status is in effect for a metering system. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B026 - MPAN Market Segment (Mandatory for Event [MPANCreation])"
+        },
+        {
+            "id": "DI-050",
+            "name": "Market Segment Indicator",
+            "cmo": "M",
+            "rule": "An enumeration of Smart/Advanced/Unmetered. | Notes: S = Smart/Traditional, A = Advanced, U = Unmetered"
+        },
+        {
+            "id": "DI-051",
+            "name": "Market Segment Indicator Effective From Date",
+            "cmo": "M",
+            "rule": "The date from which the metering point Market Segment is in effect. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B079 - Meter Point Registration Statuses (Mandatory for Event [MPStatusChange] & [MPANCreation])"
+        },
+        {
+            "id": "DI-130",
+            "name": "RMP Status (Registration)",
+            "cmo": "M",
+            "rule": "The MPAN RMP Status as held in the Registration Service | Notes: C = Created, O = Operational, T = Terminated"
+        },
+        {
+            "id": "DI-167",
+            "name": "RMP Status Effective From Date",
+            "cmo": "M",
+            "rule": "The Effective From Date of MPAN RMP Status as held in the Registration Service | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-131",
+            "name": "MP Status",
+            "cmo": "M",
+            "rule": "The MP or Trading Status as held in the Registration Service | Notes: N= New, R = Registered, T = Traded, X = Disconnected"
+        },
+        {
+            "id": "DI-168",
+            "name": "MP Status Effective From Date",
+            "cmo": "M",
+            "rule": "The Effective From Date MP or Trading Status as held in the Registration Service | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B080 - Green Deal Information (Mandatory for Event [GreenDeal])"
+        },
+        {
+            "id": "DI-111",
+            "name": "Green Deal Effective From Date",
+            "cmo": "O",
+            "rule": "The date from which a Green Deal agreement is considered to be in place."
+        },
+        {
+            "id": "DI-112",
+            "name": "Green Deal Effective To Date",
+            "cmo": "O",
+            "rule": "The date to which a Green Deal agreement is considered to be in place."
+        }
+    ]
+},
     {
-        "id": "IF-051/PUB-051",
-        "name": "EES Data Refresh",
-        "description": "Flow from Registration Service to EES providing a 'refresh'of the current data position in the Registration Service",
-        "sender": "Registration Service (REGS)",
-        "receiver": "Electricity Enquiry Service (EES) ONLY",
-        "context": "Flow from Registration Service to EES providing a 'refresh'of the current data position in the Registration Service",
-        "supplier_type": "none"
-    },
+    "id": "IF-061/PUB-061",
+    "name": "MDR Start Request",
+    "description": "Request from SDS that an MDR begins Data Retrieval Activity",
+    "sender": "Smart Data Service (SDS)",
+    "receiver": "Meter Data Retriever (MDR)",
+    "context": "Request from the SDS that an MDR starts Data Retrieval Activity",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-061"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MDRStart]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Required - Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B019 - Assigned MDR (Mandatory)"
+        },
+        {
+            "id": "DI-842",
+            "name": "Assigned MDR DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the MDR assigned to an MPAN"
+        },
+        {
+            "id": "DI-209",
+            "name": "Assigned MDR MPID",
+            "cmo": "M",
+            "rule": "Assigned MDR MPID"
+        },
+        {
+            "id": "DI-844",
+            "name": "Assigned MDR EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The Effective Date from which the MDR Effective Date to be recorded as in Registration and DCC | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B012 Service Provider Requesting Supplier (Optional)"
+        },
+        {
+            "id": "DI-847",
+            "name": "Service Provider Appointment Requesting Supplier DIP ID",
+            "cmo": "M",
+            "rule": "DIP of Supplier making the Service Appointment Request"
+        },
+        {
+            "id": "DI-206",
+            "name": "Service Provider Appointment Requesting Supplier MPID",
+            "cmo": "M",
+            "rule": "Service Provider Appointment Requesting Supplier MPID"
+        },
+        {
+            "isHeader": true,
+            "title": "B078 - Energy Direction (mandatory)"
+        },
+        {
+            "id": "DI-035",
+            "name": "Energy Direction",
+            "cmo": "M",
+            "rule": "Indicates the direction of energy at a metering point. Values can be I = import / E = export. | Notes: I = Import, E = Export"
+        },
+        {
+            "isHeader": true,
+            "title": "B025- Energisation Status (Mandatory)"
+        },
+        {
+            "id": "DI-033",
+            "name": "Energisation Status",
+            "cmo": "M",
+            "rule": "Indicates if the metering point is considered energised (i.e. connected to the distribution system) and therefore active for settlement purposes. | Notes: D - De-Energised, E - Energised"
+        },
+        {
+            "id": "DI-034",
+            "name": "Energisation Status Effective From Date",
+            "cmo": "M",
+            "rule": "The settlement date and time from which an energisation status is in effect for a metering system. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B068 - MPAN Consent Info (Mandatory)"
+        },
+        {
+            "id": "DI-017",
+            "name": "Consent Granularity",
+            "cmo": "M",
+            "rule": "Describes the granularity of energy settlement data that a customer has deemed to have consented to. | Notes: LDSOH – HH Consent Granted, D – Daily, M - Monthly Reads Only, N - No consent"
+        },
+        {
+            "id": "DI-018",
+            "name": "Consent Granularity Effective From Date",
+            "cmo": "M",
+            "rule": "The date from which the consent granularity was in effect. | Notes: MDS &LDSO&MSYYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B031 - SMSO Info (Optional)"
+        },
+        {
+            "id": "DI-134",
+            "name": "SMSO (Smart Metering System Operator)",
+            "cmo": "M",
+            "rule": "The Id of the operator a Supplier has procured data and communication services from in respect of a Metering System (applies only to certain types of SMETS1 Metering)."
+        },
+        {
+            "id": "DI-135",
+            "name": "SMSO EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The first inclusive calendar date that a Smart Metering System Operator ID is the provider of communications services to a Metering System (applies only to certain types of SMETS1 Metering). | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "*B074 Block below repeated for each Installed Meter"
+        },
+        {
+            "isHeader": true,
+            "title": "B074 - Existing MPAN Meter Details (Mandatory if Metering Installed)"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter. | Notes: MSID for the 'existing' or 'newly installed' meter depending on Event type"
+        },
+        {
+            "id": "DI-059",
+            "name": "Meter Type",
+            "cmo": "M",
+            "rule": "The type of meter, in relation to its capabilities. E.g. AMR.S1, S2, S2ADE | Notes: Values as per ISD"
+        },
+        {
+            "id": "DI-048",
+            "name": "Manufacturers Make and Type",
+            "cmo": "O",
+            "rule": "The manufacturer's make name and type number of a Meter"
+        },
+        {
+            "id": "DI-085",
+            "name": "Electricity Smart Meter Equipment (ESME ID)",
+            "cmo": "C",
+            "rule": "The Electricity Smart Meter Equipment GUID is the unique identifier for a Smart electricity This is also known as the DCC GUID and is further defined within the DCC interface specifications. | Notes: Mandatory for Smart Meters(XX-XX-XX-XX-XX-XX-XX-XX)"
+        },
+        {
+            "id": "DI-090",
+            "name": "Meter Location",
+            "cmo": "M",
+            "rule": "The actual location of the metering system within the site | Notes: Values as Per Data Catalogue"
+        },
+        {
+            "id": "DI-091",
+            "name": "Number of Displayed Register Digits",
+            "cmo": "C",
+            "rule": "The number of digits prior to the decimal point displayed by the total cumulative register of a smart meter | Notes: Mandatory for SMETS2 Meters, Where the Meter Type is S1 the Number of Displayed Register Digits value must be be per the manufacturer's specification, Where the Meter Type is S2A, S2AD, S2ADE, 2ADF, 2ADEF, 2AEF, 2AF, S2B, S2BD, S2BDE, 2BF,2BDF, 2BDEF or 2BEF the value must be “5”, Where the Meter Type is prefixed with “S2C” the value must be “6”, Where the Meter Type is 2CDEF, 2CF, 2CDF or 2CEF the value must be “6”"
+        },
+        {
+            "id": "DI-057",
+            "name": "Meter Installation Date/Time",
+            "cmo": "M",
+            "rule": "The date of installation for a meter at a metering point. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B060 - Additional Information (Optional)"
+        },
+        {
+            "id": "DI-120",
+            "name": "Additional Information",
+            "cmo": "M",
+            "rule": "Additional Information"
+        }
+    ]
+},
     {
-        "id": "IF-061/PUB-061",
-        "name": "MDR Start Request",
-        "description": "Request from SDS that an MDR begins Data Retrieval Activity",
-        "sender": "Smart Data Service (SDS)",
-        "receiver": "Meter Data Retriever (MDR)",
-        "context": "Request from the SDS that an MDR starts Data Retrieval Activity",
-        "supplier_type": "none"
-    },
+    "id": "IF-062/PUB-062",
+    "name": "MDR Start Request Response",
+    "description": "Reponse from MDR to SDS Request to Start Data Retrieval Activity",
+    "sender": "Meter Data Retriever (MDR)",
+    "receiver": "Smart Data Service (SDS)",
+    "context": "This is the reponse from MDR to SDS Request to Start Data Retrieval Activity",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-062"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MDRStartResponse]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Required - Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "R0 - Response (Mandatory)"
+        },
+        {
+            "id": "DI-979",
+            "name": "Response Code",
+            "cmo": "M",
+            "rule": "Code used to identify the outcome of the Event Request | Notes: A= Accept, R=Reject"
+        },
+        {
+            "id": "DI-980",
+            "name": "Response Message",
+            "cmo": "C",
+            "rule": "Message describing the status/outcome of the previous originating transaction | Notes: Required if [DI-979] = \"R\""
+        },
+        {
+            "isHeader": true,
+            "title": "B019 - Assigned MDR (Mandatory)"
+        },
+        {
+            "id": "DI-842",
+            "name": "Assigned MDR DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the MDR assigned to an MPAN"
+        },
+        {
+            "id": "DI-209",
+            "name": "Assigned MDR MPID",
+            "cmo": "M",
+            "rule": "Assigned MDR MPID"
+        },
+        {
+            "id": "DI-844",
+            "name": "Assigned MDR EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The Effective Date from which the MDR Effective Date to be recorded as in Registration and DCC | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B012 Service Provider Requesting Supplier (Optional)"
+        },
+        {
+            "id": "DI-847",
+            "name": "Service Provider Appointment Requesting Supplier DIP ID",
+            "cmo": "M",
+            "rule": "DIP of Supplier making the Service Appointment Request"
+        },
+        {
+            "id": "DI-206",
+            "name": "Service Provider Appointment Requesting Supplier MPID",
+            "cmo": "M",
+            "rule": "Service Provider Appointment Requesting Supplier MPID"
+        },
+        {
+            "isHeader": true,
+            "title": "B078 - Energy Direction (mandatory)"
+        },
+        {
+            "id": "DI-035",
+            "name": "Energy Direction",
+            "cmo": "M",
+            "rule": "Indicates the direction of energy at a metering point. Values can be I = import / E = export. | Notes: I = Import, E = Export"
+        },
+        {
+            "isHeader": true,
+            "title": "B025- Energisation Status (Mandatory)"
+        },
+        {
+            "id": "DI-033",
+            "name": "Energisation Status",
+            "cmo": "M",
+            "rule": "Indicates if the metering point is considered energised (i.e. connected to the distribution system) and therefore active for settlement purposes. | Notes: D - De-Energised, E - Energised"
+        },
+        {
+            "id": "DI-034",
+            "name": "Energisation Status Effective From Date",
+            "cmo": "M",
+            "rule": "The settlement date and time from which an energisation status is in effect for a metering system. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B068 - MPAN Consent Info (Mandatory)"
+        },
+        {
+            "id": "DI-017",
+            "name": "Consent Granularity",
+            "cmo": "M",
+            "rule": "Describes the granularity of energy settlement data that a customer has deemed to have consented to. | Notes: LDSOH – HH Consent Granted, D – Daily, M - Monthly Reads Only, N - No consent"
+        },
+        {
+            "id": "DI-018",
+            "name": "Consent Granularity Effective From Date",
+            "cmo": "M",
+            "rule": "The date from which the consent granularity was in effect. | Notes: MDS &LDSO&MSYYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B031 - SMSO Info (Optional)"
+        },
+        {
+            "id": "DI-134",
+            "name": "SMSO (Smart Metering System Operator)",
+            "cmo": "M",
+            "rule": "The Id of the operator a Supplier has procured data and communication services from in respect of a Metering System (applies only to certain types of SMETS1 Metering)."
+        },
+        {
+            "id": "DI-135",
+            "name": "SMSO EffectiveFrom Date",
+            "cmo": "M",
+            "rule": "The first inclusive calendar date that a Smart Metering System Operator ID is the provider of communications services to a Metering System (applies only to certain types of SMETS1 Metering). | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "*B074 Block below repeated for each Installed Meter"
+        },
+        {
+            "isHeader": true,
+            "title": "B074 - Existing MPAN Meter Details (Mandatory if Metering Installed)"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter. | Notes: MSID for the 'existing' or 'newly installed' meter depending on Event type"
+        },
+        {
+            "id": "DI-059",
+            "name": "Meter Type",
+            "cmo": "M",
+            "rule": "The type of meter, in relation to its capabilities. E.g. AMR.S1, S2, S2ADE | Notes: Values as per ISD"
+        },
+        {
+            "id": "DI-048",
+            "name": "Manufacturers Make and Type",
+            "cmo": "O",
+            "rule": "The manufacturer's make name and type number of a Meter"
+        },
+        {
+            "id": "DI-085",
+            "name": "Electricity Smart Meter Equipment (ESME ID)",
+            "cmo": "C",
+            "rule": "The Electricity Smart Meter Equipment GUID is the unique identifier for a Smart electricity This is also known as the DCC GUID and is further defined within the DCC interface specifications. | Notes: Mandatory for Smart Meters(XX-XX-XX-XX-XX-XX-XX-XX)"
+        },
+        {
+            "id": "DI-090",
+            "name": "Meter Location",
+            "cmo": "M",
+            "rule": "The actual location of the metering system within the site | Notes: Values as Per Data Catalogue"
+        },
+        {
+            "id": "DI-091",
+            "name": "Number of Displayed Register Digits",
+            "cmo": "C",
+            "rule": "The number of digits prior to the decimal point displayed by the total cumulative register of a smart meter | Notes: Mandatory for SMETS2 Meters, Where the Meter Type is S1 the Number of Displayed Register Digits value must be be per the manufacturer's specification, Where the Meter Type is S2A, S2AD, S2ADE, 2ADF, 2ADEF, 2AEF, 2AF, S2B, S2BD, S2BDE, 2BF,2BDF, 2BDEF or 2BEF the value must be “5”, Where the Meter Type is prefixed with “S2C” the value must be “6”, Where the Meter Type is 2CDEF, 2CF, 2CDF or 2CEF the value must be “6”"
+        },
+        {
+            "id": "DI-057",
+            "name": "Meter Installation Date/Time",
+            "cmo": "M",
+            "rule": "The date of installation for a meter at a metering point. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B060 - Additional Information (Optional)"
+        },
+        {
+            "id": "DI-120",
+            "name": "Additional Information",
+            "cmo": "M",
+            "rule": "Additional Information"
+        }
+    ]
+},
     {
-        "id": "IF-062/PUB-062",
-        "name": "MDR Start Request Response",
-        "description": "Reponse from MDR to SDS Request to Start Data Retrieval Activity",
-        "sender": "Meter Data Retriever (MDR)",
-        "receiver": "Smart Data Service (SDS)",
-        "context": "This is the reponse from MDR to SDS Request to Start Data Retrieval Activity",
-        "supplier_type": "none"
-    },
+    "id": "IF-063/PUB-063",
+    "name": "MDR Stop Request",
+    "description": "Request from SDS that an MDR Stop Data Retrieval Activity",
+    "sender": "Smart Data Service (SDS)",
+    "receiver": "Meter Data Retriever (MDR)",
+    "context": "Request from the SDS that an MDR stops Data Retrieval Activity",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-063"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MDRStop]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Required - Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B083 - MDR End Date (Mandatory)"
+        },
+        {
+            "id": "DI-842",
+            "name": "Assigned MDR DIP ID",
+            "cmo": "M",
+            "rule": "DIP ID of the MDR assigned to an MPAN"
+        },
+        {
+            "id": "DI-209",
+            "name": "Assigned MDR MPID",
+            "cmo": "M",
+            "rule": "Assigned MDR MPID"
+        },
+        {
+            "id": "DI-850",
+            "name": "MDR Effective To Date",
+            "cmo": "M",
+            "rule": "The Date at which the MDR stops collecting data."
+        },
+        {
+            "isHeader": true,
+            "title": "B060 - Additional Information (Optional)"
+        },
+        {
+            "id": "DI-120",
+            "name": "Additional Information",
+            "cmo": "M",
+            "rule": "Additional Information"
+        }
+    ]
+},
     {
-        "id": "IF-063/PUB-063",
-        "name": "MDR Stop Request",
-        "description": "Request from SDS that an MDR Stop Data Retrieval Activity",
-        "sender": "Smart Data Service (SDS)",
-        "receiver": "Meter Data Retriever (MDR)",
-        "context": "Request from the SDS that an MDR stops Data Retrieval Activity",
-        "supplier_type": "none"
-    },
+    "id": "IF-064/PUB-064",
+    "name": "MDR Provide Consumption",
+    "description": "MDR Provide Consumption to SDS",
+    "sender": "Meter Data Retriever (MDR)",
+    "receiver": "Smart Data Service (SDS)",
+    "context": "MDR Provide Consumption to SDS",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-064"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [MDRConsumption]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Required - Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "B045 - MQID (Mandatory)"
+        },
+        {
+            "id": "DI-052",
+            "name": "Measurement Quantity ID",
+            "cmo": "M",
+            "rule": "Identifies the type of the quantity that is measured by the UTC Period Consumption Value. | Notes: AI – Active import, AE – Active export"
+        },
+        {
+            "isHeader": true,
+            "title": "> B046 Block below Repeated for each UTC Settlement Date"
+        },
+        {
+            "isHeader": true,
+            "title": "> *B046 - UTC Settlement Day (Mandatory)"
+        },
+        {
+            "id": "DI-101",
+            "name": "UTC Settlement Date",
+            "cmo": "M",
+            "rule": "UTC Date for which the data applies | Notes: Should be populated with a time of Midnight for the UTC Day to which consumption applies, YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-081",
+            "name": "Settlement Period Duration",
+            "cmo": "M",
+            "rule": "The settlement period duration in minutes. | Notes: nn"
+        },
+        {
+            "isHeader": true,
+            "title": ">> B084 Block below Repeated for each UTC Settlement Consumption Period as Required"
+        },
+        {
+            "isHeader": true,
+            "title": ">> *B084 - MDR Settlement Period Consumption Data (Mandatory)"
+        },
+        {
+            "id": "DI-082",
+            "name": "Settlement Period Effective To Date/Time {sp}",
+            "cmo": "M",
+            "rule": "The UTC end date and time of the settlement period for a consumption value. | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-147",
+            "name": "UTC Period Consumption Value {v}",
+            "cmo": "M",
+            "rule": "Consumption Value (kWh/kVARh) for the Settlement Period Duration. | Notes: nnnnnnnnn.nnn"
+        },
+        {
+            "id": "DI-083",
+            "name": "Settlement Period Quality Indicator {q}",
+            "cmo": "M",
+            "rule": "Describes if the UTC Period Consumption Value is an actual or what estimation method was used to estimate it. | Notes: A = Actual"
+        },
+        {
+            "isHeader": true,
+            "title": "B060 - Additional Information (Optional)"
+        },
+        {
+            "id": "DI-120",
+            "name": "Additional Information",
+            "cmo": "M",
+            "rule": "Additional Information"
+        }
+    ]
+},
     {
-        "id": "IF-064/PUB-064",
-        "name": "MDR Provide Consumption",
-        "description": "MDR Provide Consumption to SDS",
-        "sender": "Meter Data Retriever (MDR)",
-        "receiver": "Smart Data Service (SDS)",
-        "context": "MDR Provide Consumption to SDS",
-        "supplier_type": "none"
-    },
-    {
-        "id": "IF-065/PUB-065",
-        "name": "MDR Request / Provide Meter Reading",
-        "description": "MDR Provide Meter Reading(s) to SDS",
-        "sender": "Meter Data Retriever (MDR) or Smart Data Service (SDS)",
-        "receiver": "Smart Data Service (SDS) or Meter Data Retreiver (MDR)",
-        "context": "MDR Provide Meter Reading(s) to SDS",
-        "supplier_type": "none"
-    }
+    "id": "IF-065/PUB-065",
+    "name": "MDR Request / Provide Meter Reading",
+    "description": "MDR Provide Meter Reading(s) to SDS",
+    "sender": "Meter Data Retriever (MDR) or Smart Data Service (SDS)",
+    "receiver": "Smart Data Service (SDS) or Meter Data Retreiver (MDR)",
+    "context": "MDR Provide Meter Reading(s) to SDS",
+    "supplier_type": "none",
+    "data_items": [
+        {
+            "isHeader": true,
+            "title": "S0- Transactional Info (Mandatory)"
+        },
+        {
+            "id": "DI-000",
+            "name": "Interface Id",
+            "cmo": "M",
+            "rule": "Interface Id | Notes: IF-065"
+        },
+        {
+            "id": "DI-992",
+            "name": "Schema Version",
+            "cmo": "M",
+            "rule": "The Scheme Version against which the message has been constructed | Notes: nnn"
+        },
+        {
+            "id": "DI-999",
+            "name": "Event Code",
+            "cmo": "M",
+            "rule": "Code used to identify the nature of the Event | Notes: [ReadingRemote], [MDRInstantaneous], [MDRTOU], [MDRConsumption]"
+        },
+        {
+            "isHeader": true,
+            "title": "S1 - Sender Info (Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "D0- Transactional Info - DIP Set (Added by DIP - Mandatory)"
+        },
+        {
+            "isHeader": true,
+            "title": "A0 - Addressing (Required - Primary Routing)"
+        },
+        {
+            "isHeader": true,
+            "title": "M0 - MPAN (Mandatory)"
+        },
+        {
+            "id": "DI-063",
+            "name": "MPAN Core",
+            "cmo": "M",
+            "rule": "A business key used to uniquely identify the metering point that is the subject of the update."
+        },
+        {
+            "id": "DI-108",
+            "name": "Distributor DIP ID",
+            "cmo": "M",
+            "rule": "The DIP ID of the distributor who is responsible for the distribution network that a metering point is connected to."
+        },
+        {
+            "id": "DI-037",
+            "name": "GSP Group ID",
+            "cmo": "M",
+            "rule": "Identifies the distinct grid supply point group (physical region of the country) where the metering point is located."
+        },
+        {
+            "isHeader": true,
+            "title": "Mandatory to provide (as a minimum) either a B076 Block or B065 Block where Event Type is [ReadingRemote]"
+        },
+        {
+            "isHeader": true,
+            "title": "B076 Block Below Repeated for each Meter(s) associated with the MPAN"
+        },
+        {
+            "isHeader": true,
+            "title": "* B076 - MDR Cumulative Reading Information (Conditionally Mandatory for [ReadingRemote])"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter."
+        },
+        {
+            "id": "DI-088",
+            "name": "Cumulative Register Reading",
+            "cmo": "M",
+            "rule": "The value of the Cumulative meter register at a specified date and time. | Notes: e.g. 123456789.123"
+        },
+        {
+            "id": "DI-089",
+            "name": "Cumulative Register Reading Date / Time",
+            "cmo": "M",
+            "rule": "The date and time [in UTC] of the Cumulative Register Meter Read. This should be considered to be midnight where an exact time is unavailible | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B065 Block Below Repeated for each set of Configured Register(s) for each Meter"
+        },
+        {
+            "isHeader": true,
+            "title": "* B065 - Meter Configurable Register Reading (Conditionally Mandatory for [ReadingRemote])"
+        },
+        {
+            "id": "DI-056",
+            "name": "Meter ID",
+            "cmo": "M",
+            "rule": "Serial number of the physical meter."
+        },
+        {
+            "id": "DI-099",
+            "name": "Configurable Register Reading Date /Time",
+            "cmo": "M",
+            "rule": "The date and time [in UTC] of a Configurable Register Meter Read. This should be considered to be midnight where an exact time is unavailible | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "id": "DI-103",
+            "name": "Configurable Register ID",
+            "cmo": "M",
+            "rule": "Register ID relating to a specific configurable (billing) register on a Smart/Advanced Meter | Notes: nn"
+        },
+        {
+            "id": "DI-104",
+            "name": "Configurable Register Reading",
+            "cmo": "M",
+            "rule": "Reading associated to a specific Register ID on a Smart/Advanced Meter | Notes: e.g. 123456789.123"
+        },
+        {
+            "isHeader": true,
+            "title": "B077- MDR Request Reference Date (Mandatory for [MDRTOU] & [MDRConsumption]"
+        },
+        {
+            "id": "DI-196",
+            "name": "MDR Request Reference Date",
+            "cmo": "M",
+            "rule": "Reference Date for which data should be recovered from the meter | Notes: YYYY-MM-DDTHH:MM.SS±TZH:TZM"
+        },
+        {
+            "isHeader": true,
+            "title": "B060 - Additional Information (Optional)"
+        },
+        {
+            "id": "DI-120",
+            "name": "Additional Information",
+            "cmo": "M",
+            "rule": "Additional Information"
+        }
+    ]
+}
 ]
