@@ -63,35 +63,47 @@
             background: linear-gradient(180deg, var(--purple), var(--eon-red));
         }
         
-        /* Enhanced filter buttons with better active states */
+        /* Enhanced filter buttons with better active states - REVERTED TO ORIGINAL STYLES */
         .filter-btn {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        .filter-btn:hover::before {
+            left: 100%;
         }
         .filter-btn.active-filter {
-            transform: translateY(-2px) scale(1.05);
-            color: var(--white) !important;
+            transform: translateY(-2px) scale(1.02);
         }
         .filter-btn[data-filter="all"].active-filter {
-            background: linear-gradient(135deg, var(--eon-red), #ff6b4a);
-            box-shadow: 0 6px 20px rgba(229, 0, 0, 0.25);
+            background: linear-gradient(135deg, var(--eon-red), #ff6b4a) !important;
+            color: var(--white) !important;
+            box-shadow: 0 8px 25px rgba(229, 0, 0, 0.3);
         }
         .filter-btn[data-filter="supplier_send"].active-filter {
-            background: linear-gradient(135deg, var(--data-gas-off), #a66eff);
-            box-shadow: 0 6px 20px rgba(122, 70, 212, 0.25);
+            background: linear-gradient(135deg, var(--data-gas-off), #a66eff) !important;
+            color: var(--white) !important;
+            box-shadow: 0 8px 25px rgba(122, 70, 212, 0.3);
         }
         .filter-btn[data-filter="supplier_receive"].active-filter {
-            background: linear-gradient(135deg, var(--data-sun), #ffe533);
+            background: linear-gradient(135deg, var(--data-sun), #ffe533) !important;
             color: var(--dark-purple) !important;
-            box-shadow: 0 6px 20px rgba(217, 189, 0, 0.25);
-        }
-        .filter-btn[data-filter="supplier_both"].active-filter {
-            background: linear-gradient(135deg, var(--data-leaf), #33ff87);
-            color: var(--dark-purple) !important;
-            box-shadow: 0 6px 20px rgba(22, 194, 94, 0.25);
+            box-shadow: 0 8px 25px rgba(217, 189, 0, 0.3);
         }
         .filter-btn[data-filter="none"].active-filter {
-            background: linear-gradient(135deg, var(--dark-purple), var(--purple));
-            box-shadow: 0 6px 20px rgba(23, 9, 32, 0.25);
+            background: linear-gradient(135deg, var(--dark-purple), var(--purple)) !important;
+            color: var(--white) !important;
+            box-shadow: 0 8px 25px rgba(23, 9, 32, 0.3);
         }
         
         /* Modern interface cards with hover effects */
@@ -162,11 +174,11 @@
                 </div>
 
                 <div role="group" aria-labelledby="filter-heading" class="flex flex-wrap gap-2 mb-5">
-                    <button class="filter-btn border-0 text-[var(--purple)] bg-[var(--birch)] px-3 py-1.5 rounded-lg text-xs font-medium shadow-sm" data-filter="all" aria-pressed="true">All</button>
-                    <button class="filter-btn border-0 text-[var(--purple)] bg-purple-100/50 px-3 py-1.5 rounded-lg text-xs font-medium shadow-sm" data-filter="supplier_send" aria-pressed="false">Send</button>
-                    <button class="filter-btn border-0 text-[var(--dark-purple)] bg-yellow-100/50 px-3 py-1.5 rounded-lg text-xs font-medium shadow-sm" data-filter="supplier_receive" aria-pressed="false">Receive</button>
-                    <button class="filter-btn border-0 text-[var(--dark-purple)] bg-green-100/50 px-3 py-1.5 rounded-lg text-xs font-medium shadow-sm" data-filter="supplier_both" aria-pressed="false">Both</button>
-                    <button class="filter-btn border-0 text-[var(--purple)] bg-gray-200/50 px-3 py-1.5 rounded-lg text-xs font-medium shadow-sm" data-filter="none" aria-pressed="false">None</button>
+                    <!-- Reverted Filter Buttons -->
+                    <button class="filter-btn border-0 text-[var(--purple)] bg-[var(--birch)] px-3 py-1.5 rounded-lg text-xs font-medium shadow-md" data-filter="all" aria-pressed="true">All Interfaces</button>
+                    <button class="filter-btn border-0 text-[var(--purple)] px-3 py-1.5 rounded-lg text-xs font-medium shadow-md" data-filter="supplier_send" aria-pressed="false" style="background: linear-gradient(135deg, #9254FF20, #9254FF10);">Supplier Send</button>
+                    <button class="filter-btn border-0 text-[var(--dark-purple)] px-3 py-1.5 rounded-lg text-xs font-medium shadow-md" data-filter="supplier_receive" aria-pressed="false" style="background: linear-gradient(135deg, #FFDE0030, #FFDE0020);">Supplier Receive</button>
+                    <button class="filter-btn border-0 text-[var(--purple)] px-3 py-1.5 rounded-lg text-xs font-medium shadow-md" data-filter="none" aria-pressed="false" style="background: linear-gradient(135deg, #e5e7eb, #f3f4f6);">Not Involved</button>
                 </div>
 
                 <!-- Interface list container with responsive height -->
@@ -273,7 +285,7 @@
                 debounceTimer = setTimeout(() => {
                     state.currentSearchTerm = e.target.value;
                     filterAndRender();
-                }, 250); // Slightly faster debounce
+                }, 250); 
             });
 
             DOMElements.filterButtons.forEach(button => {
@@ -320,7 +332,12 @@
             const lowerCaseSearchTerm = state.currentSearchTerm.toLowerCase();
             
             state.filteredInterfaces = state.interfaceData.filter(item => {
-                const matchesFilter = state.currentFilter === 'all' || item.supplier_type === state.currentFilter;
+                // Reverted filter logic to handle 'supplier_both' correctly
+                const matchesFilter =
+                    state.currentFilter === 'all' ||
+                    item.supplier_type === state.currentFilter ||
+                    (state.currentFilter === 'supplier_send' && item.supplier_type === 'supplier_both') ||
+                    (state.currentFilter === 'supplier_receive' && item.supplier_type === 'supplier_both');
 
                 const matchesSearch = !lowerCaseSearchTerm ||
                     (item.id && item.id.toLowerCase().includes(lowerCaseSearchTerm)) ||
@@ -382,7 +399,6 @@
             DOMElements.welcomeMessage.classList.add('hidden');
             DOMElements.detailsContent.classList.remove('hidden');
             DOMElements.detailsContent.classList.add('details-fade-in');
-            // Remove animation class after it runs to allow re-triggering
             setTimeout(() => DOMElements.detailsContent.classList.remove('details-fade-in'), 500);
 
             const typeInfo = {
@@ -394,6 +410,7 @@
 
             const context = item.context || "No additional context is available for this interface.";
             
+            // Added a scrollable container for the data items table
             const dataItemsHtml = `
                 <div class="bg-white/50 rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 mt-6 md:mt-8">
                     <h3 class="text-xl font-bold text-[var(--eon-red)] mb-4 flex items-center">
@@ -401,22 +418,24 @@
                         Data Items
                     </h3>
                     ${(item.data_items && item.data_items.length > 0) ? `
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-sm text-left">
-                            ${item.data_items.map(di => {
-                                if (di.isHeader) {
-                                    return `<thead class="text-xs text-[var(--dark-purple)] uppercase bg-[var(--birch)]/70"><tr class="border-b"><th colspan="4" class="px-4 py-2 font-bold">${escapeHtml(di.title)}</th></tr></thead>
-                                            <thead class="text-xs text-[var(--purple)] uppercase"><tr class="border-b"><th class="px-4 py-2">ID</th><th class="px-4 py-2">Data Item</th><th class="px-4 py-2">M/O/C</th><th class="px-4 py-2">Description / Rule</th></tr></thead>`;
-                                } else {
-                                    return `<tbody class="divide-y divide-gray-200/50"><tr class="hover:bg-gray-50/50">
-                                        <td class="px-4 py-3 font-mono font-semibold text-xs">${escapeHtml(di.id)}</td>
-                                        <td class="px-4 py-3">${escapeHtml(di.name)}</td>
-                                        <td class="px-4 py-3 font-semibold text-center">${escapeHtml(di.cmo)}</td>
-                                        <td class="px-4 py-3 text-xs opacity-80">${escapeHtml(di.rule)}</td>
-                                    </tr></tbody>`;
-                                }
-                            }).join('')}
-                        </table>
+                    <div class="max-h-[50vh] overflow-y-auto pr-2">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left">
+                                ${item.data_items.map(di => {
+                                    if (di.isHeader) {
+                                        return `<thead class="text-xs text-[var(--dark-purple)] uppercase bg-[var(--birch)]/70 sticky top-0"><tr class="border-b"><th colspan="4" class="px-4 py-2 font-bold">${escapeHtml(di.title)}</th></tr></thead>
+                                                <thead class="text-xs text-[var(--purple)] uppercase bg-[var(--birch)]/70 sticky top-9"><tr class="border-b"><th class="px-4 py-2">ID</th><th class="px-4 py-2">Data Item</th><th class="px-4 py-2">M/O/C</th><th class="px-4 py-2">Description / Rule</th></tr></thead>`;
+                                    } else {
+                                        return `<tbody class="divide-y divide-gray-200/50"><tr class="hover:bg-gray-50/50">
+                                            <td class="px-4 py-3 font-mono font-semibold text-xs">${escapeHtml(di.id)}</td>
+                                            <td class="px-4 py-3">${escapeHtml(di.name)}</td>
+                                            <td class="px-4 py-3 font-semibold text-center">${escapeHtml(di.cmo)}</td>
+                                            <td class="px-4 py-3 text-xs opacity-80">${escapeHtml(di.rule)}</td>
+                                        </tr></tbody>`;
+                                    }
+                                }).join('')}
+                            </table>
+                        </div>
                     </div>` : '<p class="text-[var(--dark-purple)] opacity-70">No data items are associated with this interface.</p>'}
                 </div>`;
 
