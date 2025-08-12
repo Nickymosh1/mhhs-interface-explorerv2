@@ -169,7 +169,7 @@
                 <h2 id="filter-heading" class="text-xl font-bold mb-5 text-[var(--eon-red)]">Find an Interface</h2>
                 
                 <div class="mb-5">
-                    <input type="search" id="searchInput" placeholder="Search by ID, name..."
+                    <input type="search" id="searchInput" placeholder="Search ID, name, or data items..."
                            class="search-input w-full px-4 py-3 border-0 rounded-xl focus:ring-2 focus:ring-[var(--eon-red)] transition placeholder:text-[var(--purple)] placeholder:opacity-60 text-sm md:text-base">
                 </div>
 
@@ -339,9 +339,19 @@
                     (state.currentFilter === 'supplier_send' && item.supplier_type === 'supplier_both') ||
                     (state.currentFilter === 'supplier_receive' && item.supplier_type === 'supplier_both');
 
+                // --- SMART SEARCH LOGIC ---
+                // Checks top-level info OR info within data_items
                 const matchesSearch = !lowerCaseSearchTerm ||
                     (item.id && item.id.toLowerCase().includes(lowerCaseSearchTerm)) ||
-                    (item.name && item.name.toLowerCase().includes(lowerCaseSearchTerm));
+                    (item.name && item.name.toLowerCase().includes(lowerCaseSearchTerm)) ||
+                    (item.description && item.description.toLowerCase().includes(lowerCaseSearchTerm)) ||
+                    (item.data_items && item.data_items.some(di => 
+                        !di.isHeader && (
+                            (di.name && di.name.toLowerCase().includes(lowerCaseSearchTerm)) ||
+                            (di.rule && di.rule.toLowerCase().includes(lowerCaseSearchTerm)) ||
+                            (di.id && di.id.toLowerCase().includes(lowerCaseSearchTerm))
+                        )
+                    ));
                 
                 return matchesFilter && matchesSearch;
             });
@@ -410,7 +420,6 @@
 
             const context = item.context || "No additional context is available for this interface.";
             
-            // Added a scrollable container for the data items table
             const dataItemsHtml = `
                 <div class="bg-white/50 rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 mt-6 md:mt-8">
                     <h3 class="text-xl font-bold text-[var(--eon-red)] mb-4 flex items-center">
