@@ -7729,10 +7729,12 @@
             "rule": "Publication Date of the Distribution Variant"
         },
         {
-            "id": "DI-968",
-            "name": "Distribution Variant Format",
-            "cmo": "O",
-            "rule": "File Type of the Distribution Variant Components (e.g. JSON/CSV/PDF File) | Notes: (e.g. JSON/CSV/PDF File)"
+          "id": "DI-968",
+          "name": "Distribution Variant Format",
+          "cmo": "O",
+          "rule": "File Type of the Distribution Variant Components (e.g. JSON/CSV/PDF File) | Notes: (e.g. JSON/CSV/PDF File)"
+      }
+    ]
 },
     {
     "id": "IF-050/PUB-050",
@@ -8831,11 +8833,11 @@
             "title": "B060 - Additional Information (Optional)"
         },
         {
-            "id": "DI-120",
-            "name": "Additional Information",
-            "cmo": "M",
-            "rule": "Additional Information"
-        }
-    ]
-}
+                "id": "DI-120",
+                "name": "Additional Information",
+                "cmo": "M",
+                "rule": "Additional Information"
+            }
+        ]
+    }
 ]
